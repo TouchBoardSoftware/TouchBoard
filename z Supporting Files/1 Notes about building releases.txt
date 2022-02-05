@@ -1,18 +1,24 @@
 ### Summary
-The touchboard jar (dist/touchboard.jar) is intended to be able to execute without any other files present. However, to give a more user friendly experience, there is a set of supporting files that should be included in any release package. These files are listed below.
+The touchboard jar (dist/touchboard.jar) is intended to be able to execute without any other files present. 
+However, to give a more user friendly experience, there is a set of supporting files that should be included 
+in any release package. These files are listed below.
 
 # The help folder, located here: 
 Project\working\help
 
 # The default and example board files, located here:
-(Note 5feb22: Ideally some more substantial example boards would be created, than the one included in release version 6.00.)
+(Note 5feb22: Ideally some more substantial example boards would be created, than the one included in 
+release version 6.00.)
 \example board files and default boards
 
 # The touchboard icons for use in making program shortcuts, located here:
 \touchboard icons
 
 # Note: External library jars are NOT needed. 
-The netbeans build.xml has been modified to automatically include the contents of all external jar dependencies into the distribution jar. (Into "dist/touchboard.jar".) This jar is created any time you run "clean and build" in netbeans. The automatic inclusion of the dependencies makes the final "touchboard.jar" independent, and able to run without having any separate external jar libraries present.
+The netbeans build.xml has been modified to automatically include the contents of all external jar dependencies 
+into the distribution jar. (Into "dist/touchboard.jar".) This jar is created any time you run "clean and build" 
+in netbeans. The automatic inclusion of the dependencies makes the final "touchboard.jar" independent, and able 
+to run without having any separate external jar libraries present.
 
 # Example release package file:
 The first release package can serve as an example of what files to include in a release. 
