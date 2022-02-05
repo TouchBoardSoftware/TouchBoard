@@ -71,6 +71,11 @@
 
     -->
 
+    <!-- 
+    Copy all external dependency source code into the distribution jar.
+    This section copies the contents of the lib folder jars (the external dependency jars), into the netbeans distribution jar. 
+    Note that the dependency -source code- itself is copied, not the zipped dependency -jar files-. 
+    -->
     <target name="-post-jar">
         <jar destfile="${dist.jar}"
              update="true">
