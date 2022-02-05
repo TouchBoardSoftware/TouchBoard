@@ -1,0 +1,475 @@
+<HTML>
+    <HEAD>
+        <TITLE>References</TITLE>
+        <LINK REL="stylesheet" TYPE="text/css" HREF="style.css"/>
+    </HEAD>
+    <BODY>
+
+        <p class="header"><A NAME="References and Date Time Stamp Patterns">Reference Contents</A></p>
+
+        <P class="menu">
+            <A HREF="#Date Time Stamp Patterns">Date Time Stamp Patterns</A>,
+            <A HREF="#Virtual Key Codes List">Virtual Key Codes List</A>.
+        </P><BR>
+
+        <P class="title"><A NAME="Date Time Stamp Patterns">Date Time Stamp Patterns:</A>
+            <A class="sup" HREF="help.html#top">back to help</A></P>
+
+        <P>Format codes are specified by date and time pattern strings. Within the strings, unquoted letters from 'A' to 'Z' and from 'a' to 'z' are interpreted as pattern letters representing the components of a date or time string. Text can be quoted using single quotes (') to avoid interpretation. ('') represents a single quote. If you desire a space to be typed inside of the format, use an underscore_ instead, all underscores will be replaced with spaces. All other characters are not interpreted; they're simply copied into the output string during formatting. </P>
+
+        <P class=noindent>The following pattern letters are defined (all other characters from 'A' to 'Z' and from 'a' to 'z' are reserved): <BR>
+
+        <TABLE class="indent" CELLSPACING="3" CELLPADDING="0" SUMMARY="Chart shows pattern letters, date/time component, presentation, and examples.">
+            <TR BGCOLOR="#ccccff">
+                <TH ALIGN="left">Letter
+                <TH ALIGN="left">Date or Time Component
+                <TH ALIGN="left">Presentation
+                <TH ALIGN="left">Examples
+            <TR>
+                <TD><CODE>G</CODE>
+                <TD>Era designator
+                <TD>Text
+                <TD><CODE>AD</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>y</CODE>
+                <TD>Year
+                <TD>Year
+                <TD><CODE>1996</CODE>; <CODE>96</CODE>
+            <TR>
+                <TD><CODE>M</CODE>
+                <TD>Month in year
+                <TD>Month
+                <TD><CODE>July</CODE>; <CODE>Jul</CODE>; <CODE>07</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>w</CODE>
+                <TD>Week in year
+                <TD>Number
+                <TD><CODE>27</CODE>
+            <TR>
+                <TD><CODE>W</CODE>
+                <TD>Week in month
+                <TD>Number
+                <TD><CODE>2</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>D</CODE>
+                <TD>Day in year
+                <TD>Number
+                <TD><CODE>189</CODE>
+            <TR>
+                <TD><CODE>d</CODE>
+                <TD>Day in month
+                <TD>Number
+                <TD><CODE>10</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>F</CODE>
+                <TD>Day of week in month
+                <TD>Number
+                <TD><CODE>2</CODE>
+            <TR>
+                <TD><CODE>E</CODE>
+                <TD>Day in week
+                <TD>Text
+                <TD><CODE>Tuesday</CODE>; <CODE>Tue</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>a</CODE>
+                <TD>Am/pm marker
+                <TD>Text
+                <TD><CODE>p</CODE>
+            <TR>
+                <TD><CODE>H</CODE>
+                <TD>Hour in day (0-23)
+                <TD>Number
+                <TD><CODE>0</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>k</CODE>
+                <TD>Hour in day (1-24)
+                <TD>Number
+                <TD><CODE>24</CODE>
+            <TR>
+                <TD><CODE>K</CODE>
+                <TD>Hour in am/pm (0-11)
+                <TD>Number
+                <TD><CODE>0</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>h</CODE>
+                <TD>Hour in am/pm (1-12)
+                <TD>Number
+                <TD><CODE>12</CODE>
+            <TR>
+                <TD><CODE>m</CODE>
+                <TD>Minute in hour
+                <TD>Number
+                <TD><CODE>30</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>s</CODE>
+                <TD>Second in minute
+                <TD>Number
+                <TD><CODE>55</CODE>
+            <TR>
+                <TD><CODE>S</CODE>
+                <TD>Millisecond
+                <TD>Number
+                <TD><CODE>978</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>z</CODE>
+                <TD>Time zone
+                <TD>General time zone
+                <TD><CODE>Pacific Standard Time</CODE>; <CODE>PST</CODE>; <CODE>GMT-08:00</CODE>
+            <TR>
+                <TD><CODE>Z</CODE>
+                <TD>Time zone
+                <TD>RFC 822 time zone
+                <TD><CODE>-0800</CODE>
+        </TABLE>
+
+        <P class="noindent">Pattern letters are usually repeated, as their number determines the exact presentation:</P>
+
+        <P class="noindent">Text: If the number of pattern letters is 4 or more, the full form is used; otherwise a short or abbreviated form is used if available.</P>
+
+        <P class="noindent">Number: The number of pattern letters is the minimum number of digits, and shorter numbers are zero-padded to this amount. </P>
+
+        <P class="noindent">Year: If the number of pattern letters is 2, the year is truncated to 2 digits; otherwise it is interpreted as a number.</P>
+
+        <P class="noindent">Month: If the number of pattern letters is 3 or more, the month is interpreted as text; otherwise, it is interpreted as a number.</P>
+
+        <P class="noindent">Examples:<BR>
+            The following examples show how date and time patterns are interpreted in the U.S. locale. The given date and time are 2001-07-04 12:08:56 local time in the U.S. Pacific Time time zone.</P>
+
+        <TABLE class="indent" CELLSPACING="3" CELLPADDING="0" SUMMARY="Examples of date and time patterns interpreted in the U.S. locale">
+            <TR BGCOLOR="#ccccff">
+                <TH ALIGN="left">Date and Time Pattern
+                <TH ALIGN="left">Result
+            <TR>
+                <TD><CODE>dMMMyy_ha</CODE>
+                <TD><CODE>4Jul01 12p</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>EEE,_MMM_d,_''yy</CODE>
+                <TD><CODE>Wed, Jul 4, '01</CODE>
+            <TR>
+                <TD><CODE>h:mma</CODE>
+                <TD><CODE>12:08p</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>hh_'o''clock'_a,_zzzz</CODE>
+                <TD><CODE>12 o'clock p, Pacific Daylight Time</CODE>
+            <TR>
+                <TD><CODE>yyyy.MM.dd_G_'at'_HH:mm:ss_z</CODE>
+                <TD><CODE>2001.07.04 AD at 12:08:56 PDT</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>yyyyy.MMMMM.dd_GGG_hh:mmaaa</CODE>
+                <TD><CODE>02001.July.04 AD 12:08p</CODE>
+            <TR>
+                <TD><CODE>EEE,_d_MMM_yyyy_HH:mm:ss_Z</CODE>
+                <TD><CODE>Wed, 4 Jul 2001 12:08:56 -0700</CODE>
+            <TR BGCOLOR="#eeeeff">
+                <TD><CODE>yyMMddHHmmssZ</CODE>
+                <TD><CODE>010704120856-0700</CODE>
+            <TR>
+                <TD><CODE>"yyyy-MM-dd'T'HH:mm:ss.SSSZ"</CODE>
+                <TD><CODE>2001-07-04T12:08:56.235-0700</CODE>
+        </TABLE>
+        <BR>
+        <HR NOSHADE>
+        <p class="title"><A NAME="Virtual Key Codes List">Virtual Key Codes List:</A>
+            <A class="sup" HREF="help.html#top">back to help</A></p>
+        <BR>
+        <P class="noindent"><B>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Z</B><BR>
+            The alphabet keys.</P>
+
+        <P class="noindent"><B>0, 1, 2, 3, 4, 5, 6, 7, 8, 9</B><BR>
+            The number keys.</P>
+
+        <P class="noindent"><B>NUMPAD0, NUMPAD1, NUMPAD2, NUMPAD3, NUMPAD4, NUMPAD5, NUMPAD6, NUMPAD7, NUMPAD8, NUMPAD9</B><BR>
+            The numpad number keys.</P>
+
+        <P class="noindent"><B>F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24</B><BR>
+            The function keys.</P>
+
+        <P class="noindent"><B>ACCEPT</B><BR>
+            The Accept or Commit function key.</P>
+
+        <P class="noindent"><B>ADD</B></P>
+
+        <P class="noindent"><B>AGAIN</B></P>
+
+        <P class="noindent"><B>ALL_CANDIDATES</B><BR>
+            The All Candidates function key.</P>
+
+        <P class="noindent"><B>ALPHANUMERIC</B><BR>
+            The Alphanumeric function key.</P>
+
+        <P class="noindent"><B>ALT</B></P>
+
+        <P class="noindent"><B>ALT_GRAPH</B><BR>
+            The AltGraph function key.</P>
+
+        <P class="noindent"><B>AMPERSAND</B></P>
+
+        <P class="noindent"><B>ASTERISK</B></P>
+
+        <P class="noindent"><B>AT</B><BR>
+            The "@" key.</P>
+
+        <P class="noindent"><B>BACK_QUOTE</B></P>
+
+        <P class="noindent"><B>BACK_SLASH</B><BR>
+            The back slash key, "\".</P>
+
+        <P class="noindent"><B>BACK_SPACE</B></P>
+
+        <P class="noindent"><B>BEGIN</B><BR>
+            The Begin key.</P>
+
+        <P class="noindent"><B>BRACELEFT</B></P>
+
+        <P class="noindent"><B>BRACERIGHT</B></P>
+
+        <P class="noindent"><B>CANCEL</B></P>
+
+        <P class="noindent"><B>CAPS_LOCK</B></P>
+
+        <P class="noindent"><B>CIRCUMFLEX</B><BR>
+            The "^" key.</P>
+
+        <P class="noindent"><B>CLEAR</B></P>
+
+        <P class="noindent"><B>CLOSE_BRACKET</B><BR>
+            The close bracket key, "]".</P>
+
+        <P class="noindent"><B>CODE_INPUT</B><BR>
+            The Code Input function key.</P>
+
+        <P class="noindent"><B>COLON</B><BR>
+            The ":" key.</P>
+
+        <P class="noindent"><B>COMMA</B><BR>
+            The comma key, ",".</P>
+
+        <P class="noindent"><B>COMPOSE</B><BR>
+            The Compose function key.</P>
+
+        <P class="noindent"><B>CONTEXT_MENU</B><BR>
+            The Microsoft Windows Context Menu key.</P>
+
+        <P class="noindent"><B>CONTROL</B></P>
+
+        <P class="noindent"><B>CONVERT</B><BR>
+            The Convert function key.</P>
+
+        <P class="noindent"><B>COPY</B></P>
+
+        <P class="noindent"><B>CUT</B></P>
+
+        <P class="noindent"><B>DEAD_ABOVEDOT</B></P>
+
+        <P class="noindent"><B>DEAD_ABOVERING</B></P>
+
+        <P class="noindent"><B>DEAD_ACUTE</B></P>
+
+        <P class="noindent"><B>DEAD_BREVE</B></P>
+
+        <P class="noindent"><B>DEAD_CARON</B></P>
+
+        <P class="noindent"><B>DEAD_CEDILLA</B></P>
+
+        <P class="noindent"><B>DEAD_CIRCUMFLEX</B></P>
+
+        <P class="noindent"><B>DEAD_DIAERESIS</B></P>
+
+        <P class="noindent"><B>DEAD_DOUBLEACUTE</B></P>
+
+        <P class="noindent"><B>DEAD_GRAVE</B></P>
+
+        <P class="noindent"><B>DEAD_IOTA</B></P>
+
+        <P class="noindent"><B>DEAD_MACRON</B></P>
+
+        <P class="noindent"><B>DEAD_OGONEK</B></P>
+
+        <P class="noindent"><B>DEAD_SEMIVOICED_SOUND</B></P>
+
+        <P class="noindent"><B>DEAD_TILDE</B></P>
+
+        <P class="noindent"><B>DEAD_VOICED_SOUND</B></P>
+
+        <P class="noindent"><B>DECIMAL</B></P>
+
+        <P class="noindent"><B>DELETE</B></P>
+
+        <P class="noindent"><B>DIVIDE</B></P>
+
+        <P class="noindent"><B>DOLLAR</B><BR>
+            The "$" key.</P>
+
+        <P class="noindent"><B>DOWN</B><BR>
+            The non-numpad down arrow key.</P>
+
+        <P class="noindent"><B>END</B></P>
+
+        <P class="noindent"><B>ENTER</B></P>
+
+        <P class="noindent"><B>EQUALS</B><BR>
+            The equals key, "=".</P>
+
+        <P class="noindent"><B>ESCAPE</B></P>
+
+        <P class="noindent"><B>EURO_SIGN</B><BR>
+            The Euro currency sign key.</P>
+
+        <P class="noindent"><B>EXCLAMATION_MARK</B><BR>
+            The "!" key.</P>
+
+        <P class="noindent"><B>FINAL</B></P>
+
+        <P class="noindent"><B>FIND</B></P>
+
+        <P class="noindent"><B>FULL_WIDTH</B><BR>
+            The Full-Width Characters function key.</P>
+
+        <P class="noindent"><B>GREATER</B></P>
+
+        <P class="noindent"><B>HALF_WIDTH</B><BR>
+            The Half-Width Characters function key.</P>
+
+        <P class="noindent"><B>HELP</B></P>
+
+        <P class="noindent"><B>HIRAGANA</B><BR>
+            The Hiragana function key.</P>
+
+        <P class="noindent"><B>HOME</B></P>
+
+        <P class="noindent"><B>INPUT_METHOD_ON_OFF</B><BR>
+            The input method on/off key.</P>
+
+        <P class="noindent"><B>INSERT</B></P>
+
+        <P class="noindent"><B>INVERTED_EXCLAMATION_MARK</B><BR>
+            The inverted exclamation mark key.</P>
+
+        <P class="noindent"><B>JAPANESE_HIRAGANA</B><BR>
+            The Japanese-Hiragana function key.</P>
+
+        <P class="noindent"><B>JAPANESE_KATAKANA</B><BR>
+            The Japanese-Katakana function key.</P>
+
+        <P class="noindent"><B>JAPANESE_ROMAN</B><BR>
+            The Japanese-Roman function key.</P>
+
+        <P class="noindent"><B>KANA</B></P>
+
+        <P class="noindent"><B>KANA_LOCK</B><BR>
+            The locking Kana function key.</P>
+
+        <P class="noindent"><B>KANJI</B></P>
+
+        <P class="noindent"><B>KATAKANA</B><BR>
+            The Katakana function key.</P>
+
+        <P class="noindent"><B>KP_DOWN</B><BR>
+            The numeric keypad down arrow key.</P>
+
+        <P class="noindent"><B>KP_LEFT</B><BR>
+            The numeric keypad left arrow key.</P>
+
+        <P class="noindent"><B>KP_RIGHT</B><BR>
+            The numeric keypad right arrow key.</P>
+
+        <P class="noindent"><B>KP_UP</B><BR>
+            The numeric keypad up arrow key.</P>
+
+        <P class="noindent"><B>LEFT</B><BR>
+            The non-numpad left arrow key.</P>
+
+        <P class="noindent"><B>LEFT_PARENTHESIS</B><BR>
+            The "(" key.</P>
+
+        <P class="noindent"><B>LESS</B></P>
+
+        <P class="noindent"><B>META</B></P>
+
+        <P class="noindent"><B>MINUS</B><BR>
+            The minus key, "-".</P>
+
+        <P class="noindent"><B>MODECHANGE</B></P>
+
+        <P class="noindent"><B>MULTIPLY</B></P>
+
+        <P class="noindent"><B>NONCONVERT</B><BR>
+            The Don't Convert function key.</P>
+
+        <P class="noindent"><B>NUM_LOCK</B></P>
+
+        <P class="noindent"><B>NUMBER_SIGN</B><BR>
+            The "#" key.</P>
+
+        <P class="noindent"><B>OPEN_BRACKET</B><BR>
+            The open bracket key, "[".</P>
+
+        <P class="noindent"><B>PAGE_DOWN</B></P>
+
+        <P class="noindent"><B>PAGE_UP</B></P>
+
+        <P class="noindent"><B>PASTE</B></P>
+
+        <P class="noindent"><B>PAUSE</B></P>
+
+        <P class="noindent"><B>PERIOD</B><BR>
+            The period key, ".".</P>
+
+        <P class="noindent"><B>PLUS</B><BR>
+            The "+" key.</P>
+
+        <P class="noindent"><B>PREVIOUS_CANDIDATE</B><BR>
+            The Previous Candidate function key.</P>
+
+        <P class="noindent"><B>PRINTSCREEN</B></P>
+
+        <P class="noindent"><B>PROPS</B></P>
+
+        <P class="noindent"><B>QUOTE</B></P>
+
+        <P class="noindent"><B>QUOTEDBL</B></P>
+
+        <P class="noindent"><B>RIGHT</B><BR>
+            The non-numpad right arrow key.</P>
+
+        <P class="noindent"><B>RIGHT_PARENTHESIS</B><BR>
+            The ")" key.</P>
+
+        <P class="noindent"><B>ROMAN_CHARACTERS</B><BR>
+            The Roman Characters function key.</P>
+
+        <P class="noindent"><B>SCROLL_LOCK</B></P>
+
+        <P class="noindent"><B>SEMICOLON</B><BR>
+            The semicolon key, ";".</P>
+
+        <P class="noindent"><B>SEPARATOR</B><BR>
+            The Numpad Separator key.</P>
+
+        <P class="noindent"><B>SHIFT</B></P>
+
+        <P class="noindent"><B>SLASH</B><BR>
+            The forward slash key, "/".</P>
+
+        <P class="noindent"><B>SPACE</B></P>
+
+        <P class="noindent"><B>STOP</B></P>
+
+        <P class="noindent"><B>SUBTRACT</B></P>
+
+        <P class="noindent"><B>TAB</B></P>
+
+        <P class="noindent"><B>UNDERSCORE</B><BR>
+            The "_" key.</P>
+
+        <P class="noindent"><B>UNDO</B></P>
+
+        <P class="noindent"><B>UP</B><BR>
+            The non-numpad up arrow key.</P>
+
+        <P class="noindent"><B>WINDOWS</B><BR>
+            The Microsoft Windows "Windows" key.</P>
+
+        <BR><BR><BR><BR><BR>
+    </BODY>
+</HTML>

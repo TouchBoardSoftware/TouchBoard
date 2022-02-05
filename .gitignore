@@ -1,0 +1,32 @@
+# Compiled class file
+*.class
+
+# Ignore certain files in the development working directory.
+# These files are recreated with default values whenever they are missing.
+Project/working/options.prop
+Project/working/clips
+
+# NetBeans personal files, and build files #
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+nbactions.xml
+nb-configuration.xml
+
+# Subversion directories
+.svn
+
+# Mac system files
+Thumbs.db
+__MACOSX/
+.DS_Store
+Desktop.ini
+Thumbs.db
+.Spotlight-V100
+.Trashes
+
