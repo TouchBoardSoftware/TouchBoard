@@ -16,7 +16,7 @@ TouchBoard helps people type text, without having to press keys or click their m
 * **Basic purpose**: The basic purpose of TouchBoard is to allow a person to type text without any mechanical keystrokes or mouse clicks. 
 * **Avoid repetitive strain injuries (RSI's)**: TouchBoard makes it easier for you to type. Since this program does not require use of the keyboard or mouse clicks to type text, it can be of great benefit to people who have some difficulty performing those actions. Avoiding excessive keystrokes is especially useful for people who have repetitive strain injuries (RSI's), such as carpal tunnel syndrome. 
 * **Reduce the amount you need to type** TouchBoard is useful for those who wish to reduce their typing, or reduce their number of needed keystrokes.
-* **Increase typing productivity**: Each key can hold large amounts of text, so the program is useful for people who wish to type blocks of commonly need text more quickly or efficiently. 
+* **Increase typing productivity**: Each key can hold large amounts of text, so the program is useful for people who wish to type larger blocks of commonly need text more quickly or efficiently. 
 * **Use as a memory aid**: Use it to store login names, emails, or other pieces of text that are difficult to remember.
 * **Type repetitive text**: Use it to store any text that is commonly repeated.
 * **Office or company automation**: Use it to store the names of companies or individuals, and automate any commonly needed typing.</LI>
