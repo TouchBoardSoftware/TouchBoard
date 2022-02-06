@@ -12,7 +12,7 @@ TouchBoard helps people type text, without having to press keys or click their m
 * A few simple examples of command codes are: Typing the current date or time, pressing arrow keys, or typing keyboard combinations like "Ctrl-C".
 
 
-## Common Uses of TouchBoard
+## Common Uses
 * **Basic purpose**: The basic purpose of TouchBoard is to allow a person to type text without any mechanical keystrokes or mouse clicks. 
 * **Avoid repetitive strain injuries (RSI's)**: TouchBoard makes it easier for you to type. Since this program does not require use of the keyboard or mouse clicks to type text, it can be of great benefit to people who have some difficulty performing those actions. Avoiding excessive keystrokes is especially useful for people who have repetitive strain injuries (RSI's), such as carpal tunnel syndrome. 
 * **Reduce the amount you need to type** TouchBoard is useful for those who wish to reduce their typing, or reduce their number of needed keystrokes.
