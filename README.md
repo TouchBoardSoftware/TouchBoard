@@ -20,7 +20,7 @@ TouchBoard helps people type text, without having to press keys or click their m
 * **Use as a memory aid**: Use it to store login names, emails, or other pieces of text that are difficult to remember.
 * **Type repetitive text**: Use it to store any text that is commonly repeated.
 * **Office or company automation**: Use it to store the names of companies or individuals, and automate any commonly needed typing.</LI>
-* **Online purchases and forms**: Use it to fill out your name, address, phone number, email address, and so forth on the internet. Fill out purchase forms and other forms in seconds instead of minutes.
+* **Online purchases and forms**: Use it to fill out your name, address, phone number, email address, and so forth on the internet. Fill out online purchase forms and other forms in seconds instead of minutes.
 * **Programming use**: Use it to type any common programming constructs, such as empty if statements, empty for loops, and template classes or files. Store variable names that you are currently working with in the Clips board for easy repetition.
 * **Assistive use and disabilities**: TouchBoard can optionally be used with a variety of assistive devices that allows a person to move the mouse pointer. (Of course, it can also be used with any standard mouse, or touchpad, etc.)
 * **Speech recognition supplement**: Use it in conjunction with speech recognition software, to type text, symbols, words, and phrases that the speech recognition software does not easily recognize.
