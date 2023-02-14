@@ -2,7 +2,7 @@
 TouchBoard helps people type text, without having to press keys or click their mouse. It is a "hover based" on-screen keyboard.
 
 ## General Features
-* TouchBoard can run on Windows, Mac, and Linux.
+* TouchBoard can run on Windows, Mac, and Linux. 
 * TouchBoard has unlimited "boards" and "keys", which can be customized to your personal needs. 
 * You to easily add your own boards and keys, or modify the existing keys.
 * TouchBoard keys are activated by briefly hovering the mouse pointer over the key. No mechanical keystrokes or mouse clicks are required.

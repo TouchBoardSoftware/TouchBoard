@@ -1,4 +1,4 @@
-### Summary
+### Summary 
 The touchboard jar (dist/touchboard.jar) is intended to be able to execute without any other files present. 
 However, to give a more user friendly experience, there is a set of supporting files that should be included 
 in any release package. These files are listed below.
