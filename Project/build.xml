@@ -81,9 +81,9 @@
              update="true">
             <restrict> 
                 <archives>
-                   <zips>
-                       <fileset dir="${dist.dir}" includes="lib/*.jar"/>
-                   </zips>
+                    <zips>
+                        <fileset dir="${dist.dir}" includes="lib/*.jar"/>
+                    </zips>
                 </archives>
             </restrict>
         </jar>
