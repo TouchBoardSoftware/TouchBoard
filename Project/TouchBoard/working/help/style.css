@@ -1,13 +1,13 @@
 body {
-   background-color: color: rgb(255,255,255);
-   margin: 0px 0px 0px 7px;
+    background-color: color: rgb(255,255,255);
+    margin: 0px 0px 0px 7px;
 }
 
 a.sup {
-   letter-spacing: 1px;
-   vertical-align: top;
-   font-size: 50%;
-   font-weight: normal;
+    letter-spacing: 1px;
+    vertical-align: top;
+    font-size: 50%;
+    font-weight: normal;
 }
 a:link {color: rgb(0,64,128)}
 a:visited {color: rgb(0,64,128)}
@@ -15,92 +15,92 @@ a:hover {color: rgb(0,0,0)}
 a:active {color: rgb(0,0,0)}
 
 table {
-   background-color: rgb(255,255,255);
-   border-style: none;
-   padding: 0px 0px 0px 0px;
+    background-color: rgb(255,255,255);
+    border-style: none;
+    padding: 0px 0px 0px 0px;
 }
 table.indent {
-   background-color: rgb(255,255,255);
-   border-style: none;
-   padding: 0px 0px 0px 0px;
-   margin-left: 3em;
+    background-color: rgb(255,255,255);
+    border-style: none;
+    padding: 0px 0px 0px 0px;
+    margin-left: 3em;
 }
 
 th,td {
-   font-size: 100%;
-   vertical-align: top;
-   border-style: none;
+    font-size: 100%;
+    vertical-align: top;
+    border-style: none;
 }
 
 #topImage {
-   background-image: url('img/sky_top.png');
-   background-repeat: repeat-x;
+    background-image: url('img/sky_top.png');
+    background-repeat: repeat-x;
 }
 
 #bottomImage {
-   background-image: url('img/page_bottom.png');
-   background-repeat: repeat-x;
+    background-image: url('img/page_bottom.png');
+    background-repeat: repeat-x;
 }
 
 H1, H2, H3, H4, H5, H6 {
-   text-align: left;
-   display:inline;
+    text-align: left;
+    display:inline;
 }
 
 ul, li {
-   list-style-type: disk;
-   margin-top: 0.1em;
-   margin-left: .5em;
+    list-style-type: disk;
+    margin-top: 0.1em;
+    margin-left: .5em;
 }
 
 code {
-   font-size: 95%;
-   color: rgb(0,0,0);
+    font-size: 95%;
+    color: rgb(0,0,0);
 }
 
 p {
-   font-size: 100%;
-   color: rgb(0,0,0);
-   text-align: left;
-   text-indent: 2em;
-   margin-top: 0.1em;
+    font-size: 100%;
+    color: rgb(0,0,0);
+    text-align: left;
+    text-indent: 2em;
+    margin-top: 0.1em;
 }
 p.noindent {
-   font-size: 100%;
-   color: rgb(0,0,0);
-   text-align: left;
-   text-indent: 0;
-   margin-top: 0.1em;
+    font-size: 100%;
+    color: rgb(0,0,0);
+    text-align: left;
+    text-indent: 0;
+    margin-top: 0.1em;
 }
 p.menu {
-   font-size: 84%;
-   color: rgb(0,0,0);
-   text-align: left;
-   text-indent: 0;
-   margin-top: 0;
+    font-size: 84%;
+    color: rgb(0,0,0);
+    text-align: left;
+    text-indent: 0;
+    margin-top: 0;
 }
 p.header {
-   font-size: 110%;
-   font-weight: bold;
-   color: rgb(0,0,0);
-   text-align: center;
-   text-indent: 0;
-   margin-top: 0.6em;
-   margin-bottom: 0;
+    font-size: 110%;
+    font-weight: bold;
+    color: rgb(0,0,0);
+    text-align: center;
+    text-indent: 0;
+    margin-top: 0.6em;
+    margin-bottom: 0;
 }
 p.title {
-   font-size: 110%;
-   font-weight: bold;
-   color: rgb(0,0,0);
-   text-align: left;
-   text-indent: 0;
-   margin-top: 0.25em;
-   margin-bottom: 0;
+    font-size: 110%;
+    font-weight: bold;
+    color: rgb(0,0,0);
+    text-align: left;
+    text-indent: 0;
+    margin-top: 0.25em;
+    margin-bottom: 0;
 }
 
 img {
-   border-style: none;
-   margin: 0px 0px 0px 0px;
-   display:inline;
-   vertical-align: bottom;
+    border-style: none;
+    margin: 0px 0px 0px 0px;
+    display:inline;
+    vertical-align: bottom;
 }
