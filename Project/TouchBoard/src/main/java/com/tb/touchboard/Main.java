@@ -36,6 +36,14 @@ public class Main {
             public void run() {
 
                 // Enforce java 1.8
+                /**
+                 * Why: Java 17, at least in the Temurin platform, appears to
+                 * have a bug where TouchBoard cannot type capital letters while
+                 * the user is simultaneously moving the mouse pointer. The
+                 * letters are incorrectly typed lowercase if the mouse pointer
+                 * is in motion. However, this does not occur when TB is run
+                 * using Java 1.8 (aka Java 8).
+                 */
                 String javaVersion = System.getProperty("java.version");
                 if (!javaVersion.startsWith("1.8.")) {
                     String versionMessage
