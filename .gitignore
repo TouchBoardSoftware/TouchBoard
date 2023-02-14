@@ -30,3 +30,7 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
+/Project/TouchBoard/target/
+Project/TouchBoard/clips
+Project/TouchBoard/defaults
+Project/TouchBoard/options.prop
