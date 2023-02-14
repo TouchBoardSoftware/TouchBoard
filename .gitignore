@@ -30,6 +30,7 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
+# Personal generated files
 /Project/TouchBoard/target/
 Project/TouchBoard/clips
 Project/TouchBoard/defaults
