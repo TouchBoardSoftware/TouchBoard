@@ -48,7 +48,7 @@ public class Main {
                 if (!javaVersion.startsWith("1.8.")) {
                     String versionMessage
                             = "TouchBoard is currently only known to run "
-                            + "properly in Java version 1.8. (aka 'Java 8'.)\n"
+                          + "properly in Java version 1.8. (aka 'Java 8'.)\n"
                             + "You are using Java version: " + javaVersion
                             + "\n\n"
                             + "Please restart TouchBoard using Java 1.8.\n"
