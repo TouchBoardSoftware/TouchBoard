@@ -9,7 +9,7 @@ public class Constants {
     static final public boolean debug = false;
 
     // Project Version
-    static final public String version = "6.00";
+    static final public String version = "7.00";
 
     // URLs
     static String projectSite_ForHuman
@@ -83,7 +83,7 @@ public class Constants {
     static final public ImageIcon capslockOnIcon
             = Use.createImageIcon("capslockonicon.gif");
     static final public ImageIcon applicationIcon
-            = Use.createImageIcon("applicationicon.gif");
+            = Use.createImageIcon("applicationicon.png");
 
     // Fonts
     static final public Font defaultLabelFont

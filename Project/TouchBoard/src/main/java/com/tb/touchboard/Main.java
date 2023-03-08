@@ -4,10 +4,14 @@ import java.awt.Image;
 import javax.swing.*;
 import javax.swing.plaf.*;
 import com.tb.tbUtilities.*;
-import java.awt.Component;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.Desktop;
+import java.awt.Font;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import javax.swing.JOptionPane;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 
 /**
  * Entry point and initializer for the program. Also stores globally accessible singleton classes.
@@ -30,9 +34,12 @@ public class Main {
 
     /* Program entry point. */
     public static void main(String[] arguments) {
+        // Set the application name in the MacOS environment.
         System.setProperty("com.apple.mrj.application.apple.menu.about.name", "TouchBoard");
         System.setProperty("apple.awt.application.name", "TouchBoard");
-
+        // This prevents an extra icon named 'Java' from appearing on the Mac dock.
+        System.setProperty("apple.awt.UIElement", "true");
+        
         // This breaks us out of static mode, and also is the recommended way
         // to start a Java program.
         SwingUtilities.invokeLater(new Runnable() {
@@ -173,5 +180,44 @@ public class Main {
 
     public static MainPanel getMainPanel() {
         return mainPanel;
+    }
+
+    @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
+    public static void showAboutDialog() {
+
+        // for copying style
+        JLabel label = new JLabel();
+        Font font = label.getFont();
+
+        // create some css from the label's font
+        StringBuffer style = new StringBuffer("font-family:" + font.getFamily() + ";");
+        style.append("font-weight:" + (font.isBold() ? "bold" : "normal") + ";");
+        style.append("font-size:" + font.getSize() + "pt;");
+
+        // html content
+        JEditorPane ep = new JEditorPane("text/html", "<html><body style=\"" + style + "\">" //
+                + Constants.aboutMessageText + "</body></html>");
+
+        // handle link events
+        ep.addHyperlinkListener(new HyperlinkListener() {
+            @Override
+            public void hyperlinkUpdate(HyperlinkEvent e) {
+                if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED)) {
+                    URL url = e.getURL();
+                    try {
+                        Desktop.getDesktop().browse(url.toURI());
+                    } catch (IOException | URISyntaxException exception) {
+                    }
+                }
+            }
+        });
+        ep.setEditable(false);
+        ep.setBackground(label.getBackground());
+
+        // show
+        JOptionPane.showMessageDialog(null,
+                ep,
+                "About TouchBoard",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 }

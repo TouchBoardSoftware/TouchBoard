@@ -396,6 +396,7 @@ public class MyPopupMenu implements PopupMenuListener {
         // Help
         help.addActionListener(new ActionListener() {
 
+            @Override
             public void actionPerformed(ActionEvent e) {
                 BrowserLaunch.openURL(Constants.helpURL);
             }
@@ -404,42 +405,9 @@ public class MyPopupMenu implements PopupMenuListener {
         // About
         about.addActionListener(new ActionListener() {
 
+            @Override
             public void actionPerformed(ActionEvent e) {
-
-                // for copying style
-                JLabel label = new JLabel();
-                Font font = label.getFont();
-
-                // create some css from the label's font
-                StringBuffer style = new StringBuffer("font-family:" + font.getFamily() + ";");
-                style.append("font-weight:" + (font.isBold() ? "bold" : "normal") + ";");
-                style.append("font-size:" + font.getSize() + "pt;");
-
-                // html content
-                JEditorPane ep = new JEditorPane("text/html", "<html><body style=\"" + style + "\">" //
-                        + Constants.aboutMessageText + "</body></html>");
-
-                // handle link events
-                ep.addHyperlinkListener(new HyperlinkListener() {
-                    @Override
-                    public void hyperlinkUpdate(HyperlinkEvent e) {
-                        if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED)) {
-                            URL url = e.getURL();
-                            try {
-                                Desktop.getDesktop().browse(url.toURI());
-                            } catch (IOException | URISyntaxException exception) {
-                            }
-                        }
-                    }
-                });
-                ep.setEditable(false);
-                ep.setBackground(label.getBackground());
-
-                // show
-                JOptionPane.showMessageDialog(null,
-                        ep,
-                        "About TouchBoard",
-                        JOptionPane.INFORMATION_MESSAGE);
+                Main.showAboutDialog();
             }
         });
 
