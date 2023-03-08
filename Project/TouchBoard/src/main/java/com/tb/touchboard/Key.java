@@ -8,7 +8,7 @@ import javax.swing.border.*;
  * Note: The the key title is stored in The JLabel superclass, using getText().
  */
 public class Key
-        extends JLabel implements Cloneable {
+    extends JLabel implements Cloneable {
 
     Board parentBoard;
     String contents = "";
@@ -18,7 +18,7 @@ public class Key
     private Color textColor = Constants.defaultKeyTextColor;
 
     static final private EmptyBorder defaultKeyBorder
-            = (EmptyBorder) BorderFactory.createEmptyBorder(1, 2, 1, 2);
+        = (EmptyBorder) BorderFactory.createEmptyBorder(1, 2, 1, 2);
 
     /* Constructor */
     public Key(Board aParentBoard) {

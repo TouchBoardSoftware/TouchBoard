@@ -16,11 +16,11 @@ public class Frames {
     }
 
     public static void message(
-            String message, MessageCustomizer messageCustomizer) {
+        String message, MessageCustomizer messageCustomizer) {
         MouseWatcher.stopHoverCheck();
         JOptionPane optionPane = new JOptionPane(
-                message, JOptionPane.INFORMATION_MESSAGE,
-                JOptionPane.DEFAULT_OPTION);
+            message, JOptionPane.INFORMATION_MESSAGE,
+            JOptionPane.DEFAULT_OPTION);
         JDialog dialog = optionPane.createDialog(messageParent, "Message");
         centerWindow(dialog, null);
         dialog.setModal(true);
@@ -30,13 +30,12 @@ public class Frames {
     }
 
     /**
-     * This displays an option dialog, and returns the chosen option string. If
-     * String one == null, the only option available will be the string "OK". If
-     * the dialog is closed, this will return the string "DialogClosed". This
-     * will never return null.
+     * This displays an option dialog, and returns the chosen option string. If String one == null,
+     * the only option available will be the string "OK". If the dialog is closed, this will return
+     * the string "DialogClosed". This will never return null.
      */
     public static String showOptions(String message, String title,
-            String defaultChoice, int messageType, String... options) {
+        String defaultChoice, int messageType, String... options) {
         MouseWatcher.stopHoverCheck();
         String dialogClosed = "DialogClosed";
         String ok = "OK";
@@ -54,7 +53,7 @@ public class Frames {
             defaultChoice = options[0];
         }
         JOptionPane optionPane = new JOptionPane(message, messageType,
-                JOptionPane.DEFAULT_OPTION, null, options, defaultChoice);
+            JOptionPane.DEFAULT_OPTION, null, options, defaultChoice);
         optionPane.setInitialValue(defaultChoice);
         JDialog dialog = optionPane.createDialog(messageParent, title);
         centerWindow(dialog, null);
@@ -76,12 +75,12 @@ public class Frames {
     }
 
     /**
-     * This displays an option dialog, and returns the chosen option. If Option
-     * one == null, the only option available will be Option.OK. If the dialog
-     * is closed, this will return Option.Closed. This will never return null.
+     * This displays an option dialog, and returns the chosen option. If Option one == null, the
+     * only option available will be Option.OK. If the dialog is closed, this will return
+     * Option.Closed. This will never return null.
      */
     public static Option showOptions(String message, String title,
-            Option defaultChoice, int messageType, Option... options) {
+        Option defaultChoice, int messageType, Option... options) {
         MouseWatcher.stopHoverCheck();
         for (int i = options.length - 1; i > 0; --i) {
             if (options[i] == null) {
@@ -97,7 +96,7 @@ public class Frames {
             defaultChoice = options[0];
         }
         JOptionPane optionPane = new JOptionPane(message, messageType,
-                JOptionPane.DEFAULT_OPTION, null, options, defaultChoice);
+            JOptionPane.DEFAULT_OPTION, null, options, defaultChoice);
         optionPane.setInitialValue(defaultChoice);
         JDialog dialog = optionPane.createDialog(messageParent, title);
         centerWindow(dialog, null);
@@ -135,14 +134,13 @@ public class Frames {
     }
 
     /**
-     * Centers a frame or dialog, or any descendent of java.awt.Window. Pass in
-     * null for minimumScreenPercentage to leave the window size unchanged. Pass
-     * in a screen percentage from 1 to 100 to have this function insure a
-     * minimum window size as a percentage of the size returned by
-     * GraphicsEnvironment.getMaximumWindowBounds().
+     * Centers a frame or dialog, or any descendent of java.awt.Window. Pass in null for
+     * minimumScreenPercentage to leave the window size unchanged. Pass in a screen percentage from
+     * 1 to 100 to have this function insure a minimum window size as a percentage of the size
+     * returned by GraphicsEnvironment.getMaximumWindowBounds().
      */
     public static void centerWindow(
-            Window window, Integer minimumScreenPercentage) {
+        Window window, Integer minimumScreenPercentage) {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Point center = ge.getCenterPoint();
         Rectangle bounds = ge.getMaximumWindowBounds();
@@ -151,9 +149,9 @@ public class Frames {
         if (minimumScreenPercentage != null) {
             minimumScreenPercentage = Use.clampInt(minimumScreenPercentage, 1, 100);
             w = Math.max((bounds.width * minimumScreenPercentage) / 100,
-                    Math.min(window.getWidth(), bounds.width));
+                Math.min(window.getWidth(), bounds.width));
             h = Math.max((bounds.height * minimumScreenPercentage) / 100,
-                    Math.min(window.getHeight(), bounds.height));
+                Math.min(window.getHeight(), bounds.height));
         } else {
             w = window.getWidth();
             h = window.getHeight();
@@ -171,7 +169,7 @@ public class Frames {
 
     public static Rectangle getScreenSize() {
         DisplayMode mode = GraphicsEnvironment.getLocalGraphicsEnvironment().
-                getDefaultScreenDevice().getDisplayMode();
+            getDefaultScreenDevice().getDisplayMode();
         return new Rectangle(0, 0, mode.getWidth(), mode.getHeight());
     }
 

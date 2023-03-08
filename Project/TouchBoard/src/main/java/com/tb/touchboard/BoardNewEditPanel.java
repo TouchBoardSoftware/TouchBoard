@@ -12,7 +12,7 @@ import com.tb.tbUtilities.Option;
 import com.tb.tbUtilities.Use;
 
 public class BoardNewEditPanel
-        extends JPanel implements WindowListener, WindowFocusListener {
+    extends JPanel implements WindowListener, WindowFocusListener {
 
     static public enum PanelType {
         NEW_BOARD, EDIT_BOARD
@@ -31,7 +31,7 @@ public class BoardNewEditPanel
     private Color resetExampleKeySavedForeground;
 
     public BoardNewEditPanel(JDialog aParentWindow,
-            PanelType aPanelType, Board optionalEditBoard) {
+        PanelType aPanelType, Board optionalEditBoard) {
         parentWindow = aParentWindow;
         panelType = aPanelType;
         editBoard = optionalEditBoard;
@@ -49,7 +49,7 @@ public class BoardNewEditPanel
         exampleKeyLabel.setText(" Key");
         exampleKeyAutomaticWidth = exampleKeyLabel.getPreferredSize().width;
         exampleKeyBorder = BorderFactory.createMatteBorder(
-                2, 2, 2, 2, Constants.defaultBoardBorderColor);
+            2, 2, 2, 2, Constants.defaultBoardBorderColor);
         exampleKeyLabel.setBorder(exampleKeyBorder);
         exampleKeyLabel.setBackground(Constants.defaultKeyBackgroundColor);
         exampleKeyLabel.setForeground(Constants.defaultKeyTextColor);
@@ -75,13 +75,13 @@ public class BoardNewEditPanel
             int editOriginalColumns = Use.clampInt(editBoard.columns(), 1, 10);
             columnsComboBox.setSelectedIndex(editOriginalColumns - 1);
             exampleKeyBorder = BorderFactory.createMatteBorder(
-                    2, 2, 2, 2, editBoard.borderColor);
+                2, 2, 2, 2, editBoard.borderColor);
             exampleKeyLabel.setBorder(exampleKeyBorder);
             exampleKeyLabel.setBackground(editBoard.newKeysBackgroundColor);
             exampleKeyLabel.setForeground(editBoard.newKeysTextColor);
             autoSizeButtonsCheckBox.setSelected(editBoard.autoSize);
             int keyWidthTemp = Use.clampInt(editBoard.fixedKeyWidth,
-                    Constants.minimumKeyWidth, Constants.maximumKeyWidth);
+                Constants.minimumKeyWidth, Constants.maximumKeyWidth);
             spinnerModel.setValue(keyWidthTemp);
             reactToAutoSize(editBoard.autoSize);
         }
@@ -127,34 +127,34 @@ public class BoardNewEditPanel
 
         //======== this ========
         setLayout(new FormLayout(
-                new ColumnSpec[]{
-                    FormFactory.UNRELATED_GAP_COLSPEC,
-                    FormFactory.DEFAULT_COLSPEC,
-                    FormFactory.RELATED_GAP_COLSPEC,
-                    new ColumnSpec("max(default;50dlu)"),
-                    FormFactory.DEFAULT_COLSPEC,
-                    new ColumnSpec("max(default;80dlu)"),
-                    FormFactory.DEFAULT_COLSPEC,
-                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                    FormFactory.UNRELATED_GAP_COLSPEC
-                },
-                new RowSpec[]{
-                    FormFactory.UNRELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.RELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.UNRELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.UNRELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.RELATED_GAP_ROWSPEC,
-                    new RowSpec(Sizes.dluY(50)),
-                    FormFactory.RELATED_GAP_ROWSPEC,
-                    new RowSpec("max(default;15dlu)"),
-                    FormFactory.LINE_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.UNRELATED_GAP_ROWSPEC
-                }));
+            new ColumnSpec[]{
+                FormFactory.UNRELATED_GAP_COLSPEC,
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.RELATED_GAP_COLSPEC,
+                new ColumnSpec("max(default;50dlu)"),
+                FormFactory.DEFAULT_COLSPEC,
+                new ColumnSpec("max(default;80dlu)"),
+                FormFactory.DEFAULT_COLSPEC,
+                new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                FormFactory.UNRELATED_GAP_COLSPEC
+            },
+            new RowSpec[]{
+                FormFactory.UNRELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.RELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.UNRELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.UNRELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.RELATED_GAP_ROWSPEC,
+                new RowSpec(Sizes.dluY(50)),
+                FormFactory.RELATED_GAP_ROWSPEC,
+                new RowSpec("max(default;15dlu)"),
+                FormFactory.LINE_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.UNRELATED_GAP_ROWSPEC
+            }));
 
         //---- boardNameLabel ----
         boardNameLabel.setText("Board Name");
@@ -200,34 +200,34 @@ public class BoardNewEditPanel
         {
             stylePanel.setBorder(LineBorder.createBlackLineBorder());
             stylePanel.setLayout(new FormLayout(
-                    new ColumnSpec[]{
-                        FormFactory.DEFAULT_COLSPEC,
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        FormFactory.DEFAULT_COLSPEC,
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        FormFactory.DEFAULT_COLSPEC,
-                        FormFactory.UNRELATED_GAP_COLSPEC,
-                        new ColumnSpec("max(pref;20dlu)"),
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        new ColumnSpec("max(default;30dlu)"),
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        FormFactory.DEFAULT_COLSPEC
-                    },
-                    new RowSpec[]{
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC
-                    }));
+                new ColumnSpec[]{
+                    FormFactory.DEFAULT_COLSPEC,
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    FormFactory.DEFAULT_COLSPEC,
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    FormFactory.DEFAULT_COLSPEC,
+                    FormFactory.UNRELATED_GAP_COLSPEC,
+                    new ColumnSpec("max(pref;20dlu)"),
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    new ColumnSpec("max(default;30dlu)"),
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    FormFactory.DEFAULT_COLSPEC
+                },
+                new RowSpec[]{
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.DEFAULT_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.DEFAULT_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.DEFAULT_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.DEFAULT_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC
+                }));
 
             //---- boardBorderColorLabel ----
             boardBorderColorLabel.setText("Board Border Color:");
@@ -259,8 +259,8 @@ public class BoardNewEditPanel
             //======== exampleKeyPanel ========
             {
                 exampleKeyPanel.setLayout(new FormLayout(
-                        "left:default:grow",
-                        "top:default:grow"));
+                    "left:default:grow",
+                    "top:default:grow"));
 
                 //---- exampleKeyLabel ----
                 exampleKeyLabel.setText(" Key");
@@ -396,7 +396,7 @@ public class BoardNewEditPanel
         dialog.setAlwaysOnTop(true);
         dialog.setResizable(true);
         BoardNewEditPanel panel = new BoardNewEditPanel(
-                dialog, panelType, optionalEditBoard);
+            dialog, panelType, optionalEditBoard);
         dialog.addWindowListener(panel);
         dialog.add(panel);
         dialog.pack();
@@ -432,7 +432,7 @@ public class BoardNewEditPanel
 
         // Button width spinner change
         buttonWidthSpinner.addChangeListener(
-                new ChangeListener() {
+            new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 setExampleKeyWidth(spinnerModel.getNumber().intValue());
             }
@@ -440,7 +440,7 @@ public class BoardNewEditPanel
 
         // Existing board radio button
         copyKeysFromExistingBoardRadioButton.addItemListener(
-                new ItemListener() {
+            new ItemListener() {
 
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -459,12 +459,12 @@ public class BoardNewEditPanel
         boardBorderColorButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Color chosenColor = JColorChooser.showDialog(
-                        parentWindow,
-                        "Choose board border color",
-                        exampleKeyBorder.getMatteColor());
+                    parentWindow,
+                    "Choose board border color",
+                    exampleKeyBorder.getMatteColor());
                 if (chosenColor != null) {
                     exampleKeyBorder = BorderFactory.createMatteBorder(
-                            2, 2, 2, 2, chosenColor);
+                        2, 2, 2, 2, chosenColor);
                     exampleKeyLabel.setBorder(exampleKeyBorder);
                 }
                 setResetColorsButtonState();
@@ -475,9 +475,9 @@ public class BoardNewEditPanel
         newKeysBackgroundButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Color chosenColor = JColorChooser.showDialog(
-                        parentWindow,
-                        "Choose new keys background color",
-                        exampleKeyLabel.getBackground());
+                    parentWindow,
+                    "Choose new keys background color",
+                    exampleKeyLabel.getBackground());
                 if (chosenColor != null) {
                     exampleKeyLabel.setBackground(chosenColor);
                 }
@@ -489,9 +489,9 @@ public class BoardNewEditPanel
         newKeysTextColorButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Color chosenColor = JColorChooser.showDialog(
-                        parentWindow,
-                        "Choose new keys text color",
-                        exampleKeyLabel.getForeground());
+                    parentWindow,
+                    "Choose new keys text color",
+                    exampleKeyLabel.getForeground());
                 if (chosenColor != null) {
                     exampleKeyLabel.setForeground(chosenColor);
                 }
@@ -507,14 +507,14 @@ public class BoardNewEditPanel
                     resetExampleKeySavedBackground = exampleKeyLabel.getBackground();
                     resetExampleKeySavedForeground = exampleKeyLabel.getForeground();
                     exampleKeyBorder = BorderFactory.createMatteBorder(
-                            2, 2, 2, 2, Constants.defaultBoardBorderColor);
+                        2, 2, 2, 2, Constants.defaultBoardBorderColor);
                     exampleKeyLabel.setBorder(exampleKeyBorder);
                     exampleKeyLabel.setBackground(Constants.defaultKeyBackgroundColor);
                     exampleKeyLabel.setForeground(Constants.defaultKeyTextColor);
                     resetExampleKeyIsInUndoState = true;
                 } else {
                     exampleKeyBorder = BorderFactory.createMatteBorder(
-                            2, 2, 2, 2, resetExampleKeySavedBorder);
+                        2, 2, 2, 2, resetExampleKeySavedBorder);
                     exampleKeyLabel.setBorder(exampleKeyBorder);
                     exampleKeyLabel.setBackground(resetExampleKeySavedBackground);
                     exampleKeyLabel.setForeground(resetExampleKeySavedForeground);
@@ -533,10 +533,10 @@ public class BoardNewEditPanel
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     Option sure = Frames.showOptions(
-                            "This checkbox will DELETE and clear all keys "
-                            + "on your board.\n\nAre you sure you want to do this?",
-                            "Warning", Option.No, JOptionPane.WARNING_MESSAGE,
-                            Option.No, Option.Yes, Option.Cancel);
+                        "This checkbox will DELETE and clear all keys "
+                        + "on your board.\n\nAre you sure you want to do this?",
+                        "Warning", Option.No, JOptionPane.WARNING_MESSAGE,
+                        Option.No, Option.Yes, Option.Cancel);
                     if (sure != Option.Yes) {
                         clearAllExistingKeysCheckBox.setSelected(false);
                         return;
@@ -547,22 +547,22 @@ public class BoardNewEditPanel
             }
         };
         clearAllExistingKeysCheckBox.addItemListener(
-                clearAllExistingKeysCheckBoxListener);
+            clearAllExistingKeysCheckBoxListener);
 
         // copyAllKeysFromExistingBoardCheckBox
         copyAllKeysFromExistingBoardCheckBox.addItemListener(
-                new ItemListener() {
+            new ItemListener() {
 
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     Option sure = Frames.showOptions(
-                            "This checkbox will DELETE all keys "
-                            + "on your board. \n\n"
-                            + "Then the keys from the selected other board "
-                            + "will be copied on to this board."
-                            + "\nAre you sure you want to do this?",
-                            "Warning", Option.No, JOptionPane.WARNING_MESSAGE,
-                            Option.No, Option.Yes, Option.Cancel);
+                        "This checkbox will DELETE all keys "
+                        + "on your board. \n\n"
+                        + "Then the keys from the selected other board "
+                        + "will be copied on to this board."
+                        + "\nAre you sure you want to do this?",
+                        "Warning", Option.No, JOptionPane.WARNING_MESSAGE,
+                        Option.No, Option.Yes, Option.Cancel);
 
                     if (sure != Option.Yes) {
                         copyAllKeysFromExistingBoardCheckBox.setSelected(false);
@@ -584,19 +584,19 @@ public class BoardNewEditPanel
 
         // resetAllKeyColorsCheckBox
         resetAllKeyColorsCheckBox.addItemListener(
-                new ItemListener() {
+            new ItemListener() {
 
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     preserveKeyColorsFromExistingBoardCheckBox.setSelected(
-                            false);
+                        false);
                 }
             }
         });
 
         // preserveKeyColorsFromExistingBoardCheckBox
         preserveKeyColorsFromExistingBoardCheckBox.addItemListener(
-                new ItemListener() {
+            new ItemListener() {
 
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -622,11 +622,11 @@ public class BoardNewEditPanel
         // Find out if the colors are at their defaults or not.
         boolean colorsAtDefaults = false;
         if (exampleKeyBorder.getMatteColor().equals(
-                Constants.defaultBoardBorderColor)
-                && exampleKeyLabel.getBackground().equals(
-                        Constants.defaultKeyBackgroundColor)
-                && exampleKeyLabel.getForeground().equals(
-                        Constants.defaultKeyTextColor)) {
+            Constants.defaultBoardBorderColor)
+            && exampleKeyLabel.getBackground().equals(
+                Constants.defaultKeyBackgroundColor)
+            && exampleKeyLabel.getForeground().equals(
+                Constants.defaultKeyTextColor)) {
             colorsAtDefaults = true;
         }
         // Put the button back at "reset" if someone changes a color
@@ -655,7 +655,7 @@ public class BoardNewEditPanel
         if (width == null) {
             exampleKeyLabel.setText(" Key");
             newKeySize = new Dimension(exampleKeyAutomaticWidth + 2,
-                    Constants.keyHeight + 4);
+                Constants.keyHeight + 4);
             newKeyMinimum = null;
         } else {
             if (width <= 25) {
@@ -664,7 +664,7 @@ public class BoardNewEditPanel
                 exampleKeyLabel.setText(" Key");
             }
             newKeySize = new Dimension(width + 4,
-                    Constants.keyHeight + 4);
+                Constants.keyHeight + 4);
             newKeyMinimum = new Dimension(10, 10);
         }
         exampleKeyLabel.setMinimumSize(newKeyMinimum);
@@ -699,10 +699,10 @@ public class BoardNewEditPanel
 
     private void setClearKeysCheckboxWithoutEvent(boolean selected) {
         clearAllExistingKeysCheckBox.removeItemListener(
-                clearAllExistingKeysCheckBoxListener);
+            clearAllExistingKeysCheckBoxListener);
         clearAllExistingKeysCheckBox.setSelected(selected);
         clearAllExistingKeysCheckBox.addItemListener(
-                clearAllExistingKeysCheckBoxListener);
+            clearAllExistingKeysCheckBoxListener);
     }
 
     private void okButtonAction() {
@@ -738,7 +738,7 @@ public class BoardNewEditPanel
         Board.KeysIterator it = new Board.KeysIterator(board.keys);
         while (it.hasNext()) {
             board.keys[it.x][it.y].setColors(
-                    board.newKeysBackgroundColor, board.newKeysTextColor);
+                board.newKeysBackgroundColor, board.newKeysTextColor);
         }
 
         boolean autoSizeChecked = autoSizeButtonsCheckBox.isSelected();
@@ -748,24 +748,24 @@ public class BoardNewEditPanel
 
         boolean copyKeys = copyKeysFromExistingBoardRadioButton.isSelected();
         boolean preserveCopyColors
-                = preserveKeyColorsFromExistingBoardCheckBox.isSelected();
+            = preserveKeyColorsFromExistingBoardCheckBox.isSelected();
         Board doneBoard;
         if (copyKeys) {
             int fileBoardsIndex = fileBoardsList.getSelectedIndex();
             if (fileBoardsIndex < 0) {
                 Frames.message("Please select a board to copy, or turn off the\n"
-                        + "\"copy keys from other board\" option.");
+                    + "\"copy keys from other board\" option.");
                 return;
             }
             String sourceFileName = fileBoardsList.getFileName(fileBoardsIndex);
             Board sourceBoard = Board.load(
-                    true, sourceFileName, sourceFileName);
+                true, sourceFileName, sourceFileName);
             if (sourceBoard == null) {
                 Frames.message("Could not read from selected source board for copy operation.");
                 return;
             }
             doneBoard = Board.copyBoardKeys(sourceBoard, board,
-                    preserveCopyColors);
+                preserveCopyColors);
         } else {
             doneBoard = board;
         }
@@ -784,7 +784,7 @@ public class BoardNewEditPanel
         boolean clearKeys = clearAllExistingKeysCheckBox.isSelected();
         boolean copyKeys = copyAllKeysFromExistingBoardCheckBox.isSelected();
         boolean preserveCopyColors
-                = preserveKeyColorsFromExistingBoardCheckBox.isSelected();
+            = preserveKeyColorsFromExistingBoardCheckBox.isSelected();
 
         if ((name == null) || (name.equals(""))) {
             Frames.message("Please type a board name.");
@@ -794,16 +794,16 @@ public class BoardNewEditPanel
 
         if (columns < editBoard.columns()) {
             Option sure = Frames.showOptions(
-                    "You have chosen to reduce the number of columns in this board\n"
-                    + "from " + editBoard.columns() + " to " + columns + ".\n\n"
-                    + "Keys in the removed columns will be DELETED. This cannot be undone.\n"
-                    + "Are you sure you want to do this?",
-                    "Warning", Option.No, JOptionPane.WARNING_MESSAGE,
-                    Option.No, Option.Yes, Option.Cancel);
+                "You have chosen to reduce the number of columns in this board\n"
+                + "from " + editBoard.columns() + " to " + columns + ".\n\n"
+                + "Keys in the removed columns will be DELETED. This cannot be undone.\n"
+                + "Are you sure you want to do this?",
+                "Warning", Option.No, JOptionPane.WARNING_MESSAGE,
+                Option.No, Option.Yes, Option.Cancel);
             if (sure != Option.Yes) {
                 int editOriginalColumns = Use.clampInt(editBoard.columns(), 1, 10);
                 Frames.message("OK, Changing columns back to " + editOriginalColumns
-                        + ", instead of " + columns + ".");
+                    + ", instead of " + columns + ".");
                 columnsComboBox.setSelectedIndex(editOriginalColumns - 1);
                 return;
             }
@@ -814,12 +814,12 @@ public class BoardNewEditPanel
             int fileBoardsIndex = fileBoardsList.getSelectedIndex();
             if (fileBoardsIndex < 0) {
                 Frames.message("Please select a board to copy, or turn off the\n"
-                        + "\"copy keys from other board\" option.");
+                    + "\"copy keys from other board\" option.");
                 return;
             }
             String sourceFileName = fileBoardsList.getFileName(fileBoardsIndex);
             sourceBoard = Board.load(
-                    true, sourceFileName, sourceFileName);
+                true, sourceFileName, sourceFileName);
             if (sourceBoard == null) {
                 Frames.message("Could not read from selected source board for copy operation.");
                 return;
@@ -842,7 +842,7 @@ public class BoardNewEditPanel
         }
         if (copyKeys) {
             editBoard = Board.copyBoardKeys(sourceBoard, editBoard,
-                    preserveCopyColors);
+                preserveCopyColors);
         }
 
         editBoard.save();

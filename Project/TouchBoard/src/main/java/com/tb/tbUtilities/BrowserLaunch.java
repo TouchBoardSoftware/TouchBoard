@@ -15,7 +15,7 @@ public class BrowserLaunch {
             } else if (osName.startsWith("Mac OS")) {
                 Class fileMgr = Class.forName("com.apple.eio.FileManager");
                 Method openURL = fileMgr.getDeclaredMethod("openURL",
-                        new Class[]{String.class});
+                    new Class[]{String.class});
                 openURL.invoke(null, new Object[]{url});
             } else if (osName.startsWith("Windows")) {
                 Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
@@ -25,7 +25,7 @@ public class BrowserLaunch {
                 String browser = null;
                 for (int count = 0; count < browsers.length && browser == null; count++) {
                     if (Runtime.getRuntime().exec(
-                            new String[]{"which", browsers[count]}).waitFor() == 0) {
+                        new String[]{"which", browsers[count]}).waitFor() == 0) {
                         browser = browsers[count];
                     }
                 }

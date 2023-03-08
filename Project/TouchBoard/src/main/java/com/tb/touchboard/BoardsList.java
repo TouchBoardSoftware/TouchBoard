@@ -68,7 +68,7 @@ public class BoardsList {
         int max = Constants.maximumBoardFile;
         for (Integer i = 1; i <= max; ++i) {
             String fullPath = Use.workingDirectory + "/"
-                    + i.toString() + Constants.boardExtension;
+                + i.toString() + Constants.boardExtension;
             file = new File(fullPath);
             if (file.exists()) {
                 String fileName = i.toString() + Constants.boardExtension;
@@ -79,8 +79,8 @@ public class BoardsList {
                     }
                     tempFileNames.add(fileName);
                     tempBoardNames.add(
-                            "(" + i.toString() + Constants.boardExtension
-                            + ")  " + board.name());
+                        "(" + i.toString() + Constants.boardExtension
+                        + ")  " + board.name());
                 }
             }
         }
@@ -88,12 +88,12 @@ public class BoardsList {
     }
 
     static public BoardsList.FileBoards getFileBoardsList(
-            boolean filterOpenBoards) {
+        boolean filterOpenBoards) {
         return new BoardsList.FileBoards(filterOpenBoards);
     }
 
     static public BoardsList.OpenBoards getOpenBoardsList(
-            boolean showClips) {
+        boolean showClips) {
         return new BoardsList.OpenBoards(showClips);
     }
 

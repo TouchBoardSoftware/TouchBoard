@@ -8,8 +8,8 @@ import com.tb.tbUtilities.Frames;
 import net.miginfocom.swing.*;
 
 public class MainPanel extends JPanel implements
-        MouseWatcher.EnterExitListener, MouseListener,
-        MouseMotionListener, WindowListener, WindowFocusListener {
+    MouseWatcher.EnterExitListener, MouseListener,
+    MouseMotionListener, WindowListener, WindowFocusListener {
 
     /**
      * Creates a new instance of MainPanel
@@ -25,7 +25,7 @@ public class MainPanel extends JPanel implements
         menuButton.addMouseListener(this);
 
         menuButton.addActionListener(
-                new java.awt.event.ActionListener() {
+            new java.awt.event.ActionListener() {
 
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -42,22 +42,22 @@ public class MainPanel extends JPanel implements
 
         //======== this ========
         setLayout(new MigLayout(
-                "insets 0,hidemode 3,gap 0 0",
-                // columns
-                "[grow,fill]",
-                // rows
-                "[20:n:20,fill]"
-                + "[grow,fill]"));
+            "insets 0,hidemode 3,gap 0 0",
+            // columns
+            "[grow,fill]",
+            // rows
+            "[20:n:20,fill]"
+            + "[grow,fill]"));
 
         //======== menuPanel ========
         {
             menuPanel.setLayout(new MigLayout(
-                    "insets 0,hidemode 3,gap 0 0",
-                    // columns
-                    "[fill]"
-                    + "[grow,fill]",
-                    // rows
-                    "[grow,fill]"));
+                "insets 0,hidemode 3,gap 0 0",
+                // columns
+                "[fill]"
+                + "[grow,fill]",
+                // rows
+                "[grow,fill]"));
 
             //---- menuButton ----
             menuButton.setText("<html>&nbsp;Menu&nbsp;</html> ");
@@ -76,11 +76,11 @@ public class MainPanel extends JPanel implements
         {
             contentPanel.setBackground(Color.white);
             contentPanel.setLayout(new MigLayout(
-                    "insets 0,hidemode 3,gap 0 0",
-                    // columns
-                    "[grow,fill]",
-                    // rows
-                    "[grow,fill]"));
+                "insets 0,hidemode 3,gap 0 0",
+                // columns
+                "[grow,fill]",
+                // rows
+                "[grow,fill]"));
         }
         add(contentPanel, "cell 0 1");
         // JFormDesigner - End of component initialization//GEN-END:initComponents
@@ -123,7 +123,7 @@ public class MainPanel extends JPanel implements
     public void mousePressed(MouseEvent event) {
         if (event.getComponent() == menuButton) {
             menuButton.setBorder(
-                    BorderFactory.createLoweredBevelBorder());
+                BorderFactory.createLoweredBevelBorder());
         }
     }
 
@@ -132,7 +132,7 @@ public class MainPanel extends JPanel implements
     public void mouseReleased(MouseEvent event) {
         if (event.getComponent() == menuButton) {
             menuButton.setBorder(
-                    BorderFactory.createEmptyBorder(2, 2, 2, 2));
+                BorderFactory.createEmptyBorder(2, 2, 2, 2));
         }
     }
 
@@ -247,8 +247,8 @@ public class MainPanel extends JPanel implements
         Rectangle oldBounds = parentWindow.getBounds();
         int oldWidth = Math.max(oldBounds.width, BoardManager.minimumWindowWidthForOS);
         parentWindow.setBounds(
-                screenSize.width - startDistanceFromRight - oldWidth,
-                startDistanceFromTop, oldWidth, oldBounds.height);
+            screenSize.width - startDistanceFromRight - oldWidth,
+            startDistanceFromTop, oldWidth, oldBounds.height);
     }
 
     public static void setKeyEditPanel(KeyEditPanel aKeyEditPanel) {
@@ -263,7 +263,7 @@ public class MainPanel extends JPanel implements
             int newX = dragWindowStartPoint.x + xDifference;
             int newY = dragWindowStartPoint.y + yDifference;
             parentWindow.setBounds(
-                    newX, newY, parentWindow.getWidth(), parentWindow.getHeight());
+                newX, newY, parentWindow.getWidth(), parentWindow.getHeight());
         }
     }
 

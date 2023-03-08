@@ -11,7 +11,7 @@ import com.tb.tbUtilities.Frames;
 import com.tb.tbUtilities.Use;
 
 public class KeyEditPanel extends JPanel
-        implements WindowFocusListener, WindowListener {
+    implements WindowFocusListener, WindowListener {
 
     JFrame parentWindow;
     Key editKey;
@@ -59,7 +59,7 @@ public class KeyEditPanel extends JPanel
         int editKeyColumns = Use.clampInt(editKey.columnsWide, 1, 10);
         columnsWideComboBox.setSelectedIndex(editKeyColumns - 1);
         exampleKeyBorder = BorderFactory.createMatteBorder(
-                2, 2, 2, 2, editKey.parentBoard.borderColor);
+            2, 2, 2, 2, editKey.parentBoard.borderColor);
         exampleKeyLabel.setBorder(exampleKeyBorder);
         exampleKeyLabel.setBackground(editKey.getBackgroundColor());
         exampleKeyLabel.setForeground(editKey.getTextColor());
@@ -109,32 +109,32 @@ public class KeyEditPanel extends JPanel
 
         //======== this ========
         setLayout(new FormLayout(
-                new ColumnSpec[]{
-                    FormFactory.UNRELATED_GAP_COLSPEC,
-                    FormFactory.DEFAULT_COLSPEC,
-                    FormFactory.RELATED_GAP_COLSPEC,
-                    new ColumnSpec("max(default;50dlu)"),
-                    FormFactory.DEFAULT_COLSPEC,
-                    new ColumnSpec("max(default;75dlu)"),
-                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                    FormFactory.DEFAULT_COLSPEC,
-                    FormFactory.UNRELATED_GAP_COLSPEC
-                },
-                new RowSpec[]{
-                    FormFactory.UNRELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.RELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.UNRELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.UNRELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.LINE_GAP_ROWSPEC,
-                    new RowSpec(RowSpec.FILL, Sizes.bounded(Sizes.DEFAULT, Sizes.dluY(120), Sizes.dluY(150)), FormSpec.DEFAULT_GROW),
-                    FormFactory.RELATED_GAP_ROWSPEC,
-                    FormFactory.PREF_ROWSPEC,
-                    FormFactory.RELATED_GAP_ROWSPEC
-                }));
+            new ColumnSpec[]{
+                FormFactory.UNRELATED_GAP_COLSPEC,
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.RELATED_GAP_COLSPEC,
+                new ColumnSpec("max(default;50dlu)"),
+                FormFactory.DEFAULT_COLSPEC,
+                new ColumnSpec("max(default;75dlu)"),
+                new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.UNRELATED_GAP_COLSPEC
+            },
+            new RowSpec[]{
+                FormFactory.UNRELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.RELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.UNRELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.UNRELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.LINE_GAP_ROWSPEC,
+                new RowSpec(RowSpec.FILL, Sizes.bounded(Sizes.DEFAULT, Sizes.dluY(120), Sizes.dluY(150)), FormSpec.DEFAULT_GROW),
+                FormFactory.RELATED_GAP_ROWSPEC,
+                FormFactory.PREF_ROWSPEC,
+                FormFactory.RELATED_GAP_ROWSPEC
+            }));
 
         //---- keyTitleLabel ----
         keyTitleLabel.setText("Key Title");
@@ -170,8 +170,8 @@ public class KeyEditPanel extends JPanel
         //======== undoButtonPanel ========
         {
             undoButtonPanel.setLayout(new FormLayout(
-                    "default:grow, default:grow, default:grow, default:grow, default:grow, default:grow, default:grow",
-                    "default"));
+                "default:grow, default:grow, default:grow, default:grow, default:grow, default:grow, default:grow",
+                "default"));
 
             //---- undoButton ----
             undoButton.setText("Undo Paste Column");
@@ -189,30 +189,30 @@ public class KeyEditPanel extends JPanel
         {
             stylePanel.setBorder(LineBorder.createBlackLineBorder());
             stylePanel.setLayout(new FormLayout(
-                    new ColumnSpec[]{
-                        new ColumnSpec("max(default;20dlu)"),
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        FormFactory.DEFAULT_COLSPEC,
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        FormFactory.DEFAULT_COLSPEC,
-                        new ColumnSpec("left:max(default;20dlu)"),
-                        new ColumnSpec("max(pref;20dlu)"),
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        new ColumnSpec("max(default;30dlu)"),
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        FormFactory.DEFAULT_COLSPEC
-                    },
-                    new RowSpec[]{
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC,
-                        FormFactory.LINE_GAP_ROWSPEC
-                    }));
+                new ColumnSpec[]{
+                    new ColumnSpec("max(default;20dlu)"),
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    FormFactory.DEFAULT_COLSPEC,
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    FormFactory.DEFAULT_COLSPEC,
+                    new ColumnSpec("left:max(default;20dlu)"),
+                    new ColumnSpec("max(pref;20dlu)"),
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    new ColumnSpec("max(default;30dlu)"),
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    FormFactory.DEFAULT_COLSPEC
+                },
+                new RowSpec[]{
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.DEFAULT_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.DEFAULT_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC,
+                    FormFactory.LINE_GAP_ROWSPEC
+                }));
 
             //---- keyBackgroundLabel ----
             keyBackgroundLabel.setText("Key Background:");
@@ -244,8 +244,8 @@ public class KeyEditPanel extends JPanel
             //======== exampleKeyPanel ========
             {
                 exampleKeyPanel.setLayout(new FormLayout(
-                        "left:default:grow",
-                        "top:default:grow"));
+                    "left:default:grow",
+                    "top:default:grow"));
 
                 //---- exampleKeyLabel ----
                 exampleKeyLabel.setText(" Key");
@@ -275,18 +275,18 @@ public class KeyEditPanel extends JPanel
         //======== buttonPanel ========
         {
             buttonPanel.setLayout(new FormLayout(
-                    new ColumnSpec[]{
-                        FormFactory.RELATED_GAP_COLSPEC,
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.dluX(20), FormSpec.DEFAULT_GROW),
-                        FormFactory.RELATED_GAP_COLSPEC,
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                        new ColumnSpec(ColumnSpec.LEFT, Sizes.dluX(15), FormSpec.NO_GROW),
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                        FormFactory.RELATED_GAP_COLSPEC,
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                        FormFactory.RELATED_GAP_COLSPEC
-                    },
-                    RowSpec.decodeSpecs("default, default")));
+                new ColumnSpec[]{
+                    FormFactory.RELATED_GAP_COLSPEC,
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.dluX(20), FormSpec.DEFAULT_GROW),
+                    FormFactory.RELATED_GAP_COLSPEC,
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                    new ColumnSpec(ColumnSpec.LEFT, Sizes.dluX(15), FormSpec.NO_GROW),
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                    FormFactory.RELATED_GAP_COLSPEC,
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                    FormFactory.RELATED_GAP_COLSPEC
+                },
+                RowSpec.decodeSpecs("default, default")));
             ((FormLayout) buttonPanel.getLayout()).setColumnGroups(new int[][]{{2, 4, 6, 8}});
 
             //---- copyKeyButton ----
@@ -389,7 +389,7 @@ public class KeyEditPanel extends JPanel
         window.setAlwaysOnTop(true);
         window.setResizable(true);
         KeyEditPanel panel = new KeyEditPanel(
-                window, editKey, keyLocation);
+            window, editKey, keyLocation);
         window.add(panel);
         window.pack();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -411,7 +411,7 @@ public class KeyEditPanel extends JPanel
         if (width == null) {
             exampleKeyLabel.setText(" Key");
             newKeySize = new Dimension(exampleKeyAutomaticWidth + 2,
-                    Constants.keyHeight + 4);
+                Constants.keyHeight + 4);
             newKeyMinimum = null;
         } else {
             if (width <= 25) {
@@ -420,7 +420,7 @@ public class KeyEditPanel extends JPanel
                 exampleKeyLabel.setText(" Key");
             }
             newKeySize = new Dimension(width + 4,
-                    Constants.keyHeight + 4);
+                Constants.keyHeight + 4);
             newKeyMinimum = new Dimension(10, 10);
         }
         exampleKeyLabel.setMinimumSize(newKeyMinimum);
@@ -443,9 +443,9 @@ public class KeyEditPanel extends JPanel
         // Find out if the colors are at their defaults or not.
         boolean colorsAtDefaults = false;
         if (exampleKeyLabel.getBackground().equals(
-                editKey.parentBoard.newKeysBackgroundColor)
-                && exampleKeyLabel.getForeground().equals(
-                        editKey.parentBoard.newKeysTextColor)) {
+            editKey.parentBoard.newKeysBackgroundColor)
+            && exampleKeyLabel.getForeground().equals(
+                editKey.parentBoard.newKeysTextColor)) {
             colorsAtDefaults = true;
         }
         // Put the button back at "reset" if someone changes a color
@@ -484,7 +484,7 @@ public class KeyEditPanel extends JPanel
         editKey.columnsWide = columnsWide;
         editKey.contents = contents;
         editKey.setColors(
-                exampleKeyLabel.getBackground(), exampleKeyLabel.getForeground());
+            exampleKeyLabel.getBackground(), exampleKeyLabel.getForeground());
 
         editKey.parentBoard.setKey(keyLocation, editKey);
         editKey.parentBoard.save();
@@ -555,9 +555,9 @@ public class KeyEditPanel extends JPanel
         keyBackgroundButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Color chosenColor = JColorChooser.showDialog(
-                        parentWindow,
-                        "Choose key background color",
-                        exampleKeyLabel.getBackground());
+                    parentWindow,
+                    "Choose key background color",
+                    exampleKeyLabel.getBackground());
                 if (chosenColor != null) {
                     exampleKeyLabel.setBackground(chosenColor);
                 }
@@ -569,9 +569,9 @@ public class KeyEditPanel extends JPanel
         keyTextColorButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Color chosenColor = JColorChooser.showDialog(
-                        parentWindow,
-                        "Choose key text color",
-                        exampleKeyLabel.getForeground());
+                    parentWindow,
+                    "Choose key text color",
+                    exampleKeyLabel.getForeground());
                 if (chosenColor != null) {
                     exampleKeyLabel.setForeground(chosenColor);
                 }
@@ -668,7 +668,7 @@ public class KeyEditPanel extends JPanel
         copiedKey.contents = contentsTextPane.getText();
         copiedKey.columnsWide = columnsWideComboBox.getSelectedIndex() + 1;
         copiedKey.setColors(exampleKeyLabel.getBackground(),
-                exampleKeyLabel.getForeground());
+            exampleKeyLabel.getForeground());
         clipKeys.add(copiedKey);
 
         arrangeCopyButtons();
@@ -683,7 +683,7 @@ public class KeyEditPanel extends JPanel
         clipKeys.clear();
         for (int i = 0; i < editKey.parentBoard.columns(); ++i) {
             clipKeys.add(
-                    editKey.parentBoard.keys[i][sourceRowIndex].clone());
+                editKey.parentBoard.keys[i][sourceRowIndex].clone());
         }
         arrangeCopyButtons();
     }
@@ -696,7 +696,7 @@ public class KeyEditPanel extends JPanel
         clipKeys.clear();
         for (int i = 0; i < Constants.keyRows; ++i) {
             clipKeys.add(
-                    editKey.parentBoard.keys[sourceColumnIndex][i].clone());
+                editKey.parentBoard.keys[sourceColumnIndex][i].clone());
         }
         arrangeCopyButtons();
     }
@@ -718,7 +718,7 @@ public class KeyEditPanel extends JPanel
 
         // Return if our destination row is the same as our source row.
         if (destinationBoard == clipKeysSourceBoard
-                && destinationRowIndex == clipKeysSourcePoint.y) {
+            && destinationRowIndex == clipKeysSourcePoint.y) {
             return;
         }
 
@@ -732,13 +732,13 @@ public class KeyEditPanel extends JPanel
         undoPasteKeys.clear();
         for (int i = 0; i < editKey.parentBoard.columns(); ++i) {
             undoPasteKeys.add(
-                    editKey.parentBoard.keys[i][destinationRowIndex].clone());
+                editKey.parentBoard.keys[i][destinationRowIndex].clone());
         }
 
         // Paste the row to the board.
         for (int i = 0; i < clipKeys.size(); ++i) {
             editKey.parentBoard.setKey(
-                    new Point(i, destinationRowIndex), clipKeys.get(i));
+                new Point(i, destinationRowIndex), clipKeys.get(i));
         }
         Main.getBoardManager().arrangeAll();
 
@@ -762,7 +762,7 @@ public class KeyEditPanel extends JPanel
 
         // Return if our destination column is the same as our source column.
         if (destinationBoard == clipKeysSourceBoard
-                && destinationColumnIndex == clipKeysSourcePoint.x) {
+            && destinationColumnIndex == clipKeysSourcePoint.x) {
             return;
         }
 
@@ -776,13 +776,13 @@ public class KeyEditPanel extends JPanel
         undoPasteKeys.clear();
         for (int i = 0; i < Constants.keyRows; ++i) {
             undoPasteKeys.add(
-                    editKey.parentBoard.keys[destinationColumnIndex][i].clone());
+                editKey.parentBoard.keys[destinationColumnIndex][i].clone());
         }
 
         // Paste the column to the board.
         for (int i = 0; i < clipKeys.size(); ++i) {
             editKey.parentBoard.setKey(
-                    new Point(destinationColumnIndex, i), clipKeys.get(i));
+                new Point(destinationColumnIndex, i), clipKeys.get(i));
         }
         Main.getBoardManager().arrangeAll();
 
@@ -804,9 +804,9 @@ public class KeyEditPanel extends JPanel
         contentsTextPane.setText("");
         columnsWideComboBox.setSelectedIndex(0);
         exampleKeyLabel.setBackground(
-                editKey.parentBoard.newKeysBackgroundColor);
+            editKey.parentBoard.newKeysBackgroundColor);
         exampleKeyLabel.setForeground(
-                editKey.parentBoard.newKeysTextColor);
+            editKey.parentBoard.newKeysTextColor);
         setResetColorsButtonState();
     }
 
@@ -816,7 +816,7 @@ public class KeyEditPanel extends JPanel
         pasteColumnButton.setEnabled(clipKeysType == ClipType.Column);
         undoButton.setVisible(undoPasteType != ClipType.Empty);
         String undoButtonString = undoPasteType == ClipType.Column
-                ? "Undo Paste Of Column" : "Undo Paste Of Row";
+            ? "Undo Paste Of Column" : "Undo Paste Of Row";
         undoButton.setText(undoButtonString);
     }
 
@@ -831,7 +831,7 @@ public class KeyEditPanel extends JPanel
         if (undoPasteType == ClipType.Row) {
             for (int i = 0; i < undoPasteKeys.size(); ++i) {
                 editKey.parentBoard.setKey(
-                        new Point(i, destinationRowIndex), undoPasteKeys.get(i));
+                    new Point(i, destinationRowIndex), undoPasteKeys.get(i));
             }
             // Paste the right key to the form.
             if (keyLocation.x < undoPasteKeys.size()) {
@@ -845,7 +845,7 @@ public class KeyEditPanel extends JPanel
         if (undoPasteType == ClipType.Column) {
             for (int i = 0; i < undoPasteKeys.size(); ++i) {
                 editKey.parentBoard.setKey(
-                        new Point(destinationColumnIndex, i), undoPasteKeys.get(i));
+                    new Point(destinationColumnIndex, i), undoPasteKeys.get(i));
             }
             // Paste the right key to the form.
             if (keyLocation.y < undoPasteKeys.size()) {
@@ -866,14 +866,14 @@ public class KeyEditPanel extends JPanel
     private void pasteWarningMessage() {
         String undoNow = "Undo Paste Now";
         String result = Frames.showOptions(
-                "Warning, original keys are DELETED when you paste\n"
-                + "a row or column over them.\n\n"
-                + "After you click OK on the Edit Key dialog, this paste\n"
-                + "becomes -permanent- and cannot be undone.\n"
-                + "Before then, you may undo this paste with the\n"
-                + "Undo Paste button, or by clicking the Cancel button.",
-                "Warning", undoNow, JOptionPane.INFORMATION_MESSAGE,
-                undoNow, "Continue With Paste", null);
+            "Warning, original keys are DELETED when you paste\n"
+            + "a row or column over them.\n\n"
+            + "After you click OK on the Edit Key dialog, this paste\n"
+            + "becomes -permanent- and cannot be undone.\n"
+            + "Before then, you may undo this paste with the\n"
+            + "Undo Paste button, or by clicking the Cancel button.",
+            "Warning", undoNow, JOptionPane.INFORMATION_MESSAGE,
+            undoNow, "Continue With Paste", null);
         if (result.equals(undoNow)) {
             tryUndoButtonAction();
         }

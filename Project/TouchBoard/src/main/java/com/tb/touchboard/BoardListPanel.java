@@ -10,7 +10,7 @@ import com.jgoodies.forms.layout.*;
 import com.tb.tbUtilities.Frames;
 
 public class BoardListPanel
-        extends JPanel implements WindowListener, WindowFocusListener {
+    extends JPanel implements WindowListener, WindowFocusListener {
 
     static private enum ListType {
         OPEN_BOARDS, FILE_BOARDS
@@ -29,9 +29,9 @@ public class BoardListPanel
      * Constructor
      */
     public BoardListPanel(
-            JDialog aParentWindow, ListType aListType,
-            boolean doReorderOpenBoards, String aCapitalizedVerb,
-            boolean filterOpenFileBoards, boolean showClipsInOpenBoards) {
+        JDialog aParentWindow, ListType aListType,
+        boolean doReorderOpenBoards, String aCapitalizedVerb,
+        boolean filterOpenFileBoards, boolean showClipsInOpenBoards) {
         parentWindow = aParentWindow;
         listType = aListType;
         reorderOpenBoards = doReorderOpenBoards;
@@ -78,26 +78,26 @@ public class BoardListPanel
 
         //======== this ========
         setLayout(new FormLayout(
-                new ColumnSpec[]{
-                    FormFactory.UNRELATED_GAP_COLSPEC,
-                    FormFactory.DEFAULT_COLSPEC,
-                    new ColumnSpec("max(default;30dlu):grow"),
-                    FormFactory.DEFAULT_COLSPEC,
-                    FormFactory.RELATED_GAP_COLSPEC,
-                    FormFactory.DEFAULT_COLSPEC,
-                    new ColumnSpec("max(default;40dlu):grow"),
-                    FormFactory.DEFAULT_COLSPEC,
-                    FormFactory.UNRELATED_GAP_COLSPEC
-                },
-                new RowSpec[]{
-                    FormFactory.UNRELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.RELATED_GAP_ROWSPEC,
-                    FormFactory.DEFAULT_ROWSPEC,
-                    FormFactory.UNRELATED_GAP_ROWSPEC,
-                    new RowSpec("fill:max(default;120dlu):grow"),
-                    FormFactory.UNRELATED_GAP_ROWSPEC
-                }));
+            new ColumnSpec[]{
+                FormFactory.UNRELATED_GAP_COLSPEC,
+                FormFactory.DEFAULT_COLSPEC,
+                new ColumnSpec("max(default;30dlu):grow"),
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.RELATED_GAP_COLSPEC,
+                FormFactory.DEFAULT_COLSPEC,
+                new ColumnSpec("max(default;40dlu):grow"),
+                FormFactory.DEFAULT_COLSPEC,
+                FormFactory.UNRELATED_GAP_COLSPEC
+            },
+            new RowSpec[]{
+                FormFactory.UNRELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.RELATED_GAP_ROWSPEC,
+                FormFactory.DEFAULT_ROWSPEC,
+                FormFactory.UNRELATED_GAP_ROWSPEC,
+                new RowSpec("fill:max(default;120dlu):grow"),
+                FormFactory.UNRELATED_GAP_ROWSPEC
+            }));
         ((FormLayout) getLayout()).setColumnGroups(new int[][]{{4, 6}});
         ((FormLayout) getLayout()).setRowGroups(new int[][]{{2, 4}});
 
@@ -139,40 +139,40 @@ public class BoardListPanel
     // JFormDesigner - End of variables declaration//GEN-END:variables
 
     /**
-     * This will create and display an instance of this panel. This opens the
-     * panel for reordering open boards.
+     * This will create and display an instance of this panel. This opens the panel for reordering
+     * open boards.
      */
     static public void goOpenBoardsReorder() {
         show("Reorder Boards", "Reorder", ListType.OPEN_BOARDS, true,
-                false, false);
+            false, false);
     }
 
     /**
-     * This will create and display an instance of this panel. Returns index to
-     * first selected open board, or null.
+     * This will create and display an instance of this panel. Returns index to first selected open
+     * board, or null.
      */
     static public Integer goOpenBoards(String windowTitle,
-            String capitalizedVerb, boolean showClips) {
+        String capitalizedVerb, boolean showClips) {
         show(windowTitle, capitalizedVerb, ListType.OPEN_BOARDS, false,
-                false, showClips);
+            false, showClips);
         return openBoardsIndexResult;
     }
 
     /**
-     * This will create and display an instance of this panel. Returns path to
-     * first selected board file, or null.
+     * This will create and display an instance of this panel. Returns path to first selected board
+     * file, or null.
      */
     static public String goFileBoards(String windowTitle,
-            String capitalizedVerb, boolean filterOpenFileBoards) {
+        String capitalizedVerb, boolean filterOpenFileBoards) {
         show(windowTitle, capitalizedVerb, ListType.FILE_BOARDS, false,
-                filterOpenFileBoards, false);
+            filterOpenFileBoards, false);
         return fileNameResult;
     }
 
     private static void show(
-            String windowTitle, String capitalizedVerb, ListType listType,
-            boolean reorderOpenBoards, boolean filterOpenFileBoards,
-            boolean showClipsInOpenBoards) {
+        String windowTitle, String capitalizedVerb, ListType listType,
+        boolean reorderOpenBoards, boolean filterOpenFileBoards,
+        boolean showClipsInOpenBoards) {
         MouseWatcher.stopHoverCheck();
         JDialog dialog = new JDialog();
         dialog.setTitle(windowTitle);
@@ -182,8 +182,8 @@ public class BoardListPanel
         dialog.setAlwaysOnTop(true);
         dialog.setResizable(false);
         BoardListPanel panel = new BoardListPanel(
-                dialog, listType, reorderOpenBoards, capitalizedVerb,
-                filterOpenFileBoards, showClipsInOpenBoards);
+            dialog, listType, reorderOpenBoards, capitalizedVerb,
+            filterOpenFileBoards, showClipsInOpenBoards);
         dialog.addWindowListener(panel);
         dialog.add(panel);
         dialog.pack();
@@ -259,7 +259,7 @@ public class BoardListPanel
 
         // Do nothing if they are trying to move something outside the list.
         if (((listIndex == 0) && (up == true))
-                || ((listIndex == (listSize - 1)) && (up == false))) {
+            || ((listIndex == (listSize - 1)) && (up == false))) {
             return;
         }
 
@@ -316,7 +316,7 @@ public class BoardListPanel
         int fileIndex = fileBoardsList.getSelectedIndex();
         if (fileIndex < 0) {
             Frames.message("Please select a board file to "
-                    + capitalizedVerb.toLowerCase() + ".");
+                + capitalizedVerb.toLowerCase() + ".");
             return;
         }
         fileNameResult = fileBoardsList.getFileName(fileIndex);
@@ -327,7 +327,7 @@ public class BoardListPanel
         int openIndex = openBoardsList.getSelectedIndex();
         if (openIndex < 0) {
             Frames.message("Please select a board to "
-                    + capitalizedVerb.toLowerCase() + ".");
+                + capitalizedVerb.toLowerCase() + ".");
             return;
         }
         openBoardsIndexResult = openBoardsList.getOpenBoardsIndex(openIndex);

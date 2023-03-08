@@ -21,8 +21,8 @@ public class MouseWatcher extends Thread {
     static public interface HoverListener {
 
         public void mouseWatcherHover(
-                Point mouseScreenLocation, Point relativeLocation,
-                Component relativeTo);
+            Point mouseScreenLocation, Point relativeLocation,
+            Component relativeTo);
     }
 
     static public class EnterExitPackage {
@@ -52,13 +52,13 @@ public class MouseWatcher extends Thread {
     // This is a list of components that are currently blocking
     // hover events within their boundaries.
     static private ArrayList<Component> hoverBlockers
-            = new ArrayList<Component>();
+        = new ArrayList<Component>();
 
     private ArrayList<HoverPackage> hoverPackages
-            = new ArrayList<HoverPackage>();
+        = new ArrayList<HoverPackage>();
 
     private ArrayList<AfterHoverListener> afterHoverListeners
-            = new ArrayList<AfterHoverListener>();
+        = new ArrayList<AfterHoverListener>();
 
     private EnterExitPackage[] enterExitPackages;
     private JFrame[] bindingFrames;
@@ -77,8 +77,8 @@ public class MouseWatcher extends Thread {
     static private final int hoverStrayPixels = 2;
 
     MouseWatcher(
-            EnterExitPackage[] someEnterExitPackages,
-            JFrame[] someBindingFrames) {
+        EnterExitPackage[] someEnterExitPackages,
+        JFrame[] someBindingFrames) {
         enterExitPackages = someEnterExitPackages;
         bindingFrames = someBindingFrames;
         setDaemon(true);
@@ -117,16 +117,16 @@ public class MouseWatcher extends Thread {
 
             // Check to see if the mouse is inside of this component.
             if (isMouseInsideComponent(
-                    mouseScreenLocation, enterExitPackage.component)) {
+                mouseScreenLocation, enterExitPackage.component)) {
                 if (enterExitPackage.insideLastTime == false) {
                     enterExitPackage.listener.mouseWatcherEntered(
-                            enterExitPackage.component);
+                        enterExitPackage.component);
                 }
                 enterExitPackage.insideLastTime = true;
             } else {
                 if (enterExitPackage.insideLastTime == true) {
                     enterExitPackage.listener.mouseWatcherExited(
-                            enterExitPackage.component);
+                        enterExitPackage.component);
                 }
                 enterExitPackage.insideLastTime = false;
             }
@@ -174,9 +174,9 @@ public class MouseWatcher extends Thread {
         // Check for hover event.
         // Did the mouse move farther than hoverStrayPixels?
         if ((mouseScreenLocation.x > (hoverStart.x + hoverStrayPixels))
-                || (mouseScreenLocation.x < (hoverStart.x - hoverStrayPixels))
-                || (mouseScreenLocation.y > (hoverStart.y + hoverStrayPixels))
-                || (mouseScreenLocation.y < (hoverStart.y - hoverStrayPixels))) {
+            || (mouseScreenLocation.x < (hoverStart.x - hoverStrayPixels))
+            || (mouseScreenLocation.y > (hoverStart.y + hoverStrayPixels))
+            || (mouseScreenLocation.y < (hoverStart.y - hoverStrayPixels))) {
             // The mouse moved outside of its stray zone,
             // so reset timer and position, and exit.
             resetTimerStuff();
@@ -201,23 +201,23 @@ public class MouseWatcher extends Thread {
         // Loop through the components to see where the event occoured.
         // Copy array to avoid concurrent modification.
         ArrayList<HoverPackage> copyOfHoverPackages
-                = new ArrayList<HoverPackage>(hoverPackages);
+            = new ArrayList<HoverPackage>(hoverPackages);
         for (HoverPackage hoverPackage : copyOfHoverPackages) {
             if (isMouseInsideComponent(mouseScreenLocation,
-                    hoverPackage.component)) {
+                hoverPackage.component)) {
                 // We found the component.
 
                 // Compute relative mouse coordinates.
                 Rectangle componentScreenRectangle = getScreenRectangle(
-                        hoverPackage.component);
+                    hoverPackage.component);
                 Point mouseRelativeLocation = new Point(
-                        mouseScreenLocation.x - componentScreenRectangle.x,
-                        mouseScreenLocation.y - componentScreenRectangle.y);
+                    mouseScreenLocation.x - componentScreenRectangle.x,
+                    mouseScreenLocation.y - componentScreenRectangle.y);
 
                 // Notify the hover listener of the hover event.
                 hoverPackage.listener.mouseWatcherHover(
-                        mouseScreenLocation, mouseRelativeLocation,
-                        hoverPackage.component);
+                    mouseScreenLocation, mouseRelativeLocation,
+                    hoverPackage.component);
 
                 // Notify all the after hover listeners, if needed.
                 if (skipAfterHoverEvents) {
@@ -227,7 +227,7 @@ public class MouseWatcher extends Thread {
                 }
                 // Copy array to avoid concurrent modification.
                 ArrayList<AfterHoverListener> copyOfAfterHoverListeners
-                        = new ArrayList<AfterHoverListener>(afterHoverListeners);
+                    = new ArrayList<AfterHoverListener>(afterHoverListeners);
                 for (AfterHoverListener listener : copyOfAfterHoverListeners) {
                     listener.mouseWatcherAfterHover();
                 }
@@ -245,7 +245,7 @@ public class MouseWatcher extends Thread {
     }
 
     public static boolean isMouseInsideComponent(Point screenLocation,
-            Component component) {
+        Component component) {
         Rectangle rectangle = getScreenRectangle(component);
         if (rectangle.contains(screenLocation)) {
             return true;
@@ -258,7 +258,7 @@ public class MouseWatcher extends Thread {
     // array that contains the specified screen mouse coordinates.
     // If no component contains those coordinates, this will return -1.
     public static int getIndexOfComponentContainingMouse(
-            Point mouseScreenLocation, Component[] components) {
+        Point mouseScreenLocation, Component[] components) {
         Rectangle rectangle;
         for (int i = 0; i < components.length; ++i) {
             rectangle = getScreenRectangle(components[i]);

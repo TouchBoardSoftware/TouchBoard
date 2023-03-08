@@ -9,7 +9,7 @@ import com.tb.tbUtilities.Frames;
 import com.tb.tbUtilities.Use;
 
 public class Board extends JPanel implements
-        MouseWatcher.HoverListener {
+    MouseWatcher.HoverListener {
 
     /**
      * Iterator used for looping through a set of board keys.
@@ -41,9 +41,8 @@ public class Board extends JPanel implements
         }
 
         /**
-         * Call this once every time you wish to increment the loop. Returns
-         * true if there is a next item, false if not. Suggested use:
-         * while(it.hasNext} do stuff.
+         * Call this once every time you wish to increment the loop. Returns true if there is a next
+         * item, false if not. Suggested use: while(it.hasNext} do stuff.
          */
         boolean hasNext() {
             // Catch the first call;
@@ -127,17 +126,17 @@ public class Board extends JPanel implements
      */
     public Board(String name, String aFileName, int columns) {
         this(name, aFileName, columns,
-                true, 75, Constants.defaultBoardBorderColor,
-                Constants.defaultKeyBackgroundColor,
-                Constants.defaultKeyTextColor);
+            true, 75, Constants.defaultBoardBorderColor,
+            Constants.defaultKeyBackgroundColor,
+            Constants.defaultKeyTextColor);
     }
 
     /**
      * Big Constructor
      */
     public Board(String name, String aFileName, int columns,
-            boolean aAutoSize, int aKeysWidth, Color aBorderColor,
-            Color aNewKeysBackgroundColor, Color aNewKeysTextColor) {
+        boolean aAutoSize, int aKeysWidth, Color aBorderColor,
+        Color aNewKeysBackgroundColor, Color aNewKeysTextColor) {
         quickShowLabel.setText(name);
         fileName = aFileName;
         autoSize = aAutoSize;
@@ -192,11 +191,11 @@ public class Board extends JPanel implements
             if (i % 2 == 0) {
                 // We are on a border.
                 columnsSpecs.add(new ColumnSpec(ColumnSpec.FILL,
-                        Sizes.pixel(Constants.borderThickness), ColumnSpec.NO_GROW));
+                    Sizes.pixel(Constants.borderThickness), ColumnSpec.NO_GROW));
             } else {
                 // We are on a button.
                 columnsSpecs.add(new ColumnSpec(ColumnSpec.FILL,
-                        Sizes.pixel(getKeyWidth()), ColumnSpec.NO_GROW));
+                    Sizes.pixel(getKeyWidth()), ColumnSpec.NO_GROW));
             }
         }
 
@@ -207,11 +206,11 @@ public class Board extends JPanel implements
             if (i % 2 == 0) {
                 // We are on a border.
                 rowsSpecs.add(new RowSpec(RowSpec.FILL,
-                        Sizes.pixel(Constants.borderThickness), RowSpec.NO_GROW));
+                    Sizes.pixel(Constants.borderThickness), RowSpec.NO_GROW));
             } else {
                 // We are on a button.
                 rowsSpecs.add(new RowSpec(RowSpec.FILL,
-                        Sizes.pixel(Constants.keyHeight), RowSpec.NO_GROW));
+                    Sizes.pixel(Constants.keyHeight), RowSpec.NO_GROW));
             }
         }
 
@@ -233,7 +232,7 @@ public class Board extends JPanel implements
                 // and the number of columns in the board.
                 int columnsAvailableForThisKey = columns() - it.x;
                 int limitedColumnWidth = Use.clampInt(
-                        keys[it.x][it.y].columnsWide, 1, columnsAvailableForThisKey);
+                    keys[it.x][it.y].columnsWide, 1, columnsAvailableForThisKey);
 
                 // Make sure the appropriate number of future keys are skipped.
                 skipKeys = limitedColumnWidth - 1;
@@ -248,7 +247,7 @@ public class Board extends JPanel implements
                 // Place the key.
                 int layoutCellsWide = (limitedColumnWidth * 2) - 1;
                 add(keys[it.x][it.y], cc.xywh(((it.x * 2) + 2), ((it.y * 2) + 2),
-                        layoutCellsWide, 1));
+                    layoutCellsWide, 1));
             }
         }
     }
@@ -259,7 +258,7 @@ public class Board extends JPanel implements
 
     public int getWidth() {
         return Constants.borderThickness
-                + (columns() * (getKeyWidth() + Constants.borderThickness));
+            + (columns() * (getKeyWidth() + Constants.borderThickness));
     }
 
     public int getKeyWidth() {
@@ -279,38 +278,38 @@ public class Board extends JPanel implements
 
         // Write board information.
         properties.setProperty(Names.boardName,
-                quickShowLabel.getText());
+            quickShowLabel.getText());
         properties.setProperty(Names.columns,
-                ((Integer) columns()).toString());
+            ((Integer) columns()).toString());
         properties.setProperty(Names.autoSize,
-                ((Boolean) autoSize).toString());
+            ((Boolean) autoSize).toString());
         properties.setProperty(Names.fixedKeyWidth,
-                ((Integer) fixedKeyWidth).toString());
+            ((Integer) fixedKeyWidth).toString());
         properties.setProperty(Names.newKeysBackgroundColor,
-                Use.colorToString(newKeysBackgroundColor));
+            Use.colorToString(newKeysBackgroundColor));
         properties.setProperty(Names.newKeysTextColor,
-                Use.colorToString(newKeysTextColor));
+            Use.colorToString(newKeysTextColor));
         properties.setProperty(Names.boardBorderColor,
-                Use.colorToString(borderColor));
+            Use.colorToString(borderColor));
 
         // Write keys information.
         KeysIterator it = new KeysIterator(keys);
         while (it.hasNext()) {
             String keyPrefix = ((Integer) it.x).toString() + ","
-                    + ((Integer) it.y).toString() + ".";
+                + ((Integer) it.y).toString() + ".";
 
             properties.setProperty(keyPrefix + Names.title,
-                    keys[it.x][it.y].getText());
+                keys[it.x][it.y].getText());
             properties.setProperty(keyPrefix + Names.background,
-                    Use.colorToString(keys[it.x][it.y].getBackgroundColor()));
+                Use.colorToString(keys[it.x][it.y].getBackgroundColor()));
             properties.setProperty(keyPrefix + Names.foreground,
-                    Use.colorToString(keys[it.x][it.y].getTextColor()));
+                Use.colorToString(keys[it.x][it.y].getTextColor()));
             properties.setProperty(keyPrefix + Names.columnsWide,
-                    ((Integer) keys[it.x][it.y].columnsWide).toString());
+                ((Integer) keys[it.x][it.y].columnsWide).toString());
             properties.setProperty(keyPrefix + Names.uses,
-                    ((Integer) keys[it.x][it.y].uses).toString());
+                ((Integer) keys[it.x][it.y].uses).toString());
             properties.setProperty(keyPrefix + Names.contents,
-                    keys[it.x][it.y].contents);
+                keys[it.x][it.y].contents);
         }
 
         try {
@@ -328,7 +327,7 @@ public class Board extends JPanel implements
     // Load the board from a file.
     // Return board for success, otherwise null.
     public static Board load(
-            boolean prependCWD, String restOfPath, String fileName) {
+        boolean prependCWD, String restOfPath, String fileName) {
 
         // Load properties from file.
         Properties properties = Use.loadPropertiesFile(prependCWD, restOfPath);
@@ -344,7 +343,7 @@ public class Board extends JPanel implements
 
         // Get columns.
         Integer columnsInteger = Use.getIntegerFromString(
-                false, properties.getProperty(Names.columns));
+            false, properties.getProperty(Names.columns));
         if (columnsInteger == null) {
             return null;
         }
@@ -355,22 +354,22 @@ public class Board extends JPanel implements
 
         // Get autoSize.
         boolean autoSizeFalse = properties.getProperty(Names.autoSize).
-                toLowerCase().contains("false");
+            toLowerCase().contains("false");
         board.autoSize = Use.toggleBoolean(autoSizeFalse);
 
         // Get fixedKeyWidth
         Integer keyWidthInteger = Use.getIntegerFromString(
-                false, properties.getProperty(Names.fixedKeyWidth));
+            false, properties.getProperty(Names.fixedKeyWidth));
         if (keyWidthInteger == null) {
             keyWidthInteger = Constants.defaultKeyWidth;
         }
         board.fixedKeyWidth = Use.clampInt(keyWidthInteger,
-                Constants.minimumKeyWidth, Constants.maximumKeyWidth);
+            Constants.minimumKeyWidth, Constants.maximumKeyWidth);
 
         // Get newKeysBackgroundColor.
         Color tempcolor;
         tempcolor = Use.colorFromString(properties.getProperty(
-                Names.newKeysBackgroundColor));
+            Names.newKeysBackgroundColor));
         if (tempcolor == null) {
             board.newKeysBackgroundColor = Constants.defaultKeyBackgroundColor;
         } else {
@@ -379,7 +378,7 @@ public class Board extends JPanel implements
 
         // Get newKeysTextColor.
         tempcolor = Use.colorFromString(properties.getProperty(
-                Names.newKeysTextColor));
+            Names.newKeysTextColor));
         if (tempcolor == null) {
             board.newKeysTextColor = Constants.defaultKeyTextColor;
         } else {
@@ -388,7 +387,7 @@ public class Board extends JPanel implements
 
         // Get boardBorderColor.
         tempcolor = Use.colorFromString(properties.getProperty(
-                Names.boardBorderColor));
+            Names.boardBorderColor));
         if (tempcolor == null) {
             board.borderColor = Constants.defaultBoardBorderColor;
         } else {
@@ -402,18 +401,18 @@ public class Board extends JPanel implements
         KeysIterator it = new KeysIterator(board.keys);
         while (it.hasNext()) {
             String keyPrefix = ((Integer) it.x).toString() + ","
-                    + ((Integer) it.y).toString() + ".";
+                + ((Integer) it.y).toString() + ".";
 
             // Make new Key
             board.keys[it.x][it.y] = new Key(board);
 
             // setText
             board.keys[it.x][it.y].setText(properties.getProperty(
-                    keyPrefix + Names.title, ""));
+                keyPrefix + Names.title, ""));
 
             // setBackground
             tempcolor = Use.colorFromString(properties.getProperty(
-                    keyPrefix + Names.background));
+                keyPrefix + Names.background));
             if (tempcolor == null) {
                 board.keys[it.x][it.y].setBackgroundColor(board.newKeysBackgroundColor);
             } else {
@@ -422,7 +421,7 @@ public class Board extends JPanel implements
 
             // setForeground
             tempcolor = Use.colorFromString(properties.getProperty(
-                    keyPrefix + Names.foreground));
+                keyPrefix + Names.foreground));
             if (tempcolor == null) {
                 board.keys[it.x][it.y].setTextColor(board.newKeysTextColor);
             } else {
@@ -431,11 +430,11 @@ public class Board extends JPanel implements
 
             // set columnsWide
             Integer columnsWideInteger = Use.getIntegerFromString(
-                    false, properties.getProperty(
-                            keyPrefix + Names.columnsWide, "1"));
+                false, properties.getProperty(
+                    keyPrefix + Names.columnsWide, "1"));
             if (columnsWideInteger == null
-                    || columnsWideInteger < 1
-                    || columnsWideInteger > Constants.maxColumns) {
+                || columnsWideInteger < 1
+                || columnsWideInteger > Constants.maxColumns) {
                 board.keys[it.x][it.y].columnsWide = 1;
             } else {
                 board.keys[it.x][it.y].columnsWide = columnsWideInteger;
@@ -443,7 +442,7 @@ public class Board extends JPanel implements
 
             // set uses
             Integer usesInteger = Use.getIntegerFromString(
-                    false, properties.getProperty(keyPrefix + Names.uses, "0"));
+                false, properties.getProperty(keyPrefix + Names.uses, "0"));
             if (usesInteger == null || usesInteger < 0) {
                 board.keys[it.x][it.y].uses = 0;
             } else {
@@ -452,7 +451,7 @@ public class Board extends JPanel implements
 
             // set contents
             board.keys[it.x][it.y].contents = properties.getProperty(
-                    keyPrefix + Names.contents, "");
+                keyPrefix + Names.contents, "");
         }
         return board;
     }
@@ -470,25 +469,25 @@ public class Board extends JPanel implements
         int max = Constants.maximumBoardFile;
         for (Integer i = 1; i <= max; ++i) {
             String fullPath = Use.workingDirectory + "/"
-                    + i.toString() + Constants.boardExtension;
+                + i.toString() + Constants.boardExtension;
             file = new File(fullPath);
             if (!file.exists()) {
                 return i.toString() + Constants.boardExtension;
             }
         }
         Frames.message("Out of available file numbers. You have "
-                + ((Integer) Constants.maximumBoardFile).toString() + " board files?");
+            + ((Integer) Constants.maximumBoardFile).toString() + " board files?");
         return null;
     }
 
     static public Board copyBoardKeys(Board sourceBoard, Board destinationBoard,
-            boolean preserveCopyColors) {
+        boolean preserveCopyColors) {
 
         KeysIterator it = new KeysIterator(sourceBoard.keys);
         while (it.hasNext()) {
             if (keyExists(destinationBoard, it.x, it.y)) {
                 destinationBoard.keys[it.x][it.y].copyFrom(
-                        sourceBoard.keys[it.x][it.y], preserveCopyColors);
+                    sourceBoard.keys[it.x][it.y], preserveCopyColors);
             }
         }
         return destinationBoard;
@@ -531,7 +530,7 @@ public class Board extends JPanel implements
         while (itNew.hasNext()) {
             keys[itNew.x][itNew.y] = new Key(this);
             keys[itNew.x][itNew.y].setColors(
-                    newKeysBackgroundColor, newKeysTextColor);
+                newKeysBackgroundColor, newKeysTextColor);
         }
 
         // Copy all keys possible, from old array.
@@ -539,7 +538,7 @@ public class Board extends JPanel implements
         while (itOld.hasNext()) {
             if (keyExists(this, itOld.x, itOld.y)) {
                 keys[itOld.x][itOld.y].copyFrom(
-                        oldKeys[itOld.x][itOld.y], true);
+                    oldKeys[itOld.x][itOld.y], true);
             }
         }
     }
@@ -548,7 +547,7 @@ public class Board extends JPanel implements
         KeysIterator it = new KeysIterator(keys);
         while (it.hasNext()) {
             keys[it.x][it.y].setColors(
-                    newKeysBackgroundColor, newKeysTextColor);
+                newKeysBackgroundColor, newKeysTextColor);
         }
     }
 
@@ -562,14 +561,14 @@ public class Board extends JPanel implements
     }
 
     public void mouseWatcherHover(Point mouseScreenLocation,
-            Point relativeLocation, Component relativeTo) {
+        Point relativeLocation, Component relativeTo) {
 
         // Loop through all the keys, checking for hover inside.
         KeysIterator it = new KeysIterator(keys);
         boolean foundOne = false;
         while (it.hasNext()) {
             if (MouseWatcher.isMouseInsideComponent(
-                    mouseScreenLocation, keys[it.x][it.y])) {
+                mouseScreenLocation, keys[it.x][it.y])) {
                 if (Main.getBoardManager().lastEditHover != 1) {
                     // Check for unfocused main panel
                     if (Main.getMainPanel().mainPanelHasFocus()) {
@@ -582,11 +581,11 @@ public class Board extends JPanel implements
                         keys[it.x][it.y].uses += 1;
                         // Run the key contents.
                         Main.getCommandCenter().runKeyContents(
-                                keys[it.x][it.y].contents, keys[it.x][it.y]);
+                            keys[it.x][it.y].contents, keys[it.x][it.y]);
                     }
                 } else {
                     KeyEditPanel.go(keys[it.x][it.y],
-                            new Point(it.x, it.y));
+                        new Point(it.x, it.y));
                 }
                 foundOne = true;
             }
@@ -621,7 +620,7 @@ public class Board extends JPanel implements
             // and the number of columns in the board.
             int columnsAvailableForThisKey = columns() - it.x;
             int limitedColumnWidth = Use.clampInt(
-                    keys[it.x][it.y].columnsWide, 1, columnsAvailableForThisKey);
+                keys[it.x][it.y].columnsWide, 1, columnsAvailableForThisKey);
 
             // Make sure the appropriate number of future keys are skipped.
             skipKeys = limitedColumnWidth - 1;
@@ -633,10 +632,10 @@ public class Board extends JPanel implements
 
             // Calculate the needed single column width for this key.
             int totalBorderPixels = (limitedColumnWidth - 1)
-                    * Constants.borderThickness;
+                * Constants.borderThickness;
             int neededTotalColumnPixels = neededKeySize - totalBorderPixels;
             int neededSingleColumnWidth
-                    = neededTotalColumnPixels / limitedColumnWidth;
+                = neededTotalColumnPixels / limitedColumnWidth;
             if (neededTotalColumnPixels % limitedColumnWidth != 0) {
                 neededSingleColumnWidth += 1;
             }

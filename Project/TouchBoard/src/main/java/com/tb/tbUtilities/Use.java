@@ -10,7 +10,7 @@ public class Use {
 
     // Current working directory string.
     static final public String workingDirectory
-            = System.getProperty("user.dir");
+        = System.getProperty("user.dir");
 
     /**
      * Constructor.
@@ -19,8 +19,8 @@ public class Use {
     }
 
     /**
-     * Returns an ImageIcon, or null if the path was invalid. The path should be
-     * relative to the project source directory.
+     * Returns an ImageIcon, or null if the path was invalid. The path should be relative to the
+     * project source directory.
      */
     static public ImageIcon createImageIcon(String path) {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
@@ -46,7 +46,7 @@ public class Use {
     }
 
     static public String safeSubstring(int beginIndex, int afterEndIndex,
-            String string) {
+        String string) {
 
         // Ensure that indexes are at least zero.
         if (beginIndex < 0) {
@@ -71,12 +71,11 @@ public class Use {
     }
 
     /**
-     * Get an Integer value from a String. This returns null if the digits are
-     * not a parsable integer. This also return null if the number is negative
-     * and negativeAllowed is false.
+     * Get an Integer value from a String. This returns null if the digits are not a parsable
+     * integer. This also return null if the number is negative and negativeAllowed is false.
      */
     static public Integer getIntegerFromString(
-            boolean negativeAllowed, String digits) {
+        boolean negativeAllowed, String digits) {
         int number;
         try {
             number = Integer.parseInt(digits);
@@ -121,7 +120,7 @@ public class Use {
         ArrayList<Integer> rgbNumbers = new ArrayList<Integer>();
         for (int i = 0; i < rgbStrings.length; ++i) {
             rgbNumbers.add(getIntegerFromString(
-                    false, rgbStrings[i]));
+                false, rgbStrings[i]));
         }
         if (rgbNumbers.size() < 3) {
             return null;
@@ -135,7 +134,7 @@ public class Use {
             }
         }
         return new Color(
-                rgbNumbers.get(0), rgbNumbers.get(1), rgbNumbers.get(2));
+            rgbNumbers.get(0), rgbNumbers.get(1), rgbNumbers.get(2));
     }
 
     public static int clampInt(int variable, int minimum, int maximum) {
@@ -196,7 +195,7 @@ public class Use {
      * Get a FileInputStream. Returns the stream if successful, or null.
      */
     static public FileInputStream getFileInputStream(
-            boolean prependCWD, String restOfPath) {
+        boolean prependCWD, String restOfPath) {
         if (restOfPath == null) {
             System.err.println("Couldn't find file. Path string was null.");
             return null;
@@ -227,7 +226,7 @@ public class Use {
      * Get a FileOutputStream. Returns the stream if successful, or null.
      */
     static public FileOutputStream getFileOutputStream(
-            boolean prependCWD, String restOfPath) {
+        boolean prependCWD, String restOfPath) {
         if (restOfPath == null) {
             System.err.println("Couldn't find or make file. Path string was null.");
             return null;
@@ -255,11 +254,10 @@ public class Use {
     }
 
     /**
-     * Load a properties instance from a file. Returns the properties if
-     * successful, or null.
+     * Load a properties instance from a file. Returns the properties if successful, or null.
      */
     public static Properties loadPropertiesFile(
-            boolean prependCWD, String restOfPath) {
+        boolean prependCWD, String restOfPath) {
         FileInputStream stream = getFileInputStream(prependCWD, restOfPath);
         if (stream == null) {
             return null;
@@ -275,8 +273,8 @@ public class Use {
     }
 
     public static boolean savePropertiesFile(
-            Properties properties, String comment,
-            boolean prependCWD, String restOfPath) {
+        Properties properties, String comment,
+        boolean prependCWD, String restOfPath) {
         FileOutputStream stream = getFileOutputStream(prependCWD, restOfPath);
         if (stream == null) {
             return false;
@@ -291,8 +289,7 @@ public class Use {
     }
 
     /**
-     * Get an Long value from a String. This returns null if the digits are not
-     * a parsable integer.
+     * Get an Long value from a String. This returns null if the digits are not a parsable integer.
      */
     public static Long getLongFromString(String longString) {
         long number;

@@ -13,22 +13,22 @@ public class Constants {
 
     // URLs
     static String projectSite_ForHuman
-            = "github.com/TouchBoardSoftware/TouchBoard";
+        = "github.com/TouchBoardSoftware/TouchBoard";
     static String projectSite_ForBrowser
-            = "https://github.com/TouchBoardSoftware/TouchBoard";
+        = "https://github.com/TouchBoardSoftware/TouchBoard";
     static public String helpURL
-            = Use.prependFileProtocol(Use.prependCWD("help/index.html"));
+        = Use.prependFileProtocol(Use.prependCWD("help/index.html"));
 
     // The "About" message text. 
     // This text uses html format, but it should not include these tags: <html><body>.
     static public String aboutMessageText
-            = "<B>"
-            + "TouchBoard<BR>Open Source, Freeware.<BR><BR>"
-            + "Version: " + Constants.version + "<BR>"
-            + "License: The MIT License.<BR>"
-            + "Website: <a href=\"" + Constants.projectSite_ForBrowser
-            + "\">" + Constants.projectSite_ForHuman + "</a><BR>"
-            + "</B>";
+        = "<B>"
+        + "TouchBoard<BR>Open Source, Freeware.<BR><BR>"
+        + "Version: " + Constants.version + "<BR>"
+        + "License: The MIT License.<BR>"
+        + "Website: <a href=\"" + Constants.projectSite_ForBrowser
+        + "\">" + Constants.projectSite_ForHuman + "</a><BR>"
+        + "</B>";
 
     // Filenames
     static public String clipsBoardFileName = "clips";
@@ -51,45 +51,45 @@ public class Constants {
     static public int maximumBoardFile = 1000;
 
     static public Color disabledBackgroundColor
-            = new Color(220, 220, 220); // Lighter Gray
+        = new Color(220, 220, 220); // Lighter Gray
     static public Color disabledTextColor
-            = new Color(60, 60, 60);   // Very Dark Gray
+        = new Color(60, 60, 60);   // Very Dark Gray
 
     // Colors
     static public Color defaultBoardBorderColor
-            = new Color(160, 160, 160); // Gray
+        = new Color(160, 160, 160); // Gray
     static public Color defaultQuickShowBackgroundColor
-            = new Color(166, 202, 240); // Light Blue
+        = new Color(166, 202, 240); // Light Blue
     static public Color defaultKeyBackgroundColor
-            = new Color(192, 220, 192);   // Money Green
+        = new Color(192, 220, 192);   // Money Green
     static public Color defaultKeyTextColor
-            = new Color(0, 0, 0);       // Black
+        = new Color(0, 0, 0);       // Black
 
     // Images
     static final public ImageIcon lockOpen
-            = Use.createImageIcon("lockopen.gif");
+        = Use.createImageIcon("lockopen.gif");
     static final public ImageIcon lockClosed
-            = Use.createImageIcon("lockclosed.gif");
+        = Use.createImageIcon("lockclosed.gif");
     static final public ImageIcon collapseAllArrow
-            = Use.createImageIcon("collapseallarrow.gif");
+        = Use.createImageIcon("collapseallarrow.gif");
     static final public ImageIcon minimizeIcon
-            = Use.createImageIcon("minimizeicon.gif");
+        = Use.createImageIcon("minimizeicon.gif");
     static final public ImageIcon editButtonIcon
-            = Use.createImageIcon("editbuttonicon.gif");
+        = Use.createImageIcon("editbuttonicon.gif");
     static final public ImageIcon editButtonIconGreen
-            = Use.createImageIcon("editbuttonicongreen.gif");
+        = Use.createImageIcon("editbuttonicongreen.gif");
     static final public ImageIcon capslockOffIcon
-            = Use.createImageIcon("capslockofficon.gif");
+        = Use.createImageIcon("capslockofficon.gif");
     static final public ImageIcon capslockOnIcon
-            = Use.createImageIcon("capslockonicon.gif");
+        = Use.createImageIcon("capslockonicon.gif");
     static final public ImageIcon applicationIcon
-            = Use.createImageIcon("applicationicon.png");
+        = Use.createImageIcon("applicationicon.png");
 
     // Fonts
     static final public Font defaultLabelFont
-            = new Font("SansSerif", Font.PLAIN, 11);
+        = new Font("SansSerif", Font.PLAIN, 11);
     static final public Font biggerLabelFont
-            = new Font("SansSerif", Font.PLAIN, 12);
+        = new Font("SansSerif", Font.PLAIN, 12);
 
     // Calculated constants.
     static public int getBoardHeight() {

@@ -9,10 +9,18 @@ a.sup {
     font-size: 50%;
     font-weight: normal;
 }
-a:link {color: rgb(0,64,128)}
-a:visited {color: rgb(0,64,128)}
-a:hover {color: rgb(0,0,0)}
-a:active {color: rgb(0,0,0)}
+a:link {
+    color: rgb(0,64,128)
+}
+a:visited {
+    color: rgb(0,64,128)
+}
+a:hover {
+    color: rgb(0,0,0)
+}
+a:active {
+    color: rgb(0,0,0)
+}
 
 table {
     background-color: rgb(255,255,255);

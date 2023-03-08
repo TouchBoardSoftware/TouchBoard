@@ -8,7 +8,7 @@ import com.jgoodies.forms.layout.*;
 import com.tb.tbUtilities.*;
 
 public class BoardManager implements
-        MouseWatcher.HoverListener, MouseWatcher.AfterHoverListener {
+    MouseWatcher.HoverListener, MouseWatcher.AfterHoverListener {
 
     public static final int minimumWindowWidthForOS = 80;
     private static final int minimumDesiredWindowWidth = 80;
@@ -70,7 +70,7 @@ public class BoardManager implements
      * Constructor
      */
     public BoardManager(JFrame aParentFrame, MainPanel aMainPanel,
-            JPanel aContentPanel) {
+        JPanel aContentPanel) {
 
         // Copy our constructor arguments to internal storage.
         parentFrame = aParentFrame;
@@ -84,11 +84,11 @@ public class BoardManager implements
                 String ok = "OK";
                 String readIntroduction = "Read Introduction";
                 String result = Frames.showOptions(
-                        "Please click on a target application before hovering over a TouchBoard key.\n"
-                        + "Also be sure to hover over, not click on, TouchBoard keys.\n"
-                        + "If you would like an introduction to using TouchBoard, click \"Read Introduction\".",
-                        "", ok, JOptionPane.INFORMATION_MESSAGE,
-                        ok, readIntroduction, null);
+                    "Please click on a target application before hovering over a TouchBoard key.\n"
+                    + "Also be sure to hover over, not click on, TouchBoard keys.\n"
+                    + "If you would like an introduction to using TouchBoard, click \"Read Introduction\".",
+                    "", ok, JOptionPane.INFORMATION_MESSAGE,
+                    ok, readIntroduction, null);
                 if (result.equals(readIntroduction)) {
                     BrowserLaunch.openURL(Constants.helpURL);
                 }
@@ -133,8 +133,8 @@ public class BoardManager implements
         clickTargetLabel.setBackground(Color.blue);
         clickTargetLabel.setForeground(Color.white);
         clickTargetLabel.setText(
-                "<html>&nbsp;Click the<br>&nbsp;target<br>&nbsp;program,<br>"
-                + "&nbsp;or click<br>&nbsp;here for<br>&nbsp;help.</html>");
+            "<html>&nbsp;Click the<br>&nbsp;target<br>&nbsp;program,<br>"
+            + "&nbsp;or click<br>&nbsp;here for<br>&nbsp;help.</html>");
 
         if (lastEditHover == 1) {
             editButtonLabel.setIcon(Constants.editButtonIconGreen);
@@ -160,32 +160,32 @@ public class BoardManager implements
         for (int i = 0; i < 5; ++i) {
             if ((i % 2) == 0) {
                 toolbarColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                        Sizes.pixel(16), ColumnSpec.NO_GROW));
+                    Sizes.pixel(16), ColumnSpec.NO_GROW));
             } else {
                 toolbarColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                        Sizes.pixel(1), ColumnSpec.NO_GROW));
+                    Sizes.pixel(1), ColumnSpec.NO_GROW));
             }
         }
 
         // Build toolbar row specifications.
         ArrayList<RowSpec> toolbarRows = new ArrayList<>();
         toolbarRows.add(new RowSpec(RowSpec.FILL,
-                Sizes.pixel(21), RowSpec.NO_GROW));
+            Sizes.pixel(21), RowSpec.NO_GROW));
 
         // Set the toolbar panel layout manager.
         toolBarPanel.setLayout(new FormLayout(
-                toolbarColumns.toArray(new ColumnSpec[0]),
-                toolbarRows.toArray(new RowSpec[0])));
+            toolbarColumns.toArray(new ColumnSpec[0]),
+            toolbarRows.toArray(new RowSpec[0])));
 
         // Set the toolbar border.
         if (areAnyBoardsDisplayed()) {
             toolBarPanel.setBorder(
-                    BorderFactory.createMatteBorder(
-                            2, 2, 2, 2, new Color(192, 192, 192)));
+                BorderFactory.createMatteBorder(
+                    2, 2, 2, 2, new Color(192, 192, 192)));
         } else {
             toolBarPanel.setBorder(
-                    BorderFactory.createMatteBorder(
-                            2, 1, 2, 1, new Color(192, 192, 192)));
+                BorderFactory.createMatteBorder(
+                    2, 1, 2, 1, new Color(192, 192, 192)));
         }
 
         // Add the toolbar buttons
@@ -202,26 +202,26 @@ public class BoardManager implements
         managerWidth = 0;
         if (areAnyBoardsDisplayed()) {
             managerColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                    Sizes.pixel(Constants.borderThickness), ColumnSpec.NO_GROW));
+                Sizes.pixel(Constants.borderThickness), ColumnSpec.NO_GROW));
             managerWidth += Constants.borderThickness;
         } else {
             managerColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                    Sizes.pixel(1), ColumnSpec.NO_GROW));
+                Sizes.pixel(1), ColumnSpec.NO_GROW));
             managerWidth += 1;
         }
         managerColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                Sizes.pixel(quickShowWidth), ColumnSpec.NO_GROW));
+            Sizes.pixel(quickShowWidth), ColumnSpec.NO_GROW));
         managerWidth += quickShowWidth;
         managerColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                Sizes.pixel(lockWidth), ColumnSpec.NO_GROW));
+            Sizes.pixel(lockWidth), ColumnSpec.NO_GROW));
         managerWidth += lockWidth;
         if (areAnyBoardsDisplayed()) {
             managerColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                    Sizes.pixel(Constants.borderThickness), ColumnSpec.NO_GROW));
+                Sizes.pixel(Constants.borderThickness), ColumnSpec.NO_GROW));
             managerWidth += Constants.borderThickness;
         } else {
             managerColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                    Sizes.pixel(1), ColumnSpec.NO_GROW));
+                Sizes.pixel(1), ColumnSpec.NO_GROW));
             managerWidth += 1;
         }
 
@@ -261,22 +261,22 @@ public class BoardManager implements
         if (showClickTargetLabel) {
             int clickTargetLabelGap = 10;
             managerRows.add(new RowSpec(
-                    RowSpec.FILL, Sizes.pixel(clickTargetLabelGap), RowSpec.NO_GROW));
+                RowSpec.FILL, Sizes.pixel(clickTargetLabelGap), RowSpec.NO_GROW));
             managerHeight += clickTargetLabelGap;
 
             managerRows.add(new RowSpec(
-                    RowSpec.FILL, Sizes.pixel(clickTargetLabelHeight), RowSpec.NO_GROW));
+                RowSpec.FILL, Sizes.pixel(clickTargetLabelHeight), RowSpec.NO_GROW));
             managerHeight += clickTargetLabelHeight;
 
             managerRows.add(
-                    new RowSpec(RowSpec.FILL, Sizes.pixel(clickTargetLabelGap), RowSpec.NO_GROW));
+                new RowSpec(RowSpec.FILL, Sizes.pixel(clickTargetLabelGap), RowSpec.NO_GROW));
             managerHeight += clickTargetLabelGap;
         }
 
         // Set the board manager panel layout manager.
         managerPanel.setLayout(new FormLayout(
-                managerColumns.toArray(new ColumnSpec[0]),
-                managerRows.toArray(new RowSpec[0])));
+            managerColumns.toArray(new ColumnSpec[0]),
+            managerRows.toArray(new RowSpec[0])));
 
         // Place Tool Bar Panel
         managerPanel.add(toolBarPanel, cc.xywh(1, 1, 4, 2));
@@ -297,7 +297,7 @@ public class BoardManager implements
         // Place Close All Boards Label
         if (areAnyBoardsDisplayed()) {
             managerPanel.add(closeAllBoardsLabel,
-                    cc.xywh(2, ((openBoards.size() * 2) + 4), 2, 1));
+                cc.xywh(2, ((openBoards.size() * 2) + 4), 2, 1));
         }
 
         // Place Click Target Label
@@ -309,7 +309,7 @@ public class BoardManager implements
                 yPosition = 7;
             }
             managerPanel.add(clickTargetLabel,
-                    cc.xywh(2, ((openBoards.size() * 2) + yPosition), 2, 1));
+                cc.xywh(2, ((openBoards.size() * 2) + yPosition), 2, 1));
         }
 
         // ARRANGE THE CONTENT PANEL
@@ -317,9 +317,9 @@ public class BoardManager implements
         Color menuBGColor = Main.getMainPanel().getMenuPanelBackgroundColor();
         int amountDarker = 20;
         Color myContentBGColor = new Color(
-                menuBGColor.getRed() - amountDarker,
-                menuBGColor.getGreen() - amountDarker,
-                menuBGColor.getBlue() - amountDarker);
+            menuBGColor.getRed() - amountDarker,
+            menuBGColor.getGreen() - amountDarker,
+            menuBGColor.getBlue() - amountDarker);
         contentPanel.setBackground(myContentBGColor);
         contentPanel.setOpaque(true);
 
@@ -338,34 +338,34 @@ public class BoardManager implements
                 // Get the width.
                 int width = openBoards.get(i).getWidth();
                 contentColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                        Sizes.pixel(width), ColumnSpec.NO_GROW));
+                    Sizes.pixel(width), ColumnSpec.NO_GROW));
                 contentPanelWidth += width;
 
                 // and one for inter-board gap.
                 contentColumns.add(new ColumnSpec(ColumnSpec.FILL,
-                        Sizes.pixel(1), ColumnSpec.NO_GROW));
+                    Sizes.pixel(1), ColumnSpec.NO_GROW));
                 contentPanelWidth += 1;
             }
         }
 
         // Add a column for the board manager.
         contentColumns.add(new ColumnSpec(ColumnSpec.RIGHT,
-                Sizes.pixel(getManagerWidth()), ColumnSpec.DEFAULT_GROW));
+            Sizes.pixel(getManagerWidth()), ColumnSpec.DEFAULT_GROW));
         contentPanelWidth += getManagerWidth();
 
         // Build the content panel row specifications.
         ArrayList<RowSpec> contentRows = new ArrayList<>();
         contentRows.add(new RowSpec(RowSpec.FILL,
-                Sizes.pixel(getManagerHeight()), RowSpec.NO_GROW));
+            Sizes.pixel(getManagerHeight()), RowSpec.NO_GROW));
 
         contentRows.add(new RowSpec(RowSpec.FILL,
-                Sizes.pixel(getContentPanelHeight() - getManagerHeight()),
-                RowSpec.NO_GROW));
+            Sizes.pixel(getContentPanelHeight() - getManagerHeight()),
+            RowSpec.NO_GROW));
 
         // Set the content panel layout manager.
         contentPanel.setLayout(new FormLayout(
-                contentColumns.toArray(new ColumnSpec[0]),
-                contentRows.toArray(new RowSpec[0])));
+            contentColumns.toArray(new ColumnSpec[0]),
+            contentRows.toArray(new RowSpec[0])));
 
         // add managerPanel to the contentPanel
         contentPanel.add(managerPanel, cc.xy(((numberOfDisplayedBoards() * 2) + 1), 1));
@@ -375,7 +375,7 @@ public class BoardManager implements
         for (int i = 0; i < openBoards.size(); ++i) {
             if (openBoards.get(i).isDisplayed()) {
                 contentPanel.add(openBoards.get(i),
-                        cc.xywh(displayedBoardColumn, 1, 1, 2));
+                    cc.xywh(displayedBoardColumn, 1, 1, 2));
                 displayedBoardColumn += 2;
             }
         }
@@ -385,7 +385,7 @@ public class BoardManager implements
         newWidth = Math.max(newWidth, minimumWindowWidthForOS);
         newWidth = Math.max(newWidth, minimumDesiredWindowWidth);
         int newHeight = getContentPanelHeight() + mainPanel.getTopControlsHeight()
-                + mainPanel.getTopBottomInsets();
+            + mainPanel.getTopBottomInsets();
         int newX = parentFrame.getX() + oldWidth - newWidth;
         int screenWidth = Frames.getScreenSize().width;
         int maximumX = screenWidth - 15;
@@ -440,22 +440,22 @@ public class BoardManager implements
     // This is called when we receive a hover event on the board manager.
     @Override
     public void mouseWatcherHover(Point mouseScreenLocation,
-            Point relativeLocation, Component relativeTo) {
+        Point relativeLocation, Component relativeTo) {
 
         // Create array of all components in manager panel except for
         // quick show labels and locks.
         Component[] managerPanelComponents
-                = {minimizeLabel, editButtonLabel, capslockLabel, closeAllBoardsLabel};
+            = {minimizeLabel, editButtonLabel, capslockLabel, closeAllBoardsLabel};
 
         // Check to see if any of these components was the one with the
         // hover event.
         int managerPanelIndex = MouseWatcher.getIndexOfComponentContainingMouse(
-                mouseScreenLocation, managerPanelComponents);
+            mouseScreenLocation, managerPanelComponents);
 
         // If nothing was found, check the quick show and locked state labels.
         if (managerPanelIndex == -1) {
             boolean foundControlLabel = checkQuickShowAndLockStateLabels(
-                    mouseScreenLocation);
+                mouseScreenLocation);
             if (!foundControlLabel) {
                 // No valid hover component was found...
                 // Tell Mousewatcher to skip after hover events.
@@ -503,7 +503,7 @@ public class BoardManager implements
 
     private void capsLockChange() {
         Main.getCommandCenter().setCapslock(Use.toggleBoolean(
-                Main.getCommandCenter().getCapslock()));
+            Main.getCommandCenter().getCapslock()));
     }
 
     /**
@@ -515,10 +515,10 @@ public class BoardManager implements
         // Loop through all the open boards.
         for (Board board : openBoards) {
             if (MouseWatcher.isMouseInsideComponent(
-                    mouseScreenLocation, board.quickShowLabel)) {
+                mouseScreenLocation, board.quickShowLabel)) {
                 if (lastEditHover == 1) {
                     BoardNewEditPanel.go(BoardNewEditPanel.PanelType.EDIT_BOARD,
-                            board);
+                        board);
                     return true;
                 }
                 if (board.quickShow == true) {
@@ -532,7 +532,7 @@ public class BoardManager implements
             }
 
             if (MouseWatcher.isMouseInsideComponent(
-                    mouseScreenLocation, board.lockStateLabel)) {
+                mouseScreenLocation, board.lockStateLabel)) {
                 if (board.lockedOpen == true) {
                     board.lockedOpen = false;
                 } else {
@@ -595,7 +595,7 @@ public class BoardManager implements
      * Open a board. Return true for success, or false.
      */
     public boolean openBoard(
-            boolean appendCWD, String restOfPath, String fileName) {
+        boolean appendCWD, String restOfPath, String fileName) {
         Board board = Board.load(appendCWD, restOfPath, fileName);
         if (board == null) {
             return false;
@@ -613,7 +613,7 @@ public class BoardManager implements
     public String[] getOpenBoardNamesExceptClips() {
         ArrayList<String> array = new ArrayList<>();
         for (int i = firstBoardIndexAfterClips;
-                i < openBoards.size(); ++i) {
+            i < openBoards.size(); ++i) {
             array.add(openBoards.get(i).name());
         }
         return array.toArray(new String[]{});
@@ -634,25 +634,25 @@ public class BoardManager implements
         // Write default board file names, without any directories.
         Integer propertyNumber = Constants.firstDefaultsFilePropertyNumber;
         for (Integer index = firstBoardIndexAfterClips;
-                index < openBoards.size(); ++index) {
+            index < openBoards.size(); ++index) {
             properties.setProperty(propertyNumber.toString(),
-                    openBoards.get(index).fileName);
+                openBoards.get(index).fileName);
             ++propertyNumber;
         }
         Use.savePropertiesFile(properties,
-                "Default boards, opened on program start.",
-                true, Constants.defaultBoardsFileName);
+            "Default boards, opened on program start.",
+            true, Constants.defaultBoardsFileName);
     }
 
     void loadDefaultBoards() {
         // Try to load defaults list from the file.
         Properties defaultsList = Use.loadPropertiesFile(
-                true, Constants.defaultBoardsFileName);
+            true, Constants.defaultBoardsFileName);
         if (defaultsList == null) {
             return;
         }
         for (Integer i = Constants.firstDefaultsFilePropertyNumber;
-                i <= Constants.maximumBoardFile; ++i) {
+            i <= Constants.maximumBoardFile; ++i) {
             String fileName = defaultsList.getProperty(i.toString());
             if (fileName != null) {
                 Board board = Board.load(true, fileName, fileName);
@@ -689,16 +689,16 @@ public class BoardManager implements
         // Get old Clipboard contents.
         String oldClipboard = ClipboardTools.getClipboard();
         oldClipboard = (oldClipboard == null)
-                ? "HopefullyUnmatchableString-Q2D4#fHI^UTY" : oldClipboard;
+            ? "HopefullyUnmatchableString-Q2D4#fHI^UTY" : oldClipboard;
 
         // Press Meta-C on mac.
         if (Use.isSystemMac()) {
             Main.getCommandCenter().pressNestedKeyCombination(
-                    new int[]{KeyEvent.VK_META, KeyEvent.VK_C});
+                new int[]{KeyEvent.VK_META, KeyEvent.VK_C});
         } else {
             // Press Ctrl-C on windows, linux, and everything else.
             Main.getCommandCenter().pressNestedKeyCombination(
-                    new int[]{KeyEvent.VK_CONTROL, KeyEvent.VK_C});
+                new int[]{KeyEvent.VK_CONTROL, KeyEvent.VK_C});
         }
 
         // Wait for a clipboard change for up to 500 miliseconds.
@@ -713,8 +713,8 @@ public class BoardManager implements
         // Do nothing for a null or empty clipboard.
         if (newClipboard == null || newClipboard.isEmpty()) {
             Frames.message("There is no text to copy. Please select some text\n"
-                    + "in your target application before hovering over the\n"
-                    + "Add Clip key.");
+                + "in your target application before hovering over the\n"
+                + "Add Clip key.");
             return;
         }
 
@@ -761,15 +761,15 @@ public class BoardManager implements
             oldLockedOpen = openBoards.get(0).lockedOpen;
         }
         Board clips = new Board("Clips", Constants.clipsBoardFileName,
-                1, false, 100, Constants.defaultBoardBorderColor,
-                Constants.defaultKeyBackgroundColor, Constants.defaultKeyTextColor);
+            1, false, 100, Constants.defaultBoardBorderColor,
+            Constants.defaultKeyBackgroundColor, Constants.defaultKeyTextColor);
         clips.quickShow = oldQuickShow;
         clips.lockedOpen = oldLockedOpen;
         clips.autoSize = true;
         clips.keys[0][0].setText("Add Clip");
         clips.keys[0][0].contents = "[addclip][parse]";
         clips.keys[0][0].setBackgroundColor(
-                Constants.defaultQuickShowBackgroundColor);
+            Constants.defaultQuickShowBackgroundColor);
         clips.keys[0][0].setHorizontalAlignment(JLabel.CENTER);
         clips.save();
         addOrReplaceClipsBoard(clips);
@@ -798,7 +798,7 @@ public class BoardManager implements
 
         // Add hover listener.
         Main.getMouseWatcher().addHoverListener(
-                new MouseWatcher.HoverPackage(clips, clips));
+            new MouseWatcher.HoverPackage(clips, clips));
 
         // Set the clips indicator variables.
         setClipsOpenIndicatorsAndMenuItems(true);
@@ -853,21 +853,21 @@ public class BoardManager implements
         openBoards.add(board);
         // Add hover listener.
         Main.getMouseWatcher().addHoverListener(
-                new MouseWatcher.HoverPackage(board, board));
+            new MouseWatcher.HoverPackage(board, board));
 
         arrangeAll();
     }
 
     public void removeBoard(int index) {
         if (index < firstBoardIndexAfterClips
-                || index >= openBoards.size()) {
+            || index >= openBoards.size()) {
             return;
         }
         openBoards.get(index).save();
 
         // Remove hover listener.
         Main.getMouseWatcher().removeBoardFromHoverListeners(
-                openBoards.get(index));
+            openBoards.get(index));
 
         openBoards.remove(index);
         arrangeAll();
@@ -916,7 +916,7 @@ public class BoardManager implements
 
         // Remove hover listener.
         Main.getMouseWatcher().removeBoardFromHoverListeners(
-                openBoards.get(0));
+            openBoards.get(0));
 
         // Remove the clips board.
         openBoards.remove(0);
@@ -927,7 +927,7 @@ public class BoardManager implements
     }
 
     private void setClipsOpenIndicatorsAndMenuItems(
-            boolean setIndicateClipsOpen) {
+        boolean setIndicateClipsOpen) {
         isClipsOpen = setIndicateClipsOpen;
         firstBoardIndexAfterClips = (isClipsOpen ? 1 : 0);
         Options.setOpenClips(isClipsOpen);

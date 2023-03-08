@@ -10,7 +10,7 @@ import com.tb.tbUtilities.BrowserLaunch;
 import com.tb.tbUtilities.Frames;
 
 public class WelcomeDialog
-        extends JDialog {
+    extends JDialog {
 
     public WelcomeDialog() {
         initComponents();
@@ -34,7 +34,7 @@ public class WelcomeDialog
 
             public void windowClosing(WindowEvent e) {
                 Frames.message("Please click one of the buttons below\n"
-                        + "to close this window.");
+                    + "to close this window.");
             }
         });
 
@@ -64,33 +64,33 @@ public class WelcomeDialog
         setTitle("Welcome");
         Container contentPane = getContentPane();
         contentPane.setLayout(new FormLayout(
-                "default:grow",
-                "fill:default:grow"));
+            "default:grow",
+            "fill:default:grow"));
 
         //======== panel ========
         {
             panel.setBackground(new Color(0, 204, 255));
             panel.setLayout(new FormLayout(
-                    new ColumnSpec[]{
-                        FormFactory.UNRELATED_GAP_COLSPEC,
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                        FormFactory.PREF_COLSPEC,
-                        FormFactory.RELATED_GAP_COLSPEC,
-                        FormFactory.PREF_COLSPEC,
-                        FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
-                        FormFactory.PREF_COLSPEC,
-                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                        FormFactory.UNRELATED_GAP_COLSPEC
-                    },
-                    new RowSpec[]{
-                        FormFactory.UNRELATED_GAP_ROWSPEC,
-                        new RowSpec(RowSpec.FILL, Sizes.PREFERRED, FormSpec.DEFAULT_GROW),
-                        FormFactory.RELATED_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.RELATED_GAP_ROWSPEC,
-                        FormFactory.DEFAULT_ROWSPEC,
-                        FormFactory.UNRELATED_GAP_ROWSPEC
-                    }));
+                new ColumnSpec[]{
+                    FormFactory.UNRELATED_GAP_COLSPEC,
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                    FormFactory.PREF_COLSPEC,
+                    FormFactory.RELATED_GAP_COLSPEC,
+                    FormFactory.PREF_COLSPEC,
+                    FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
+                    FormFactory.PREF_COLSPEC,
+                    new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                    FormFactory.UNRELATED_GAP_COLSPEC
+                },
+                new RowSpec[]{
+                    FormFactory.UNRELATED_GAP_ROWSPEC,
+                    new RowSpec(RowSpec.FILL, Sizes.PREFERRED, FormSpec.DEFAULT_GROW),
+                    FormFactory.RELATED_GAP_ROWSPEC,
+                    FormFactory.DEFAULT_ROWSPEC,
+                    FormFactory.RELATED_GAP_ROWSPEC,
+                    FormFactory.DEFAULT_ROWSPEC,
+                    FormFactory.UNRELATED_GAP_ROWSPEC
+                }));
             ((FormLayout) panel.getLayout()).setColumnGroups(new int[][]{{3, 5, 7}});
 
             //======== scrollPane ========
@@ -106,12 +106,12 @@ public class WelcomeDialog
             {
                 checkBoxPanel.setBackground(new Color(0, 204, 255));
                 checkBoxPanel.setLayout(new FormLayout(
-                        new ColumnSpec[]{
-                            new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
-                            FormFactory.RELATED_GAP_COLSPEC,
-                            new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-                        },
-                        RowSpec.decodeSpecs("default")));
+                    new ColumnSpec[]{
+                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW),
+                        FormFactory.RELATED_GAP_COLSPEC,
+                        new ColumnSpec(ColumnSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
+                    },
+                    RowSpec.decodeSpecs("default")));
 
                 //---- doNotShowCheckBox ----
                 doNotShowCheckBox.setText("Do not show this again");
@@ -142,13 +142,13 @@ public class WelcomeDialog
      */
     private void insertEditorText() {
         editorPane.setText(
-                "\nWelcome to TouchBoard! \n\n"
-                + "TouchBoard allows you to type text without touching your \n"
-                + "keyboard or clicking your mouse. Controlling TouchBoard is pretty \n"
-                + "easy, but it is done in a very different way from other programs. \n"
-                + "If you are a new user, you will want to read the introduction section \n"
-                + "of the help file first. TouchBoard needs some explanation to make sense. \n\n"
-                + "Enjoy! :) \n");
+            "\nWelcome to TouchBoard! \n\n"
+            + "TouchBoard allows you to type text without touching your \n"
+            + "keyboard or clicking your mouse. Controlling TouchBoard is pretty \n"
+            + "easy, but it is done in a very different way from other programs. \n"
+            + "If you are a new user, you will want to read the introduction section \n"
+            + "of the help file first. TouchBoard needs some explanation to make sense. \n\n"
+            + "Enjoy! :) \n");
     }
 
     /**

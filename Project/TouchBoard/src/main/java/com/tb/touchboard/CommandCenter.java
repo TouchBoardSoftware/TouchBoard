@@ -31,13 +31,13 @@ public class CommandCenter {
     private int pauseTotalForKey = 0;
     private int pauseBetweenKeystrokes = 0;
     public int defaultPauseBetweenKeystrokes
-            = Options.getDefaultPauseBetweenKeystrokes();
+        = Options.getDefaultPauseBetweenKeystrokes();
     private final int pauseTotalLimit = 60 * 1000; // 60 seconds.
     private final int pauseInstanceLimit = 10 * 1000; // 10 seconds.
 
     /**
-     * Set this to true if a command contains an error. This boolean is used to
-     * stop processing of a key that contains command errors.
+     * Set this to true if a command contains an error. This boolean is used to stop processing of a
+     * key that contains command errors.
      */
     private boolean commandError = false;
 
@@ -78,7 +78,7 @@ public class CommandCenter {
                 } else {
                     // Check for a valid command.
                     String commandWithBrackets = getValidCommandSyntax(
-                            i, contents, key.getText());
+                        i, contents, key.getText());
 
                     // If the command was valid,
                     if (commandWithBrackets != null) {
@@ -326,7 +326,7 @@ public class CommandCenter {
     // Returns the command, including the braces, if the command is valid.
     // Returns null for invalid command syntax.
     private String getValidCommandSyntax(int openBracketIndex,
-            String contents, String keyTitle) {
+        String contents, String keyTitle) {
 
         // Rules:
         // A command must start with a [, and end with a ].
@@ -338,26 +338,26 @@ public class CommandCenter {
         int commandSizeLimit = 100;
 
         for (int i = characterAfterOpenBracket;
-                (i < contents.length()) && (closeBracketIndex == -1);
-                ++i) {
+            (i < contents.length()) && (closeBracketIndex == -1);
+            ++i) {
 
             // Check for command exceeding character limit.
             if ((i - openBracketIndex) > (commandSizeLimit + 1)) {
                 errorCommandNotClosed(
-                        contents.substring(openBracketIndex, i),
-                        keyTitle, commandSizeLimit);
+                    contents.substring(openBracketIndex, i),
+                    keyTitle, commandSizeLimit);
                 return null;
             }
 
             char c = contents.charAt(i);
             if (c == ' ' || c == '\t' || c == '\n' || c == '\r') {
                 errorCommandContainsWhitespace(
-                        contents.substring(openBracketIndex, i), keyTitle);
+                    contents.substring(openBracketIndex, i), keyTitle);
                 return null;
             }
             if (c == '[') {
                 errorCommandContainsLeftBracket(
-                        contents.substring(openBracketIndex, (i + 1)), keyTitle);
+                    contents.substring(openBracketIndex, (i + 1)), keyTitle);
                 return null;
             }
             if (c == ']') {
@@ -368,14 +368,14 @@ public class CommandCenter {
         // Check for valid close bracket index.
         if (closeBracketIndex == -1) {
             errorCommandNotClosed(
-                    contents.substring(openBracketIndex, contents.length()),
-                    keyTitle, commandSizeLimit);
+                contents.substring(openBracketIndex, contents.length()),
+                keyTitle, commandSizeLimit);
             return null;
         }
 
         // Get command with brackets.
         String commandWithBrackets
-                = contents.substring(openBracketIndex, closeBracketIndex + 1);
+            = contents.substring(openBracketIndex, closeBracketIndex + 1);
 
         // Check for empty command
         if (commandWithBrackets.equals("[]")) {
@@ -388,85 +388,85 @@ public class CommandCenter {
     }
 
     private void errorCommandContainsLeftBracket(
-            String commandString, String keyTitle) {
+        String commandString, String keyTitle) {
         commandError = true;
         Frames.message(
-                "Error, command: \"" + commandString + "\" in key \""
-                + keyTitle + "\" contains a left bracket '['."
-                + getBracketsExplanation());
+            "Error, command: \"" + commandString + "\" in key \""
+            + keyTitle + "\" contains a left bracket '['."
+            + getBracketsExplanation());
     }
 
     private void errorCommandContainsWhitespace(
-            String commandString, String keyTitle) {
+        String commandString, String keyTitle) {
         commandError = true;
         Frames.message(
-                "Error, command: \"" + commandString + "\" in key \""
-                + keyTitle + "\" contains a space, tab, or carriage return.\n"
-                + "Commands cannot contain any of these characters."
-                + getBracketsExplanation());
+            "Error, command: \"" + commandString + "\" in key \""
+            + keyTitle + "\" contains a space, tab, or carriage return.\n"
+            + "Commands cannot contain any of these characters."
+            + getBracketsExplanation());
     }
 
     private void errorCommandNotClosed(
-            String commandString, String keyTitle, int commandSizeLimit) {
+        String commandString, String keyTitle, int commandSizeLimit) {
         commandError = true;
         Frames.message(
-                "Error, command: \"" + commandString + "\" in key \""
-                + keyTitle + "\" is not closed.\n"
-                + "This is either because the command has no closing bracket ']',\n"
-                + "or because the command inside the brackets is longer than "
-                + commandSizeLimit + " characters."
-                + getBracketsExplanation());
+            "Error, command: \"" + commandString + "\" in key \""
+            + keyTitle + "\" is not closed.\n"
+            + "This is either because the command has no closing bracket ']',\n"
+            + "or because the command inside the brackets is longer than "
+            + commandSizeLimit + " characters."
+            + getBracketsExplanation());
     }
 
     private void errorEmptyCommand(String keyTitle) {
         commandError = true;
         Frames.message("Error, key \"" + keyTitle
-                + "\" contains a pair of empty brackets []."
-                + getBracketsExplanation());
+            + "\" contains a pair of empty brackets []."
+            + getBracketsExplanation());
     }
 
     private void errorInvalidKeyCode(
-            String commandWithBrackets, String keyCode) {
+        String commandWithBrackets, String keyCode) {
         commandError = true;
         Frames.message("In command: " + commandWithBrackets
-                + "\n\"" + keyCode + "\" is not a valid key code.\n\n"
-                + "See the help file for a list of valid key codes.");
+            + "\n\"" + keyCode + "\" is not a valid key code.\n\n"
+            + "See the help file for a list of valid key codes.");
     }
 
     private void errorParsingNumber(
-            String commandWithBrackets, String numberSection) {
+        String commandWithBrackets, String numberSection) {
         commandError = true;
         Frames.message("In command: " + commandWithBrackets
-                + "\n\"" + numberSection + "\" is not a valid number.\n"
-                + "Please type a positive number after the dot in this command.");
+            + "\n\"" + numberSection + "\" is not a valid number.\n"
+            + "Please type a positive number after the dot in this command.");
     }
 
     private void errorParsingPauseNumber(
-            String commandWithBrackets, String numberSection) {
+        String commandWithBrackets, String numberSection) {
         commandError = true;
         Frames.message("In command: " + commandWithBrackets
-                + "\n\"" + numberSection + "\" is not a valid number.\n"
-                + "Please type a positive number after the dot in this command.\n"
-                + "This number represents the amount of time that you wish to pause,\n"
-                + "in tenths of a second.");
+            + "\n\"" + numberSection + "\" is not a valid number.\n"
+            + "Please type a positive number after the dot in this command.\n"
+            + "This number represents the amount of time that you wish to pause,\n"
+            + "in tenths of a second.");
     }
 
     private void errorUnsupportedCommand(
-            String commandString, String keyTitle) {
+        String commandString, String keyTitle) {
         commandError = true;
         Frames.message("Error, command: \"" + commandString
-                + "\" in key \"" + keyTitle
-                + "\" is not a supported command.\n"
-                + "See help for a list of supported commands."
-                + getBracketsExplanation());
+            + "\" in key \"" + keyTitle
+            + "\" is not a supported command.\n"
+            + "See help for a list of supported commands."
+            + getBracketsExplanation());
     }
 
     private String getBracketsExplanation() {
         return "\n\n"
-                + "When [parse] is specified, brackets[] in key contents\n"
-                + "are reserved for use with commands only. If you wish to type a\n"
-                + "bracket character, please use the commands\n"
-                + "[leftbracket] or [rightbracket].";
+            + "When [parse] is specified, brackets[] in key contents\n"
+            + "are reserved for use with commands only. If you wish to type a\n"
+            + "bracket character, please use the commands\n"
+            + "[leftbracket] or [rightbracket].";
     }
 
     // Same as pressKey(int keyCode), but press multiple times.
@@ -529,15 +529,15 @@ public class CommandCenter {
     }
 
     private void typeDateTimeStamp(
-            String formatString, boolean lowercase, String keyTitle) {
+        String formatString, boolean lowercase, String keyTitle) {
         formatString = formatString.replace('_', ' ');
         SimpleDateFormat formatInstance;
         try {
             formatInstance = new SimpleDateFormat(formatString);
         } catch (IllegalArgumentException e) {
             Frames.message("Error, date_time_stamp format: \"" + formatString
-                    + "\" in key \"" + keyTitle + "\" is not valid.\n"
-                    + "See help for a list of supported date_time_stamp formats.");
+                + "\" in key \"" + keyTitle + "\" is not valid.\n"
+                + "See help for a list of supported date_time_stamp formats.");
             return;
         }
         DateFormatSymbols symbols = formatInstance.getDateFormatSymbols();
@@ -584,15 +584,14 @@ public class CommandCenter {
      * Returns the integer value of one of the virtual key code fields from the
      * java.awt.event.KeyEvent class.
      *
-     * This takes a string virtualKeyCode, representing one of the static public
-     * final int virtual key code fields from the KeyEvent class. This string
-     * can be in any case, and can optionally omit the "VK_" prefix.
+     * This takes a string virtualKeyCode, representing one of the static public final int virtual
+     * key code fields from the KeyEvent class. This string can be in any case, and can optionally
+     * omit the "VK_" prefix.
      *
-     * Example valid virtualKeyCode values: "VK_A", "vk_f3", "f3", "CONTROL",
-     * "vk_Control".
+     * Example valid virtualKeyCode values: "VK_A", "vk_f3", "f3", "CONTROL", "vk_Control".
      *
-     * Returns: the integer value of the virtual key code or null. A null return
-     * value probably means that the specified virtual key code does not exist.
+     * Returns: the integer value of the virtual key code or null. A null return value probably
+     * means that the specified virtual key code does not exist.
      */
     static public Integer getVirtualKeyValueFromString(String virtualKeyCode) {
         virtualKeyCode = virtualKeyCode.toUpperCase();
@@ -627,7 +626,7 @@ public class CommandCenter {
 
         // This string is our command without any brackets.
         String command = commandWithBrackets.substring(
-                1, (commandWithBrackets.length() - 1));
+            1, (commandWithBrackets.length() - 1));
 
         // Save original case string without brackets, for
         // case sensitive commands.
@@ -658,7 +657,7 @@ public class CommandCenter {
         // [up.x]
         if (command.startsWith("up.")) {
             String numberString = Use.safeSubstring(
-                    "up.".length(), command.length(), command);
+                "up.".length(), command.length(), command);
             Integer count = Use.getIntegerFromString(false, numberString);
             if (count != null) {
                 pressKey(KeyEvent.VK_UP, count);
@@ -671,7 +670,7 @@ public class CommandCenter {
         // [down.x]
         if (command.startsWith("down.")) {
             String numberString = Use.safeSubstring(
-                    "down.".length(), command.length(), command);
+                "down.".length(), command.length(), command);
             Integer count = Use.getIntegerFromString(false, numberString);
             if (count != null) {
                 pressKey(KeyEvent.VK_DOWN, count);
@@ -684,7 +683,7 @@ public class CommandCenter {
         // [left.x]
         if (command.startsWith("left.")) {
             String numberString = Use.safeSubstring(
-                    "left.".length(), command.length(), command);
+                "left.".length(), command.length(), command);
             Integer count = Use.getIntegerFromString(false, numberString);
             if (count != null) {
                 pressKey(KeyEvent.VK_LEFT, count);
@@ -697,7 +696,7 @@ public class CommandCenter {
         // [right.x]
         if (command.startsWith("right.")) {
             String numberString = Use.safeSubstring(
-                    "right.".length(), command.length(), command);
+                "right.".length(), command.length(), command);
             Integer count = Use.getIntegerFromString(false, numberString);
             if (count != null) {
                 pressKey(KeyEvent.VK_RIGHT, count);
@@ -710,7 +709,7 @@ public class CommandCenter {
         // [backspace.x]
         if (command.startsWith("backspace.")) {
             String numberString = Use.safeSubstring(
-                    "backspace.".length(), command.length(), command);
+                "backspace.".length(), command.length(), command);
             Integer count = Use.getIntegerFromString(false, numberString);
             if (count != null) {
                 pressKey(KeyEvent.VK_BACK_SPACE, count);
@@ -723,7 +722,7 @@ public class CommandCenter {
         // [delete.x]
         if (command.startsWith("delete.")) {
             String numberString = Use.safeSubstring(
-                    "delete.".length(), command.length(), command);
+                "delete.".length(), command.length(), command);
             Integer count = Use.getIntegerFromString(false, numberString);
             if (count != null) {
                 pressKey(KeyEvent.VK_DELETE, count);
@@ -761,9 +760,9 @@ public class CommandCenter {
         if (command.startsWith("date_time_stamp.")) {
             // Get format string in original case.
             String formatString = Use.safeSubstring(
-                    "date_time_stamp.".length(),
-                    commandOriginalCase.length(),
-                    commandOriginalCase);
+                "date_time_stamp.".length(),
+                commandOriginalCase.length(),
+                commandOriginalCase);
             typeDateTimeStamp(formatString, false, key.getText());
             return;
         }
@@ -772,9 +771,9 @@ public class CommandCenter {
         if (command.startsWith("date_time_stamp_lowercase.")) {
             // Get format string in original case.
             String formatString = Use.safeSubstring(
-                    "date_time_stamp_lowercase.".length(),
-                    commandOriginalCase.length(),
-                    commandOriginalCase);
+                "date_time_stamp_lowercase.".length(),
+                commandOriginalCase.length(),
+                commandOriginalCase);
             typeDateTimeStamp(formatString, true, key.getText());
             return;
         }
@@ -791,12 +790,12 @@ public class CommandCenter {
         // Maximum total for a key is pauseTotalLimit milliseconds.
         if (command.startsWith("pause.")) {
             String numberString = Use.safeSubstring(
-                    "pause.".length(), command.length(), command);
+                "pause.".length(), command.length(), command);
             Integer amount = Use.getIntegerFromString(false, numberString);
             if (amount != null) {
                 int amountInMilliseconds = amount * 100;
                 amountInMilliseconds = Use.clampInt(amountInMilliseconds,
-                        0, pauseInstanceLimit);
+                    0, pauseInstanceLimit);
                 if ((pauseTotalForKey + amountInMilliseconds) <= pauseTotalLimit) {
                     Use.mySleep(amountInMilliseconds);
                     pauseTotalForKey += amountInMilliseconds;
@@ -834,7 +833,7 @@ public class CommandCenter {
         // [press.key.key]
         if (command.startsWith("press.")) {
             String keyCodesString = Use.safeSubstring(
-                    "press.".length(), command.length(), command);
+                "press.".length(), command.length(), command);
             String[] keyCodeArray = keyCodesString.split("\\Q.\\E");
             for (String keyCode : keyCodeArray) {
                 Integer keyValue = getVirtualKeyValueFromString(keyCode);
@@ -851,7 +850,7 @@ public class CommandCenter {
         // [press_combination.key.key]
         if (command.startsWith("press_combination.")) {
             String keyCodesString = Use.safeSubstring(
-                    "press_combination.".length(), command.length(), command);
+                "press_combination.".length(), command.length(), command);
             String[] keyCodeArray = keyCodesString.split("\\Q.\\E");
             ArrayList<Integer> integerArray = new ArrayList<Integer>();
             for (String keyCode : keyCodeArray) {
@@ -870,7 +869,7 @@ public class CommandCenter {
         // [hold.onekey]
         if (command.startsWith("hold.")) {
             String keyCode = Use.safeSubstring(
-                    "hold.".length(), command.length(), command);
+                "hold.".length(), command.length(), command);
             Integer keyValue = getVirtualKeyValueFromString(keyCode);
             if (keyValue != null) {
                 hold(keyValue);
@@ -883,7 +882,7 @@ public class CommandCenter {
         // [release.onekey]
         if (command.startsWith("release.")) {
             String keyCode = Use.safeSubstring(
-                    "release.".length(), command.length(), command);
+                "release.".length(), command.length(), command);
             Integer keyValue = getVirtualKeyValueFromString(keyCode);
             if (keyValue != null) {
                 release(keyValue);

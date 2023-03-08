@@ -39,7 +39,7 @@ public class Main {
         System.setProperty("apple.awt.application.name", "TouchBoard");
         // This prevents an extra icon named 'Java' from appearing on the Mac dock.
         System.setProperty("apple.awt.UIElement", "true");
-        
+
         // This breaks us out of static mode, and also is the recommended way
         // to start a Java program.
         SwingUtilities.invokeLater(new Runnable() {
@@ -58,28 +58,28 @@ public class Main {
                 String javaVersion = System.getProperty("java.version");
                 if (!javaVersion.startsWith("1.8.")) {
                     String versionMessage
-                            = "Due to a known bug in later Java versions, (issue: JDK-8196030),\n"
-                            + "TouchBoard currently only runs properly in Java 8. (aka 'Java 1.8'.)\n"
-                            + "You are using Java version: " + javaVersion
-                            + "\n\n"
-                            + "Please restart TouchBoard using Java 8.\n"
-                            + "This can be done by 1) Installing a Java 8 JDK (if needed).\n"
-                            + "2) If on mac, launch TouchBoard with the applescript app that is\n"
-                            + "included in the TouchBoard folder. (Not by double clicking the jar.)\n"
-                            + "The applescript will look for and use Java 8 on your system.\n\n"
-                            + "On windows, you could launch TouchBoard with Java 8 with a batch file\n"
-                            + "or a double click. (A double click will only work if Java 8 is your\n"
-                            + "default Java version).\n"
-                            + "\n"
-                            + "Exiting program.";
+                        = "Due to a known bug in later Java versions, (issue: JDK-8196030),\n"
+                        + "TouchBoard currently only runs properly in Java 8. (aka 'Java 1.8'.)\n"
+                        + "You are using Java version: " + javaVersion
+                        + "\n\n"
+                        + "Please restart TouchBoard using Java 8.\n"
+                        + "This can be done by 1) Installing a Java 8 JDK (if needed).\n"
+                        + "2) If on mac, launch TouchBoard with the applescript app that is\n"
+                        + "included in the TouchBoard folder. (Not by double clicking the jar.)\n"
+                        + "The applescript will look for and use Java 8 on your system.\n\n"
+                        + "On windows, you could launch TouchBoard with Java 8 with a batch file\n"
+                        + "or a double click. (A double click will only work if Java 8 is your\n"
+                        + "default Java version).\n"
+                        + "\n"
+                        + "Exiting program.";
                     JOptionPane.showMessageDialog(null, versionMessage,
-                            "Java Version Requirement", JOptionPane.PLAIN_MESSAGE);
+                        "Java Version Requirement", JOptionPane.PLAIN_MESSAGE);
                     System.exit(0);
                 }
 
                 // Set default label font.
                 UIManager.put("Label.font",
-                        new FontUIResource(Constants.defaultLabelFont));
+                    new FontUIResource(Constants.defaultLabelFont));
 
                 // Create main window.
                 mainFrame = new JFrame("TB");
@@ -97,20 +97,20 @@ public class Main {
 
                 // Create board manager.
                 boardManager = new BoardManager(
-                        mainFrame, getMainPanel(), getMainPanel().getContentPanel());
+                    mainFrame, getMainPanel(), getMainPanel().getContentPanel());
 
                 // Create main menu.
                 myPopupMenu = new MyPopupMenu();
 
                 // Set up hover packages.
                 MouseWatcher.HoverPackage boardManagerHover
-                        = new MouseWatcher.HoverPackage(
-                                getBoardManager().getManagerPanel(), getBoardManager());
+                    = new MouseWatcher.HoverPackage(
+                        getBoardManager().getManagerPanel(), getBoardManager());
 
                 // Set up enter exit packages.
                 MouseWatcher.EnterExitPackage menuButtonEnterExit
-                        = new MouseWatcher.EnterExitPackage(
-                                getMainPanel().getMenuButton(), getMainPanel());
+                    = new MouseWatcher.EnterExitPackage(
+                        getMainPanel().getMenuButton(), getMainPanel());
 
                 // Create bindingFrames array.
                 JFrame[] bindingFrames = {mainFrame};
@@ -196,7 +196,7 @@ public class Main {
 
         // html content
         JEditorPane ep = new JEditorPane("text/html", "<html><body style=\"" + style + "\">" //
-                + Constants.aboutMessageText + "</body></html>");
+            + Constants.aboutMessageText + "</body></html>");
 
         // handle link events
         ep.addHyperlinkListener(new HyperlinkListener() {
@@ -216,8 +216,8 @@ public class Main {
 
         // show
         JOptionPane.showMessageDialog(null,
-                ep,
-                "About TouchBoard",
-                JOptionPane.INFORMATION_MESSAGE);
+            ep,
+            "About TouchBoard",
+            JOptionPane.INFORMATION_MESSAGE);
     }
 }

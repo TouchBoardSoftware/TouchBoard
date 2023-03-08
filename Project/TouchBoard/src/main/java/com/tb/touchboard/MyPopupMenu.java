@@ -165,12 +165,12 @@ public class MyPopupMenu implements PopupMenuListener {
 
             public void actionPerformed(ActionEvent e) {
                 String name = BoardListPanel.goFileBoards(
-                        "Open Board", "Open", true);
+                    "Open Board", "Open", true);
                 if (name == null) {
                     return;
                 }
                 boolean success = Main.getBoardManager().openBoard(
-                        true, name, name);
+                    true, name, name);
                 if (!success) {
                     Frames.message("Could not open board: \n" + name);
                 }
@@ -190,7 +190,7 @@ public class MyPopupMenu implements PopupMenuListener {
                     return;
                 }
                 BoardNewEditPanel.go(BoardNewEditPanel.PanelType.EDIT_BOARD,
-                        Main.getBoardManager().getBoard(index));
+                    Main.getBoardManager().getBoard(index));
             }
         });
 
@@ -215,7 +215,7 @@ public class MyPopupMenu implements PopupMenuListener {
                     return;
                 }
                 Integer index = BoardListPanel.goOpenBoards(
-                        "Close Board", "Close", false);
+                    "Close Board", "Close", false);
                 if (index == null) {
                     return;
                 }
@@ -232,8 +232,8 @@ public class MyPopupMenu implements PopupMenuListener {
                     return;
                 }
                 Option sure = Frames.showOptions("Close all boards?",
-                        "", Option.No, JOptionPane.QUESTION_MESSAGE,
-                        Option.Yes, Option.No, null);
+                    "", Option.No, JOptionPane.QUESTION_MESSAGE,
+                    Option.Yes, Option.No, null);
                 if (sure != Option.Yes) {
                     return;
                 }
@@ -246,10 +246,10 @@ public class MyPopupMenu implements PopupMenuListener {
 
             public void actionPerformed(ActionEvent e) {
                 Option sure = Frames.showOptions(
-                        "Set the current boards as the defaults?\n\n"
-                        + "The default boards are opened every time the program starts.",
-                        "", Option.No, JOptionPane.QUESTION_MESSAGE,
-                        Option.Yes, Option.No, null);
+                    "Set the current boards as the defaults?\n\n"
+                    + "The default boards are opened every time the program starts.",
+                    "", Option.No, JOptionPane.QUESTION_MESSAGE,
+                    Option.Yes, Option.No, null);
                 if (sure != Option.Yes) {
                     return;
                 }
@@ -290,16 +290,16 @@ public class MyPopupMenu implements PopupMenuListener {
                 String yesDontShow = "<html>Yes and<br>Don't Show<br>This Again</html>";
                 String cancel = "Cancel";
                 String continueClips = Frames.showOptions(
-                        "The clips board is an experimental feature. It does not currently\n"
-                        + "work on all operating systems. Specifically, the \"add clip\" key\n"
-                        + "does not add a new clip to the board on some computers.\n\n"
-                        + "There is a good chance that the clips board will work fine for you.\n"
-                        + "It was decided to keep this feature available in its experimental state,\n"
-                        + "since a lot of people could benefit from it.\n\n"
-                        + "Be sure to read the help file for instructions on how to use the \"add clip\" key.\n\n"
-                        + "Do you still wish to open the clips board?",
-                        "Experimental Feature", no, JOptionPane.QUESTION_MESSAGE,
-                        no, yes, yesDontShow, cancel);
+                    "The clips board is an experimental feature. It does not currently\n"
+                    + "work on all operating systems. Specifically, the \"add clip\" key\n"
+                    + "does not add a new clip to the board on some computers.\n\n"
+                    + "There is a good chance that the clips board will work fine for you.\n"
+                    + "It was decided to keep this feature available in its experimental state,\n"
+                    + "since a lot of people could benefit from it.\n\n"
+                    + "Be sure to read the help file for instructions on how to use the \"add clip\" key.\n\n"
+                    + "Do you still wish to open the clips board?",
+                    "Experimental Feature", no, JOptionPane.QUESTION_MESSAGE,
+                    no, yes, yesDontShow, cancel);
                 if (continueClips.equals(yes) || continueClips.equals(yesDontShow)) {
                     backedOut = false;
                 }
@@ -315,10 +315,10 @@ public class MyPopupMenu implements PopupMenuListener {
 
             public void actionPerformed(ActionEvent e) {
                 Option sure = Frames.showOptions(
-                        "Clear and Reset the clips board?\n\n"
-                        + "All current clips will be DELETED.",
-                        "", Option.No, JOptionPane.QUESTION_MESSAGE,
-                        Option.Yes, Option.No, null);
+                    "Clear and Reset the clips board?\n\n"
+                    + "All current clips will be DELETED.",
+                    "", Option.No, JOptionPane.QUESTION_MESSAGE,
+                    Option.Yes, Option.No, null);
                 if (sure != Option.Yes) {
                     return;
                 }
@@ -380,8 +380,8 @@ public class MyPopupMenu implements PopupMenuListener {
             public void actionPerformed(ActionEvent e) {
                 Main.getBoardManager().saveAllBoards();
                 Frames.message("The boards have been saved.\n\n"
-                        + "You can also set the default boards if desired, using the "
-                        + "\"Board\" menu\n ");
+                    + "You can also set the default boards if desired, using the "
+                    + "\"Board\" menu\n ");
             }
         });
 
