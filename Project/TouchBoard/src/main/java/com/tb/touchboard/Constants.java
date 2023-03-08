@@ -9,7 +9,7 @@ public class Constants {
     static final public boolean debug = false;
 
     // Project Version
-    static final public String version = "7.00";
+    static final public String version = "7-01";
 
     // URLs
     static String projectSite_ForHuman

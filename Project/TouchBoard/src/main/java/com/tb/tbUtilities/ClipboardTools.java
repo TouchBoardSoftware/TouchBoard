@@ -5,7 +5,7 @@ import java.awt.datatransfer.*;
 
 public class ClipboardTools {
 
-    public static String getClipboard() {
+    public static String getClipboard_OrNull() {
         try {
             // get the system clipboard.
             Clipboard systemClipboard = Toolkit.getDefaultToolkit()

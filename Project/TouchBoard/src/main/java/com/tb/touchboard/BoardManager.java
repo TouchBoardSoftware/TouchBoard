@@ -686,50 +686,30 @@ public class BoardManager implements
         // Get clips board
         Board clips = openBoards.get(0);
 
-        // Get old Clipboard contents.
-        String oldClipboard = ClipboardTools.getClipboard();
-        oldClipboard = (oldClipboard == null)
-            ? "HopefullyUnmatchableString-Q2D4#fHI^UTY" : oldClipboard;
-
-        // Press Meta-C on mac.
-        if (Use.isSystemMac()) {
-            Main.getCommandCenter().pressNestedKeyCombination(
-                new int[]{KeyEvent.VK_META, KeyEvent.VK_C});
-        } else {
-            // Press Ctrl-C on windows, linux, and everything else.
-            Main.getCommandCenter().pressNestedKeyCombination(
-                new int[]{KeyEvent.VK_CONTROL, KeyEvent.VK_C});
-        }
-
-        // Wait for a clipboard change for up to 500 miliseconds.
-        String newClipboard = ClipboardTools.getClipboard();
-        int waited = 0;
-        while ((oldClipboard.equals(newClipboard)) && (waited < 500)) {
-            Use.mySleep(50);
-            waited += 50;
-            newClipboard = ClipboardTools.getClipboard();
-        }
+        // Copy any currently selected text to the clipboard.
+        String clipboardOrNull = Main.getCommandCenter().getAnySelectedTextWithClipboard_OrNull();
 
         // Do nothing for a null or empty clipboard.
-        if (newClipboard == null || newClipboard.isEmpty()) {
+        if (clipboardOrNull == null || clipboardOrNull.isEmpty()) {
             Frames.message("There is no text to copy. Please select some text\n"
                 + "in your target application before hovering over the\n"
                 + "Add Clip key.");
             return;
         }
+        String clipboard = clipboardOrNull;
 
         // Make new clip key.
         moveClipsDownOne(clips);
         clips.keys[0][1] = new Key(clips);
-        clips.keys[0][1].contents = newClipboard;
+        clips.keys[0][1].contents = clipboard;
 
         // Create title string.
-        String titleString = newClipboard.trim();
+        String titleString = clipboard.trim();
         titleString = Use.safeSubstring(0, 10, titleString);
 
         // Handle html tag bug.
         if (titleString.toLowerCase().contains("<html>")) {
-            titleString = newClipboard.trim();
+            titleString = clipboard.trim();
             titleString = titleString.replace("<", "");
             titleString = titleString.replace(">", "");
             titleString = Use.safeSubstring(0, 10, titleString);

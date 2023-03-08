@@ -9,8 +9,15 @@ import javax.swing.*;
 public class Use {
 
     // Current working directory string.
-    static final public String workingDirectory
+    public static final String workingDirectory
         = System.getProperty("user.dir");
+
+    // These indicate what type of operating system is running.
+    public static final String operatingSystemString = System.getProperty("os.name");
+    public static final boolean isSystemMac
+        = operatingSystemString.toLowerCase().contains("mac");
+    public static final boolean isSystemWindows
+        = operatingSystemString.toLowerCase().contains("windows");
 
     /**
      * Constructor.
@@ -145,16 +152,6 @@ public class Use {
             variable = maximum;
         }
         return variable;
-    }
-
-    public static boolean isSystemWindows() {
-        String operatingSystem = System.getProperty("os.name");
-        return operatingSystem.toLowerCase().contains("windows");
-    }
-
-    public static boolean isSystemMac() {
-        String operatingSystem = System.getProperty("os.name");
-        return operatingSystem.toLowerCase().contains("mac");
     }
 
     public static void mySleep(int milliseconds) {

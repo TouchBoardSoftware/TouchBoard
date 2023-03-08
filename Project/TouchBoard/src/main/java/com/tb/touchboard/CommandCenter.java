@@ -1,5 +1,6 @@
 package com.tb.touchboard;
 
+import com.tb.tbUtilities.ClipboardTools;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import com.tb.tbUtilities.Frames;
 import com.tb.tbUtilities.Use;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  * This class runs board keys, and processes commands.
@@ -24,7 +26,7 @@ public class CommandCenter {
     private boolean shift = false;
 
     // Held key codes for a particular keys contents.
-    ArrayList<Integer> heldKeyCodes = new ArrayList<Integer>();
+    ArrayList<Integer> heldKeyCodes = new ArrayList<>();
 
     // This tracks the combined total amount of pause for a single key.
     // All pause amounts are specified in milliseconds.
@@ -48,8 +50,17 @@ public class CommandCenter {
         try {
             robot = new Robot();
         } catch (AWTException ex) {
-            /* TODO notify user that his system does now allow applications to send keystokes to other windows. */
-            ex.printStackTrace();
+            // The system is not allowing this application to control the keyboard.
+            JOptionPane.showMessageDialog(null,
+                "TouchBoard does not currently have permission to control the keyboard.\n"
+                + "TouchBoard is a virtual keyboard application, and will need this permission to\n"
+                + "function properly.\n\n"
+                + "On Mac systems, permission to control the keyboard will need to be given\n"
+                + "to any used launcher program, and not just to the TouchBoard jar file."
+                + "For any questions about setting up the keyboard permissions, the TouchBoard\n"
+                + "documentation and issue forums are available at:\n"
+                + "https://github.com/TouchBoardSoftware/TouchBoard \n", "",
+                JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -126,14 +137,14 @@ public class CommandCenter {
 
         // Obey capslock status.
         if (getCapslock()) {
-            c = ((Character) c).toUpperCase(c);
+            c = Character.toUpperCase(c);
         }
 
         // Obey shift status, capitalizes a single next character.
         // Other way of defining whitespace is:
         // (c != ' ') && (c != '\n') && (c != '\r') && (c != '\t')
         if (shift && (!Character.isWhitespace(c))) {
-            c = ((Character) c).toUpperCase(c);
+            c = Character.toUpperCase(c);
             setShift(false);
         }
 
@@ -590,16 +601,23 @@ public class CommandCenter {
      *
      * Example valid virtualKeyCode values: "VK_A", "vk_f3", "f3", "CONTROL", "vk_Control".
      *
+     * This function will also accept the special cross platform code "MYCONTROL". This code
+     * represents VK_META when running on a Mac, or VK_CONTROL when running on any other OS.
+     *
      * Returns: the integer value of the virtual key code or null. A null return value probably
      * means that the specified virtual key code does not exist.
      */
-    static public Integer getVirtualKeyValueFromString(String virtualKeyCode) {
-        virtualKeyCode = virtualKeyCode.toUpperCase();
-        if (!virtualKeyCode.startsWith("VK_")) {
-            virtualKeyCode = "VK_" + virtualKeyCode;
+    @SuppressWarnings("UseSpecificCatch")
+    public Integer getVirtualKeyValueFromString(String keyCode) {
+        keyCode = keyCode.toUpperCase();
+        if ("MYCONTROL".equals(keyCode)) {
+            return getOsSpecificControlKey();
+        }
+        if (!keyCode.startsWith("VK_")) {
+            keyCode = "VK_" + keyCode;
         }
         try {
-            return KeyEvent.class.getField(virtualKeyCode).getInt(null);
+            return KeyEvent.class.getField(keyCode).getInt(null);
         } catch (Exception e) {
             return null;
         }
@@ -616,7 +634,7 @@ public class CommandCenter {
     private void release(int keyCode) {
         try {
             robot.keyRelease(keyCode);
-            heldKeyCodes.remove(new Integer(keyCode));
+            heldKeyCodes.remove(Integer.valueOf(keyCode));
         } catch (Exception e) {
         }
     }
@@ -639,6 +657,21 @@ public class CommandCenter {
         // COMMAND TYPES
         // [parse]
         if (command.equals("parse")) {
+            return;
+        }
+
+        // [camelcase_that]
+        if (command.equals("camelcase_that")) {
+            String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+            // Do nothing for a null or empty clipboard.
+            if (clipboardOrNull == null || clipboardOrNull.isEmpty()) {
+                Frames.message("There is no selected text to make camel case. Please select some\n"
+                    + "text in your target application before using the 'camelcasethat' command.");
+                return;
+            }
+            String clipboard = clipboardOrNull;
+            String camelCasedText = convertToCamelCase(clipboard);
+            type(camelCasedText);
             return;
         }
 
@@ -852,7 +885,7 @@ public class CommandCenter {
             String keyCodesString = Use.safeSubstring(
                 "press_combination.".length(), command.length(), command);
             String[] keyCodeArray = keyCodesString.split("\\Q.\\E");
-            ArrayList<Integer> integerArray = new ArrayList<Integer>();
+            ArrayList<Integer> integerArray = new ArrayList<>();
             for (String keyCode : keyCodeArray) {
                 Integer keyValue = getVirtualKeyValueFromString(keyCode);
                 if (keyValue != null) {
@@ -894,6 +927,75 @@ public class CommandCenter {
 
         // If none of these cases caught the command, then it is not supported.
         errorUnsupportedCommand(commandWithBrackets, key.getText());
+    }
+
+    public final int getOsSpecificControlKey() {
+        return (Use.isSystemMac) ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
+    }
+
+    public final void pressOsSpecificControlCombo(int secondKey) {
+        pressNestedKeyCombination(new int[]{getOsSpecificControlKey(), secondKey});
+    }
+
+    public final String getAnySelectedTextWithClipboard_OrNull() {
+        // Empty the clipboard.
+        String emptyClipboard = "";
+        ClipboardTools.writeToClipboard(emptyClipboard);
+        Use.mySleep(50);
+        // Copy any selected text to the clipboard.
+        // Press Meta-C on mac, or Ctrl-C on windows, linux, and everything else.
+        pressOsSpecificControlCombo(KeyEvent.VK_C);
+        // Wait for a clipboard change for up to 1000 miliseconds.
+        String newClipboardOrNull = ClipboardTools.getClipboard_OrNull();
+        int waited = 0;
+        while ((emptyClipboard.equals(newClipboardOrNull)) && (waited < 1000)) {
+            Use.mySleep(50);
+            waited += 50;
+            newClipboardOrNull = ClipboardTools.getClipboard_OrNull();
+        }
+        // Return the retrieved clipboard text or null.
+        return newClipboardOrNull;
+    }
+
+    private String convertToCamelCase(String text) {
+        if (text == null) {
+            return null;
+        }
+        String result = "";
+        text = text.replace("\r", " ");
+        text = text.replace("\n", " ");
+        text = text.replace("\t", " ");
+        text = text.trim();
+        boolean didTextEndWithDot = text.endsWith(".");
+        String[] dotGroupArray = text.split("\\.");
+        int lastDotGroupIndex = (dotGroupArray.length - 1);
+        dotGroupLoop:
+        for (int dIdx = 0; dIdx < dotGroupArray.length; ++dIdx) {
+            String dotGroupText = dotGroupArray[dIdx].trim();
+            String[] tokenArray = dotGroupText.split(" ");
+            boolean isFirstPopulatedTokenInDotGroup = true;
+            tokenLoop:
+            for (int tIdx = 0; tIdx < tokenArray.length; ++tIdx) {
+                String token = tokenArray[tIdx].trim();
+                if (token.isEmpty()) {
+                    continue tokenLoop;
+                }
+                if (isFirstPopulatedTokenInDotGroup) {
+                    result += token.toLowerCase();
+                } else {
+                    result += String.valueOf(token.charAt(0)).toUpperCase()
+                        + Use.safeSubstring(1, token.length(), token).toLowerCase();
+                }
+                isFirstPopulatedTokenInDotGroup = false;
+            }
+            if (dIdx < lastDotGroupIndex) {
+                result += ".";
+            }
+        }
+        if (didTextEndWithDot && (!(result.endsWith(".")))) {
+            result += ".";
+        }
+        return result;
     }
 
 }

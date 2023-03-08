@@ -5,7 +5,7 @@
     <artifactId>TouchBoard</artifactId>
     <!-- Don't use a period in your version number. 
     It can cause problems with double click launching of the output jar. -->
-    <version>7</version>
+    <version>7-01</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
