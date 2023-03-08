@@ -4,11 +4,13 @@ import java.awt.Image;
 import javax.swing.*;
 import javax.swing.plaf.*;
 import com.tb.tbUtilities.*;
+import java.awt.Component;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.JOptionPane;
 
 /**
- * Entry point and initializer for the program. Also stores globally accessible
- * singleton classes.
+ * Entry point and initializer for the program. Also stores globally accessible singleton classes.
  */
 public class Main {
 
@@ -28,32 +30,39 @@ public class Main {
 
     /* Program entry point. */
     public static void main(String[] arguments) {
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", "TouchBoard");
+        System.setProperty("apple.awt.application.name", "TouchBoard");
 
         // This breaks us out of static mode, and also is the recommended way
         // to start a Java program.
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
 
                 // Enforce java 1.8
                 /**
-                 * Why: Java 17, at least in the Temurin platform, appears to
-                 * have a bug where TouchBoard cannot type capital letters while
-                 * the user is simultaneously moving the mouse pointer. The
-                 * letters are incorrectly typed lowercase if the mouse pointer
-                 * is in motion. However, this does not occur when TB is run
-                 * using Java 1.8 (aka Java 8).
+                 * Why: Java 17, at least in the Temurin platform, appears to have a bug where
+                 * TouchBoard cannot type capital letters while the user is simultaneously moving
+                 * the mouse pointer. The letters are incorrectly typed lowercase if the mouse
+                 * pointer is in motion. However, this does not occur when TB is run using Java 1.8
+                 * (aka Java 8).
                  */
                 String javaVersion = System.getProperty("java.version");
                 if (!javaVersion.startsWith("1.8.")) {
                     String versionMessage
-                            = "TouchBoard is currently only known to run "
-                          + "properly in Java version 1.8. (aka 'Java 8'.)\n"
+                            = "Due to a known bug in later Java versions, (issue: JDK-8196030),\n"
+                            + "TouchBoard currently only runs properly in Java 8. (aka 'Java 1.8'.)\n"
                             + "You are using Java version: " + javaVersion
                             + "\n\n"
-                            + "Please restart TouchBoard using Java 1.8.\n"
-                            + "This can be done with the applescript app that "
-                            + "should be included in the TouchBoard folder.\n"
+                            + "Please restart TouchBoard using Java 8.\n"
+                            + "This can be done by 1) Installing a Java 8 JDK (if needed).\n"
+                            + "2) If on mac, launch TouchBoard with the applescript app that is\n"
+                            + "included in the TouchBoard folder. (Not by double clicking the jar.)\n"
+                            + "The applescript will look for and use Java 8 on your system.\n\n"
+                            + "On windows, you could launch TouchBoard with Java 8 with a batch file\n"
+                            + "or a double click. (A double click will only work if Java 8 is your\n"
+                            + "default Java version).\n"
                             + "\n"
                             + "Exiting program.";
                     JOptionPane.showMessageDialog(null, versionMessage,
@@ -70,9 +79,13 @@ public class Main {
                 Frames.setMessageParent(mainFrame);
                 Image applicationIcon = Constants.applicationIcon.getImage();
                 mainFrame.setIconImage(applicationIcon);
+                mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                mainFrame.setAlwaysOnTop(true);
+                mainFrame.setResizable(false);
 
                 // Create main panel.
                 mainPanel = new MainPanel(mainFrame);
+                mainFrame.addWindowListener(mainPanel);
                 mainFrame.add(getMainPanel());
 
                 // Create board manager.

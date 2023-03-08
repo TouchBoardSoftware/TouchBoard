@@ -4,9 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-
-import com.jgoodies.forms.layout.*;
 import com.tb.tbUtilities.Frames;
+import net.miginfocom.swing.*;
 
 public class MainPanel extends JPanel implements
         MouseWatcher.EnterExitListener, MouseListener,
@@ -15,140 +14,78 @@ public class MainPanel extends JPanel implements
     /**
      * Creates a new instance of MainPanel
      */
+    @SuppressWarnings("LeakingThisInConstructor")
     public MainPanel(JFrame aParentWindow) {
         parentWindow = aParentWindow;
 
-        parentWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        parentWindow.setUndecorated(true);
-        parentWindow.setAlwaysOnTop(true);
-        parentWindow.setResizable(false);
-
         initComponents();
 
-        parentWindow.addWindowListener(this);
         parentWindow.addWindowFocusListener(this);
 
-        titleLabel.addMouseListener(this);
-        titleLabel.addMouseMotionListener(this);
-
         menuButton.addMouseListener(this);
-
-        closeButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                closeButtonActionPerformed(e);
-            }
-        });
 
         menuButton.addActionListener(
                 new java.awt.event.ActionListener() {
 
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Main.getMyPopupMenu().show(getMenuButton());
             }
         });
-
-        // Debug title color change.
-        if (Constants.debug) {
-            changeTitleBarColor(Color.magenta);
-        }
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY//GEN-BEGIN:initComponents
-        titlePanel = new JPanel();
-        titleLabel = new JLabel();
-        closeToolBar = new JToolBar();
-        closeButton = new JButton();
         menuPanel = new JPanel();
         menuButton = new JButton();
         contentPanel = new JPanel();
-        CellConstraints cc = new CellConstraints();
 
         //======== this ========
-        setBorder(new BevelBorder(BevelBorder.RAISED, Color.lightGray, null, Color.black, null));
-        setLayout(new FormLayout(
-                ColumnSpec.decodeSpecs("default:grow"),
-                new RowSpec[]{
-                    new RowSpec(RowSpec.FILL, Sizes.bounded(Sizes.DEFAULT, Sizes.dluY(12), Sizes.dluY(12)), FormSpec.NO_GROW),
-                    new RowSpec(RowSpec.FILL, Sizes.bounded(Sizes.DEFAULT, Sizes.dluY(12), Sizes.dluY(12)), FormSpec.NO_GROW),
-                    new RowSpec(RowSpec.FILL, Sizes.DEFAULT, FormSpec.DEFAULT_GROW)
-                }));
-
-        //======== titlePanel ========
-        {
-            titlePanel.setBackground(new Color(51, 153, 255));
-            titlePanel.setLayout(new FormLayout(
-                    "max(min;0dlu):grow, default",
-                    "fill:default:grow"));
-
-            //---- titleLabel ----
-            titleLabel.setText("TB");
-            titleLabel.setForeground(Color.white);
-            titleLabel.setBorder(null);
-            titlePanel.add(titleLabel, new CellConstraints(1, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(0, 3, 0, 0)));
-
-            //======== closeToolBar ========
-            {
-                closeToolBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-                closeToolBar.setFloatable(false);
-                closeToolBar.setPreferredSize(new Dimension(20, 20));
-                closeToolBar.setBorderPainted(false);
-                closeToolBar.setMinimumSize(new Dimension(16, 16));
-                closeToolBar.setBackground(new Color(51, 153, 255));
-                closeToolBar.setMargin(new Insets(1, 1, 1, 1));
-                closeToolBar.setBorder(null);
-                closeToolBar.setMaximumSize(new Dimension(20, 20));
-
-                //---- closeButton ----
-                closeButton.setText("x");
-                closeButton.setMinimumSize(new Dimension(16, 16));
-                closeButton.setPreferredSize(new Dimension(16, 16));
-                closeButton.setMaximumSize(new Dimension(16, 16));
-                closeButton.setHorizontalTextPosition(SwingConstants.CENTER);
-                closeButton.setFocusable(false);
-                closeButton.setBorder(new BevelBorder(BevelBorder.RAISED));
-                closeButton.setVerticalAlignment(SwingConstants.BOTTOM);
-                closeToolBar.add(closeButton);
-            }
-            titlePanel.add(closeToolBar, new CellConstraints(2, 1, 1, 1, CellConstraints.DEFAULT, CellConstraints.DEFAULT, new Insets(0, 0, 0, 1)));
-        }
-        add(titlePanel, cc.xy(1, 1));
+        setLayout(new MigLayout(
+                "insets 0,hidemode 3,gap 0 0",
+                // columns
+                "[grow,fill]",
+                // rows
+                "[20:n:20,fill]"
+                + "[grow,fill]"));
 
         //======== menuPanel ========
         {
-            menuPanel.setBorder(null);
-            menuPanel.setLayout(new FormLayout(
-                    "default, default:grow",
-                    "default"));
+            menuPanel.setLayout(new MigLayout(
+                    "insets 0,hidemode 3,gap 0 0",
+                    // columns
+                    "[fill]"
+                    + "[grow,fill]",
+                    // rows
+                    "[grow,fill]"));
 
             //---- menuButton ----
-            menuButton.setText("<html><small>&nbsp;Menu&nbsp;</small></html> ");
+            menuButton.setText("<html>&nbsp;Menu&nbsp;</html> ");
             menuButton.setBorder(new EmptyBorder(2, 2, 2, 2));
             menuButton.setFocusable(false);
             menuButton.setVerifyInputWhenFocusTarget(false);
             menuButton.setForeground(Color.darkGray);
             menuButton.setContentAreaFilled(false);
             menuButton.setRolloverEnabled(true);
-            menuPanel.add(menuButton, cc.xy(1, 1));
+            menuButton.setFont(new Font("Helvetica Neue", Font.PLAIN, 11));
+            menuPanel.add(menuButton, "cell 0 0");
         }
-        add(menuPanel, cc.xy(1, 2));
+        add(menuPanel, "cell 0 0");
 
         //======== contentPanel ========
         {
             contentPanel.setBackground(Color.white);
-            contentPanel.setLayout(new FormLayout(
-                    "default, default, default:grow",
-                    "fill:default, fill:default:grow, fill:default:grow"));
+            contentPanel.setLayout(new MigLayout(
+                    "insets 0,hidemode 3,gap 0 0",
+                    // columns
+                    "[grow,fill]",
+                    // rows
+                    "[grow,fill]"));
         }
-        add(contentPanel, cc.xy(1, 3));
+        add(contentPanel, "cell 0 1");
         // JFormDesigner - End of component initialization//GEN-END:initComponents
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY//GEN-BEGIN:variables
-    private JPanel titlePanel;
-    private JLabel titleLabel;
-    private JToolBar closeToolBar;
-    private JButton closeButton;
     private JPanel menuPanel;
     private JButton menuButton;
     private JPanel contentPanel;
@@ -157,60 +94,50 @@ public class MainPanel extends JPanel implements
     private Point dragMouseStartPoint;
     private Point dragWindowStartPoint;
     private JFrame parentWindow;
-    private BoardManager boardManager;
     private static KeyEditPanel keyEditPanel;
     private boolean mainPanelHasFocus;
 
-    private void closeButtonActionPerformed(ActionEvent event) {
-        exitProgram();
-    }
-
     // Unused mouse events.
+    @Override
     public void mouseClicked(MouseEvent event) {
     }
 
+    @Override
     public void mouseEntered(MouseEvent event) {
     }
 
+    @Override
     public void mouseExited(MouseEvent event) {
     }
 
+    @Override
     public void mouseDragged(MouseEvent event) {
     }
 
+    @Override
     public void mouseMoved(MouseEvent e) {
     }
 
     // Mouse pressed event.
+    @Override
     public void mousePressed(MouseEvent event) {
         if (event.getComponent() == menuButton) {
             menuButton.setBorder(
                     BorderFactory.createLoweredBevelBorder());
         }
-
-        if (event.getComponent() == titleLabel) {
-            windowDragging = true;
-            dragMouseStartPoint
-                    = MouseInfo.getPointerInfo().getLocation();
-            dragWindowStartPoint = new Point(
-                    parentWindow.getX(), parentWindow.getY());
-        }
     }
 
     // Mouse released event.
+    @Override
     public void mouseReleased(MouseEvent event) {
         if (event.getComponent() == menuButton) {
             menuButton.setBorder(
                     BorderFactory.createEmptyBorder(2, 2, 2, 2));
         }
-
-        if (event.getComponent() == titleLabel) {
-            windowDragging = false;
-        }
     }
 
     public int getTopControlsHeight() {
-        return titlePanel.getHeight() + menuPanel.getHeight();
+        return /* titlePanel.getHeight() + */ menuPanel.getHeight();
     }
 
     public JPanel getContentPanel() {
@@ -226,6 +153,7 @@ public class MainPanel extends JPanel implements
     }
 
     // Mouse enter event.
+    @Override
     public void mouseWatcherEntered(Component component) {
         if (component == menuButton) {
             menuButton.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -233,6 +161,7 @@ public class MainPanel extends JPanel implements
     }
 
     // Mouse exit event.
+    @Override
     public void mouseWatcherExited(Component component) {
         if (component == menuButton) {
             menuButton.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
@@ -244,39 +173,45 @@ public class MainPanel extends JPanel implements
     }
 
     /**
-     * windowOpened, Checks and sets the focus state when the main window first
-     * opens. This fixes a previous bug where focus state was not set correctly
-     * on startup.
+     * windowOpened, Checks and sets the focus state when the main window first opens. This fixes a
+     * previous bug where focus state was not set correctly on startup.
      */
+    @Override
     public void windowOpened(WindowEvent e) {
         windowLostFocus(null);
-        /*
-      if (parentWindow.isFocusOwner()) {
-      windowGainedFocus(null);
-      } else {
-      windowLostFocus(null);
-      }
-         */
+        parentWindow.setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Main.getBoardManager().arrangeAll();
+            }
+        });
     }
 
+    @Override
     public void windowActivated(WindowEvent e) {
     }
 
+    @Override
     public void windowDeactivated(WindowEvent e) {
     }
 
+    @Override
     public void windowIconified(WindowEvent event) {
         MouseWatcher.stopHoverCheck();
     }
 
+    @Override
     public void windowDeiconified(WindowEvent event) {
         MouseWatcher.startHoverCheck();
     }
 
+    @Override
     public void windowClosed(WindowEvent e) {
         exitProgram();
     }
 
+    @Override
     public void windowClosing(WindowEvent e) {
         exitProgram();
     }
@@ -289,26 +224,31 @@ public class MainPanel extends JPanel implements
         System.exit(0);
     }
 
+    @Override
     public void windowGainedFocus(WindowEvent e) {
         Frames.setMessageParent(parentWindow);
         MouseWatcher.setSkipHoverBlockersCheck(true);
         mainPanelHasFocus = true;
-        changeTitleBarColor(Color.blue);
+        Main.getBoardManager().arrangeAll();
     }
 
+    @Override
     public void windowLostFocus(WindowEvent e) {
         mainPanelHasFocus = false;
-        changeTitleBarColor(new Color(51, 153, 255));
+//        changeTitleBarColor(new Color(51, 153, 255));
         Main.getBoardManager().setClickTargetLabelShowing(false);
     }
 
     // Pick parentWindow bounds based on screen and window size.
     void setParentWindowInitialPosition() {
+        int startDistanceFromTop = 20;
+        int startDistanceFromRight = 34;
         Rectangle screenSize = Frames.getScreenSize();
         Rectangle oldBounds = parentWindow.getBounds();
+        int oldWidth = Math.max(oldBounds.width, BoardManager.minimumWindowWidthForOS);
         parentWindow.setBounds(
-                screenSize.width - 28 - oldBounds.width,
-                28, oldBounds.width, oldBounds.height);
+                screenSize.width - startDistanceFromRight - oldWidth,
+                startDistanceFromTop, oldWidth, oldBounds.height);
     }
 
     public static void setKeyEditPanel(KeyEditPanel aKeyEditPanel) {
@@ -331,8 +271,7 @@ public class MainPanel extends JPanel implements
         return mainPanelHasFocus;
     }
 
-    private void changeTitleBarColor(Color aColor) {
-        titlePanel.setBackground(aColor);
-        closeToolBar.setBackground(aColor);
+    public Color getMenuPanelBackgroundColor() {
+        return menuPanel.getBackground();
     }
 }

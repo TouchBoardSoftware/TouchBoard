@@ -34,9 +34,7 @@ public class Board extends JPanel implements
          */
         public KeysIterator(Key keys[][]) {
             if (keys == null || keys.length == 0 || keys[0].length == 0) {
-                if (Constants.debug) {
-                    Frames.message("Invalid key array passed in to KeysIterator.");
-                }
+                throw new RuntimeException("Invalid key array passed in to KeysIterator.");
             }
             rows = Math.min(Constants.keyRows, keys[0].length);
             columns = keys.length;
@@ -268,6 +266,7 @@ public class Board extends JPanel implements
         return autoSize ? autoKeyWidth : fixedKeyWidth;
     }
 
+    @Override
     public int getHeight() {
         return Constants.getBoardHeight();
     }

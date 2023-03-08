@@ -58,7 +58,7 @@ public class MyPopupMenu implements PopupMenuListener {
     /**
      * This will build the menu, from scratch.
      */
-    public void buildMenu() {
+    public final void buildMenu() {
 
         // Clear the old menu elements.
         popup = new JPopupMenu();
