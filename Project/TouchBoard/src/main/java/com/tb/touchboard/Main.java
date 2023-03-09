@@ -56,24 +56,25 @@ public class Main {
                  * (aka Java 8).
                  */
                 String javaVersion = System.getProperty("java.version");
-                if (!javaVersion.startsWith("1.8.")) {
+                if (Use.isSystemMac && (!javaVersion.startsWith("1.8."))) {
                     String versionMessage
-                        = "Due to a known bug in later Java versions, (issue: JDK-8196030),\n"
-                        + "TouchBoard currently only runs properly in Java 8. (aka 'Java 1.8'.)\n"
+                        = "Due to a known bug in the later MacOS versions of Java,<BR>"
+                        + "(issue: JDK-8196030), TouchBoard can only run on Mac in Java 8,<BR>"
+                        + "(aka 'Java 1.8'), and not in any later version of Java.<BR><BR>"
                         + "You are using Java version: " + javaVersion
-                        + "\n\n"
-                        + "Please restart TouchBoard using Java 8.\n"
-                        + "This can be done by 1) Installing a Java 8 JDK (if needed).\n"
-                        + "2) If on mac, launch TouchBoard with the applescript app that is\n"
-                        + "included in the TouchBoard folder. (Not by double clicking the jar.)\n"
-                        + "The applescript will look for and use Java 8 on your system.\n\n"
-                        + "On windows, you could launch TouchBoard with Java 8 with a batch file\n"
-                        + "or a double click. (A double click will only work if Java 8 is your\n"
-                        + "default Java version).\n"
-                        + "\n"
-                        + "Exiting program.";
-                    JOptionPane.showMessageDialog(null, versionMessage,
-                        "Java Version Requirement", JOptionPane.PLAIN_MESSAGE);
+                        + "<BR><BR>"
+                        + "Please restart TouchBoard using Java 8.<BR>"
+                        + "This can be done by<BR>"
+                        + "1) Installing a Java 8 JDK (if needed).<BR>"
+                        + "(It is okay to install multiple versions of Java on the same system.)<BR>"
+                        + "2) Launch TouchBoard with the applescript app that is included in<BR>"
+                        + "the TouchBoard folder. (Not by double clicking the jar.)<BR>"
+                        + "The applescript will look for and use the Java 8 installation on your<BR>"
+                        + "system.<BR><BR>"
+                        + "For more information or support, go to:<BR>"
+                        + "<a href=\"https://github.com/TouchBoardSoftware/TouchBoard\""
+                        + ">https://github.com/TouchBoardSoftware/TouchBoard</a>";
+                    showDialogWithHtml("TouchBoard on MacOS requires Java 8", versionMessage);
                     System.exit(0);
                 }
 
@@ -183,20 +184,20 @@ public class Main {
     }
 
     @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
-    public static void showAboutDialog() {
+    public static void showDialogWithHtml(String title, String messageHtmlBodyContents) {
 
-        // for copying style
+        // For copying style
         JLabel label = new JLabel();
         Font font = label.getFont();
 
-        // create some css from the label's font
+        // Create some css from the label's font
         StringBuffer style = new StringBuffer("font-family:" + font.getFamily() + ";");
         style.append("font-weight:" + (font.isBold() ? "bold" : "normal") + ";");
         style.append("font-size:" + font.getSize() + "pt;");
 
         // html content
         JEditorPane ep = new JEditorPane("text/html", "<html><body style=\"" + style + "\">" //
-            + Constants.aboutMessageText + "</body></html>");
+            + messageHtmlBodyContents + "</body></html>");
 
         // handle link events
         ep.addHyperlinkListener(new HyperlinkListener() {
@@ -216,8 +217,7 @@ public class Main {
 
         // show
         JOptionPane.showMessageDialog(null,
-            ep,
-            "About TouchBoard",
+            ep, title,
             JOptionPane.INFORMATION_MESSAGE);
     }
 }

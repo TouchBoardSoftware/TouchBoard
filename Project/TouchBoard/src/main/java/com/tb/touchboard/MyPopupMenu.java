@@ -2,12 +2,7 @@ package com.tb.touchboard;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import javax.swing.*;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import com.tb.tbUtilities.*;
@@ -407,7 +402,7 @@ public class MyPopupMenu implements PopupMenuListener {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.showAboutDialog();
+                Main.showDialogWithHtml("About TouchBoard", Constants.aboutMessageText);
             }
         });
 
