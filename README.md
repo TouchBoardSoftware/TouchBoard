@@ -2,7 +2,7 @@
 TouchBoard helps people type text, without having to press keys or click their mouse. It is a "hover based" on-screen keyboard.
 
 ## Requirements: Java 8+ on Windows or Linux, or Java 8 (only) on Mac.
-TouchBoard needs Java to run. On Windows or Linux, Java 8 or greater is fine. On MacOS, TouchBoard will run properly if Java 8 is used, but will not run in any later Java versions (Java 9+). This is due to a recently discovered bug on Mac in all the the later versions of the Java language. If desired, you can easily install more than one version of Java on Mac. The Mac Java issue is described here:
+TouchBoard needs Java to run. On Windows or Linux, Java 8 or greater is fine. On MacOS, TouchBoard will run properly if Java 8 is used, but will not run in any later Java versions (Java 9+). This is due to a recently discovered bug on Mac in all the the later versions of the Java language. If desired, you can easily install more than one version of Java on Mac. The Mac Java language issue is described here:
 <a href="https://bugs.openjdk.org/browse/JDK-8302618" target="_blank">JDK-8302618: Problem typing uppercase letters with java.awt.Robot on Mac</a>
 
 ## General Features
