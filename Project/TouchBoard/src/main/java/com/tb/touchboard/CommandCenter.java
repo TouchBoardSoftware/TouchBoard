@@ -660,18 +660,185 @@ public class CommandCenter {
       return;
     }
 
-    // [camelcase_that]
-    if (command.equals("camelcase_that")) {
+    // [uppercase_first_letter]
+    // Capitalize the first letter in the selected string, otherwise leave the string unchanged.
+    if (command.equals("uppercase_first_letter")) {
       String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
       // Do nothing for a null or empty clipboard.
       if (clipboardOrNull == null || clipboardOrNull.isEmpty()) {
-        Frames.message("There is no selected text to make camel case. Please select some\n"
-            + "text in your target application before using the 'camelcasethat' command.");
+        Frames.message("There is no selected text to modify. Please select some text\n"
+            + "in your target application before using the 'uppercase_first_letter' command.");
         return;
       }
       String clipboard = clipboardOrNull;
-      String camelCasedText = convertToCamelCase(clipboard);
-      type(camelCasedText);
+      String result = capitalizeFirstCharacterThatIsLetter(clipboard);
+      type(result);
+      return;
+    }
+
+    // [lowercase_first_letter]
+    // Lowercase the first letter in the selected string, otherwise leave the string unchanged.
+    if (command.equals("lowercase_first_letter")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text\n"
+            + "in your target application before using the 'lowercase_first_letter' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = lowercaseFirstCharacterThatIsLetter(clipboard);
+      type(result);
+      return;
+    }
+
+    // [all_uppercase_that]
+    // Convert the entire string to uppercase.
+    if (command.equals("all_uppercase_that")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text\n"
+            + "in your target application before using the 'all_uppercase_that' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = clipboard.toUpperCase();
+      type(result);
+      return;
+    }
+
+    // [all_lowercase_that]
+    // Convert the entire string to lowercase.
+    if (command.equals("all_lowercase_that")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text\n"
+            + "in your target application before using the 'all_lowercase_that' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = clipboard.toLowerCase();
+      type(result);
+      return;
+    }
+
+    // [camelcase_that]
+    // Convert selected string to camel case. Tokens start with spaces, dots, returns, or tabs.
+    if (command.equals("camelcase_that")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.trim().isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text\n"
+            + "in your target application before using the 'camelcase_that' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = convertToCamelCase(clipboard);
+      type(result);
+      return;
+    }
+
+    // [pascalcase_that]
+    // Convert selected string to pascal case. Tokens start with spaces, dots, returns, or tabs.
+    if (command.equals("pascalcase_that")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.trim().isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text\n"
+            + "in your target application before using the 'pascalcase_that' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = convertToPascalCase(clipboard);
+      type(result);
+      return;
+    }
+
+    // [titlecase_that]
+    // Convert selected string to title case. Spaces are preserved. "This Is Title Case".
+    if (command.equals("titlecase_that")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.trim().isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text\n"
+            + "in your target application before using the 'titlecase_that' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = convertToTitleCase(clipboard);
+      type(result);
+      return;
+    }
+
+    // [underscore_that]
+    // Convert any spaces in the selected string to underscores. Other characters are unchanged.
+    if (command.equals("underscore_that")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.trim().isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text\n"
+            + "in your target application before using the 'underscore_that' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = convertSpacesToUnderscores(clipboard);
+      type(result);
+      return;
+    }
+
+    // [underscore_with_titlecase_that]
+    // Convert selected string to title case. Spaces are converted to underscores. 
+    // "This_Is_Underscore_With_Title_Case".
+    if (command.equals("underscore_with_titlecase_that")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.trim().isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text in your\n"
+            + "target application before using the 'underscore_with_titlecase_that' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = convertSpacesToUnderscores(clipboard);
+      result = convertToTitleCase(result);
+      type(result);
+      return;
+    }
+
+    // [underscore_with_all_uppercase_that]
+    // Convert selected string to all uppercase. Spaces are converted to underscores.
+    // "THIS_IS_UNDERSCORE_WITH_ALL_UPPERCASE".
+    if (command.equals("underscore_with_all_uppercase_that")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.trim().isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text in your\n"
+            + "target application before using the 'underscore_with_all_uppercase_that' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = convertSpacesToUnderscores(clipboard);
+      result = result.toUpperCase();
+      type(result);
+      return;
+    }
+
+    // [underscore_with_all_lowercase_that]
+    // Convert selected string to all lowercase. Spaces are converted to underscores.
+    // "this_is_underscore_with_all_lowercase".
+    if (command.equals("underscore_with_all_lowercase_that")) {
+      String clipboardOrNull = getAnySelectedTextWithClipboard_OrNull();
+      // Do nothing for a null or empty clipboard.
+      if (clipboardOrNull == null || clipboardOrNull.trim().isEmpty()) {
+        Frames.message("There is no selected text to modify. Please select some text in your\n"
+            + "target application before using the 'underscore_with_all_lowercase_that' command.");
+        return;
+      }
+      String clipboard = clipboardOrNull;
+      String result = convertSpacesToUnderscores(clipboard);
+      result = result.toLowerCase();
+      type(result);
       return;
     }
 
@@ -961,11 +1128,19 @@ public class CommandCenter {
     if (text == null) {
       return null;
     }
-    String result = "";
+    if (text.trim().isEmpty()) {
+      return null;
+    }
+    int startingSpaces = countStartingSpaces(text);
+    int endingSpaces = countEndingSpaces(text);
     text = text.replace("\r", " ");
     text = text.replace("\n", " ");
     text = text.replace("\t", " ");
     text = text.trim();
+    String result = "";
+    for (int i = 0; i < startingSpaces; ++i) {
+      result += ' ';
+    }
     boolean didTextEndWithDot = text.endsWith(".");
     String[] dotGroupArray = text.split("\\.");
     int lastDotGroupIndex = (dotGroupArray.length - 1);
@@ -994,6 +1169,169 @@ public class CommandCenter {
     }
     if (didTextEndWithDot && (!(result.endsWith(".")))) {
       result += ".";
+    }
+    for (int i = 0; i < endingSpaces; ++i) {
+      result += ' ';
+    }
+    return result;
+  }
+
+  private String convertToPascalCase(String text) {
+    if (text == null) {
+      return null;
+    }
+    if (text.trim().isEmpty()) {
+      return null;
+    }
+    int startingSpaces = countStartingSpaces(text);
+    int endingSpaces = countEndingSpaces(text);
+    text = text.replace("\r", " ");
+    text = text.replace("\n", " ");
+    text = text.replace("\t", " ");
+    text = text.trim();
+    String result = "";
+    for (int i = 0; i < startingSpaces; ++i) {
+      result += ' ';
+    }
+    boolean didTextEndWithDot = text.endsWith(".");
+    String[] dotGroupArray = text.split("\\.");
+    int lastDotGroupIndex = (dotGroupArray.length - 1);
+    dotGroupLoop:
+    for (int dIdx = 0; dIdx < dotGroupArray.length; ++dIdx) {
+      String dotGroupText = dotGroupArray[dIdx].trim();
+      String[] tokenArray = dotGroupText.split(" ");
+      tokenLoop:
+      for (int tIdx = 0; tIdx < tokenArray.length; ++tIdx) {
+        String token = tokenArray[tIdx].trim();
+        if (token.isEmpty()) {
+          continue tokenLoop;
+        }
+        result += String.valueOf(token.charAt(0)).toUpperCase()
+            + Use.safeSubstring(1, token.length(), token).toLowerCase();
+      }
+      if (dIdx < lastDotGroupIndex) {
+        result += ".";
+      }
+    }
+    if (didTextEndWithDot && (!(result.endsWith(".")))) {
+      result += ".";
+    }
+    for (int i = 0; i < endingSpaces; ++i) {
+      result += ' ';
+    }
+    return result;
+  }
+
+  private String capitalizeFirstCharacterThatIsLetter(String text) {
+    if (text == null) {
+      return null;
+    }
+    String result = "";
+    boolean isFirstLetterDone = false;
+    letterLoop:
+    for (int i = 0; i < text.length(); ++i) {
+      char c = text.charAt(i);
+      if (Character.isLetter(c)) {
+        result += isFirstLetterDone ? c : Character.toUpperCase(c);
+        isFirstLetterDone = true;
+      } else {
+        result += c;
+      }
+    }
+    return result;
+  }
+
+  private String lowercaseFirstCharacterThatIsLetter(String text) {
+    if (text == null) {
+      return null;
+    }
+    String result = "";
+    boolean isFirstLetterDone = false;
+    letterLoop:
+    for (int i = 0; i < text.length(); ++i) {
+      char c = text.charAt(i);
+      if (Character.isLetter(c)) {
+        result += isFirstLetterDone ? c : Character.toLowerCase(c);
+        isFirstLetterDone = true;
+      } else {
+        result += c;
+      }
+    }
+    return result;
+  }
+
+  private int countStartingSpaces(String text) {
+    int result = 0;
+    for (int i = 0; i < text.length(); ++i) {
+      char c = text.charAt(i);
+      if (c == ' ') {
+        ++result;
+      } else {
+        break;
+      }
+    }
+    return result;
+  }
+
+  private int countEndingSpaces(String text) {
+    int result = 0;
+    for (int i = (text.length() - 1); i >= 0; --i) {
+      char c = text.charAt(i);
+      if (c == ' ') {
+        ++result;
+      } else {
+        break;
+      }
+    }
+    return result;
+  }
+
+  private String convertToTitleCase(String text) {
+    if (text == null) {
+      return null;
+    }
+    if (text.trim().isEmpty()) {
+      return null;
+    }
+    String result = "";
+    boolean shouldCaptalizeNextLetter = true;
+    for (int i = 0; i < text.length(); ++i) {
+      char c = text.charAt(i);
+      result += (shouldCaptalizeNextLetter) ? Character.toUpperCase(c) : Character.toLowerCase(c);
+      shouldCaptalizeNextLetter = (!(Character.isLetter(c)));
+    }
+    return result;
+  }
+
+  private String convertSpacesToUnderscores(String text) {
+    if (text == null) {
+      return null;
+    }
+    if (text.trim().isEmpty()) {
+      return null;
+    }
+    String result = "";
+    for (int i = 0; i < text.length(); ++i) {
+      char c = text.charAt(i);
+      result += (c == ' ') ? '_' : c;
+    }
+    return result;
+  }
+
+  private String convertToTitleCaseWithUnderscores(String text) {
+    if (text == null) {
+      return null;
+    }
+    if (text.trim().isEmpty()) {
+      return null;
+    }
+    String result = "";
+    boolean shouldCaptalizeNextLetter = true;
+    for (int i = 0; i < text.length(); ++i) {
+      char c = text.charAt(i);
+      c = (c == ' ') ? '_' : c;
+      result += (shouldCaptalizeNextLetter) ? Character.toUpperCase(c) : Character.toLowerCase(c);
+      shouldCaptalizeNextLetter = (!(Character.isLetter(c)));
     }
     return result;
   }
